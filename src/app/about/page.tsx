@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { 
   MapPin, 
   GraduationCap, 
@@ -104,7 +105,7 @@ export default function AboutPage() {
               <span className="text-gray-900 dark:text-white">Hello, I&apos;m </span>
               <br />
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                [Your Name]
+                Nicolas Carranza
               </span>
             </motion.h1>
             
@@ -112,7 +113,7 @@ export default function AboutPage() {
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
               variants={itemVariants}
             >
-              [Your professional tagline - what you do and what makes you unique]
+              A passionate Computer Science student with a focus on AI and full-stack development.
             </motion.p>
 
             <motion.div
@@ -181,19 +182,27 @@ export default function AboutPage() {
                   className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed"
                   variants={itemVariants}
                 >
-                  <p>
-                    [Write your compelling story here. Talk about your journey, what drives you, 
-                    your background, and what makes you passionate about what you do.]
-                  </p>
-                  
-                  <p>
-                    [Continue with more details about your experience, values, and goals. 
-                    Make it personal and engaging.]
-                  </p>
-                  
-                  <p>
-                    [End with what you&apos;re currently working on and what excites you about the future.]
-                  </p>
+                    <p>
+                        I was born and raised in Madrid, surrounded by family and friends who made the city feel like home. 
+                        From a young age, I was drawn to the scientific side of life — first dreaming of becoming a veterinarian, then an astrophysicist, an aerospace engineer, and eventually finding my passion in software engineering. 
+                        This curiosity about how things work has shaped my journey ever since.
+                    </p>
+
+                    <p>
+                        I am currently in my final year at the University of St Andrews, pursuing a degree in Computer Science and Management. 
+                        My studies have allowed me to explore a wide range of subjects, from operating systems and networks to the fundamentals of logic, complexity, and best coding practices. 
+                        Along the way, I have gained hands-on experience with all the core programming languages, building a strong and versatile technical foundation.
+                    </p>
+
+                    <p>
+                        This foundation has enabled me to complete three internships, each offering unique challenges and opportunities to apply my skills in real-world settings — experiences I have truly enjoyed and learned from.
+                    </p>
+
+                    <p>
+                        Looking ahead, I am eager to start my career as a graduate software engineer, while remaining open to emerging opportunities in technology and innovation. 
+                        I am passionate about using my skills to solve meaningful problems and contribute to projects that make a positive impact.
+                    </p>
+
                 </motion.div>
               </div>
 
@@ -206,10 +215,10 @@ export default function AboutPage() {
                 
                 <div className="space-y-4">
                   {[
-                    { icon: MapPin, label: "Based in", value: "[Your Location]" },
-                    { icon: GraduationCap, label: "Education", value: "[Your Education]" },
-                    { icon: Zap, label: "Experience", value: "[Years] years" },
-                    { icon: Heart, label: "Passion", value: "[Your Main Interest]" }
+                    { icon: MapPin, label: "Based in", value: "United Kingdom" },
+                    { icon: GraduationCap, label: "Education", value: "Computer Science and Management \n University of St Andrews" },
+                    { icon: Zap, label: "Experience", value: "4 years" },
+                    { icon: Heart, label: "Passion", value: "Technology and Innovation" }
                   ].map((item, index) => (
                     <motion.div 
                       key={index}
@@ -334,14 +343,14 @@ export default function AboutPage() {
       >
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <motion.div
-            className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+            className="bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 rounded-3xl p-12 shadow-2xl relative overflow-hidden border border-slate-700/50"
             variants={itemVariants}
           >
             {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0 bg-white/5 bg-repeat" 
                    style={{ 
-                     backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+                     backgroundImage: `radial-gradient(circle at 2px 2px, rgba(148, 163, 184, 0.3) 1px, transparent 0)`,
                      backgroundSize: '30px 30px'
                    }} 
               />
@@ -356,15 +365,14 @@ export default function AboutPage() {
               </motion.h2>
               
               <motion.p 
-                className="text-xl text-white/90 mb-8 max-w-2xl mx-auto"
+                className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed"
                 variants={itemVariants}
               >
                 I&apos;m always interested in new opportunities and exciting projects. 
                 Let&apos;s connect and create something amazing!
               </motion.p>
               
-              <motion.button
-                className="bg-white text-purple-600 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+              <motion.div
                 variants={itemVariants}
                 whileHover={{ 
                   scale: 1.05,
@@ -372,10 +380,15 @@ export default function AboutPage() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Mail className="w-5 h-5" />
-                Get In Touch
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
+                <Link
+                  href="/contact"
+                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2 backdrop-blur-sm"
+                >
+                  <Mail className="w-5 h-5" />
+                  Get In Touch
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>
