@@ -53,7 +53,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-300">your.email@example.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">carranzanicolas3@gmail.com</p>
                   </div>
                 </div>
                 
@@ -63,7 +63,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Location</h3>
-                    <p className="text-gray-600 dark:text-gray-300">Your City, Country</p>
+                    <p className="text-gray-600 dark:text-gray-300">Madrid, Spain / St Andrews, Scotland</p>
                   </div>
                 </div>
                 
@@ -110,7 +110,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                    placeholder="your.email@example.com"
+                    placeholder="carranzanicolas3@gmail.com"
                   />
                 </div>
                 

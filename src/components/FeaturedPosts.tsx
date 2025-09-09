@@ -5,27 +5,27 @@ const FeaturedPosts = () => {
   const featuredPosts = [
     {
       id: 1,
-      title: "My Journey into Full-Stack Development",
-      excerpt: "How I transitioned from a different field into software development and the lessons I learned along the way.",
-      date: "2024-03-15",
+      title: "My Journey from Madrid to St Andrews: A Tech Adventure",
+      excerpt: "How moving to Scotland for Computer Science opened doors to incredible opportunities at BlackRock, DCycle, and beyond.",
+      date: "2024-12-15",
       category: "Career",
-      readTime: "5 min read"
+      readTime: "6 min read"
     },
     {
       id: 2,
-      title: "Building My First Production App",
-      excerpt: "The challenges, victories, and key takeaways from deploying my first real-world application.",
-      date: "2024-03-10",
-      category: "Projects",
+      title: "Building Unhatched: AI-Powered Startup Co-founder",
+      excerpt: "The story behind founding Unhatched.ai and lessons learned while building an AI platform that helps entrepreneurs validate ideas.",
+      date: "2024-11-28",
+      category: "Entrepreneurship",
       readTime: "8 min read"
     },
     {
       id: 3,
-      title: "2024: Goals and Aspirations",
-      excerpt: "Setting ambitious but achievable goals for the new year and tracking my progress.",
-      date: "2024-01-01",
-      category: "Life",
-      readTime: "3 min read"
+      title: "From CERN to QuantConnect: My AI & ML Adventures",
+      excerpt: "Exploring artificial intelligence through research projects, trading algorithms, and real-world applications in fintech.",
+      date: "2024-10-10",
+      category: "AI & Tech",
+      readTime: "5 min read"
     }
   ]
 

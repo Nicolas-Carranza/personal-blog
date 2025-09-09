@@ -10,25 +10,27 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Your Name</h3>
+            <h3 className="text-2xl font-bold mb-4">Nicolas Carranza</h3>
             <p className="text-gray-400 mb-6 max-w-md">
-              A passionate developer sharing insights, achievements, and life experiences 
-              through code and writing.
+              Computer Science & Management student passionate about AI, fintech, 
+              and building innovative solutions through technology.
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/Nicolas-Carranza" 
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="GitHub Profile"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a 
-                href="https://linkedin.com/in/yourusername" 
+                href="https://linkedin.com/in/nicolas-carranza-arauna-4029a7252" 
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="LinkedIn Profile"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
@@ -41,8 +43,9 @@ const Footer = () => {
                 <Twitter className="w-6 h-6" />
               </a>
               <a 
-                href="mailto:your.email@example.com" 
+                href="mailto:carranzanicolas3@gmail.com" 
                 className="text-gray-400 hover:text-white transition-colors duration-200"
+                title="Email Contact"
               >
                 <Mail className="w-6 h-6" />
               </a>
@@ -106,7 +109,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400 flex items-center justify-center">
-            Made with <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" /> by Your Name © {currentYear}
+            Made with <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" /> by Nicolas Carranza © {currentYear}
           </p>
         </div>
       </div>

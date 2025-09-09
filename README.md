@@ -54,8 +54,8 @@ A modern, interactive personal blog and portfolio website built with Next.js, Ty
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd Blog
+   git clone https://github.com/Nicolas-Carranza/personal-blog.git
+   cd personal-blog
    ```
 
 2. **Install dependencies**

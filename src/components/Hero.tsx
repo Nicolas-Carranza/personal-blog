@@ -14,25 +14,25 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
-            Hi, I'm <span className="text-primary-600">Your Name</span>
+            Hi, I'm <span className="text-primary-600">Nicolas Carranza</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            A passionate developer, writer, and lifelong learner sharing my journey, 
-            achievements, and thoughts on technology and life.
+            Computer Science & Management student at St Andrews, passionate about AI, 
+            fintech, and full-stack development. Sharing my journey through tech, leadership, and innovation.
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 rounded-full px-6 py-3 backdrop-blur-sm">
               <Code className="w-5 h-5 text-primary-600" />
-              <span className="text-gray-700 dark:text-gray-300">Developer</span>
+              <span className="text-gray-700 dark:text-gray-300">Full-Stack Developer</span>
             </div>
             <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 rounded-full px-6 py-3 backdrop-blur-sm">
               <Coffee className="w-5 h-5 text-primary-600" />
-              <span className="text-gray-700 dark:text-gray-300">Blogger</span>
+              <span className="text-gray-700 dark:text-gray-300">CS Student</span>
             </div>
             <div className="flex items-center space-x-2 bg-white/80 dark:bg-gray-800/80 rounded-full px-6 py-3 backdrop-blur-sm">
               <Globe className="w-5 h-5 text-primary-600" />
-              <span className="text-gray-700 dark:text-gray-300">Creator</span>
+              <span className="text-gray-700 dark:text-gray-300">Tech Entrepreneur</span>
             </div>
           </div>
 

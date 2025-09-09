@@ -9,34 +9,130 @@ export default function AchievementsPage() {
           
           <div className="text-center text-gray-600 dark:text-gray-300 mb-12">
             <p className="text-lg">
-              A showcase of my professional journey, projects, and accomplishments
+              A showcase of my academic excellence, professional experiences, and innovative projects
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Professional Achievements */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Academic Excellence */}
             <div className="card p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Professional Milestones
+                🎓 Academic Excellence
               </h2>
               <div className="space-y-4">
                 <div className="border-l-4 border-primary-600 pl-4">
                   <h3 className="font-semibold text-gray-900 dark:text-white">
-                    Full-Stack Developer Role
+                    University of St Andrews - BSc (Hons)
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Landed my first professional development position
+                    Computer Science & Management Science (On track 1:1)
                   </p>
-                  <span className="text-primary-600 text-sm">2024</span>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Dean's List 2022/23, 2023/24, 2024/25 for outstanding academic performance
+                  </p>
+                  <span className="text-primary-600 text-sm">2022 - 2026</span>
                 </div>
                 <div className="border-l-4 border-primary-600 pl-4">
                   <h3 className="font-semibold text-gray-900 dark:text-white">
-                    Certification Completion
+                    Harvard University - CS50Px
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Completed comprehensive web development certification
+                    Certificate in Computer Science and Python Programming
                   </p>
                   <span className="text-primary-600 text-sm">2023</span>
+                </div>
+                <div className="border-l-4 border-primary-600 pl-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    BiBac Bilingual Baccalaureate
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    9.5/10 Grade, Head Student at British Council School Madrid
+                  </p>
+                  <span className="text-primary-600 text-sm">2020 - 2022</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Professional Experience */}
+            <div className="card p-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                💼 Professional Experience
+              </h2>
+              <div className="space-y-4">
+                <div className="border-l-4 border-green-500 pl-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    BlackRock - Aladdin Client Business
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Summer Intern in Edinburgh, leading AI implementation project
+                  </p>
+                  <span className="text-green-600 text-sm">Jun 2025 - Aug 2025</span>
+                </div>
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    DCycle - Backend Software Engineer
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Developed Python tools for financial data retrieval and API testing
+                  </p>
+                  <span className="text-blue-600 text-sm">May 2024 - Jul 2024</span>
+                </div>
+                <div className="border-l-4 border-purple-500 pl-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                    University of St Andrews - STARIS Intern
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Research internship with Oxford University on Ancient Egyptian database
+                  </p>
+                  <span className="text-purple-600 text-sm">Sep 2023 - Dec 2023</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Leadership & Entrepreneurship */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="card p-8">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                🚀 Entrepreneurship & Leadership
+              </h2>
+              <div className="space-y-4">
+                <div className="border border-orange-200 dark:border-orange-700 rounded-lg p-4 bg-orange-50 dark:bg-orange-900/20">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Founder & CPO - Unhatched.ai
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                    AI-powered virtual co-founder platform for startup ideas
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="bg-orange-100 text-orange-600 px-2 py-1 rounded text-xs">
+                      AI/ML
+                    </span>
+                    <span className="bg-orange-100 text-orange-600 px-2 py-1 rounded text-xs">
+                      Full-Stack
+                    </span>
+                    <span className="bg-orange-100 text-orange-600 px-2 py-1 rounded text-xs">
+                      Product Design
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    President - Spanish Society St Andrews
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Raised €2,500 for Valencia DANA disaster relief
+                  </p>
+                </div>
+                
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Events Director - Fintech Society
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Leading sponsorship with BlackRock and major industry partnerships
+                  </p>
                 </div>
               </div>
             </div>
@@ -44,25 +140,68 @@ export default function AchievementsPage() {
             {/* Technical Projects */}
             <div className="card p-8">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Featured Projects
+                💻 Featured Projects
               </h2>
               <div className="space-y-4">
                 <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                   <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    Personal Blog Website
+                    Helping Hand - Social Good Platform
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                    Built with Next.js, TypeScript, and Tailwind CSS
+                    Web app connecting elderly citizens with local volunteers (25 developers team)
                   </p>
                   <div className="flex gap-2 flex-wrap">
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      Python
+                    </span>
                     <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
                       Next.js
                     </span>
                     <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
-                      TypeScript
+                      ML
                     </span>
                     <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
-                      Tailwind CSS
+                      VR
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Quantitative Trading Algorithms
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                    ML-powered trading strategies with Mercurial Capital Investment
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      Python
+                    </span>
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      Pandas
+                    </span>
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      QuantConnect
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Movie Queue & Media API
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
+                    Dynamic web application with RESTful API for media management
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      JavaScript
+                    </span>
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      Express.js
+                    </span>
+                    <span className="bg-primary-100 text-primary-600 px-2 py-1 rounded text-xs">
+                      REST API
                     </span>
                   </div>
                 </div>
@@ -70,13 +209,34 @@ export default function AchievementsPage() {
             </div>
           </div>
           
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 dark:text-gray-300">
-              This page will be regularly updated with new achievements and projects.
-              <br />
-              <strong>Tip:</strong> Replace this content with your actual achievements, 
-              certifications, projects, and CV highlights!
-            </p>
+          {/* Awards & Recognition */}
+          <div className="card p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+              🏆 Awards & Recognition
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">🎖️</span>
+                </div>
+                <h3 className="font-semibold text-gray-900 dark:text-white">Dean's List</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">3 consecutive years</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">⚗️</span>
+                </div>
+                <h3 className="font-semibold text-gray-900 dark:text-white">CERN BL4s Contest</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Antimatter Research Project</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">🎓</span>
+                </div>
+                <h3 className="font-semibold text-gray-900 dark:text-white">Head Student</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">British Council School</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

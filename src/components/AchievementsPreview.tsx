@@ -5,35 +5,35 @@ const AchievementsPreview = () => {
   const achievements = [
     {
       id: 1,
-      title: "Full-Stack Developer Certification",
-      description: "Completed comprehensive web development bootcamp",
-      date: "2023",
-      icon: Award,
-      category: "Education"
+      title: "BlackRock Summer Internship",
+      description: "Aladdin Client Business team, leading AI implementation project with global engineering teams",
+      date: "2025",
+      icon: Trophy,
+      category: "Professional"
     },
     {
       id: 2,
-      title: "First Open Source Contribution",
-      description: "Contributed to a major open source project on GitHub",
+      title: "Founded Unhatched.ai",
+      description: "Built AI-powered virtual co-founder platform, leading product development and design",
       date: "2024",
       icon: Star,
-      category: "Development"
+      category: "Entrepreneurship"
     },
     {
       id: 3,
-      title: "Personal Blog Launch",
-      description: "Successfully launched and deployed this personal website",
-      date: "2024",
-      icon: Target,
-      category: "Personal"
+      title: "Dean's List Recognition",
+      description: "Three consecutive years of academic excellence at University of St Andrews",
+      date: "2022-2025",
+      icon: Award,
+      category: "Academic"
     },
     {
       id: 4,
-      title: "Tech Conference Speaker",
-      description: "Presented at a local developer meetup",
+      title: "Spanish Society President",
+      description: "Elected president, raised €2,500 for Valencia DANA disaster relief in partnership with World Central Kitchen",
       date: "2024",
-      icon: Trophy,
-      category: "Speaking"
+      icon: Target,
+      category: "Leadership"
     }
   ]
 
