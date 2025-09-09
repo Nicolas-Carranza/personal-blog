@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Mail, Heart } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -33,14 +33,6 @@ const Footer = () => {
                 title="LinkedIn Profile"
               >
                 <Linkedin className="w-6 h-6" />
-              </a>
-              <a 
-                href="https://twitter.com/yourusername" 
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Twitter className="w-6 h-6" />
               </a>
               <a 
                 href="mailto:carranzanicolas3@gmail.com" 
@@ -79,28 +71,28 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categories */}
+          {/* Featured Posts */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Categories</h4>
+            <h4 className="text-lg font-semibold mb-4">Latest Posts</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/blog/tech" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Technology
+                <Link href="/blog/1" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Madrid to St Andrews
                 </Link>
               </li>
               <li>
-                <Link href="/blog/life" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Life Updates
+                <Link href="/blog/2" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  Building Unhatched
                 </Link>
               </li>
               <li>
-                <Link href="/blog/projects" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Projects
+                <Link href="/blog/3" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  AI & ML Adventures
                 </Link>
               </li>
               <li>
-                <Link href="/blog/tutorials" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Tutorials
+                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors duration-200">
+                  View All Posts →
                 </Link>
               </li>
             </ul>
