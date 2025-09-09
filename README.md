@@ -7,13 +7,53 @@ A modern, interactive personal blog and portfolio website built with Next.js, Ty
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4+-38B2AC?style=flat&logo=tailwind-css)
 ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=flat&logo=vercel)
 
+## 🎨 Background System
+
+The website features a consistent, modern background system across all pages (except individual blog posts):
+
+### Available Background Variants:
+- **DotGrid** (default): Clean dot grid pattern with animated particles and floating orbs
+- **Geometric**: Rotating geometric shapes with gradient overlays
+- **Organic**: Smooth morphing blob animations
+- **GridGlow**: Minimalist grid with glowing intersection points  
+- **Particles**: Floating particle field with gradient mesh
+- **Neural**: Connected node network with animated lines
+
+### Usage:
+```tsx
+import PageBackground from '@/components/PageBackground'
+
+// Use default DotGrid background
+<PageBackground variant="dotgrid">
+  {/* Your page content */}
+</PageBackground>
+
+// Or choose a different variant
+<PageBackground variant="particles">
+  {/* Your page content */}
+</PageBackground>
+```
+
+### Pages with consistent backgrounds:
+- ✅ About page
+- ✅ Contact page  
+- ✅ Achievements page
+- ✅ Blog listing page
+- ✅ Landing page (via Hero component)
+- ❌ Individual blog posts (maintain their custom backgrounds)
+
+## ✨ Features
+
 ## ✨ Features
 
 ### 🎨 **Modern Design**
 - Clean, professional interface with smooth animations
+- Consistent animated backgrounds across all pages (powered by Once UI-inspired designs)
+- Multiple background variants: DotGrid, Geometric Mesh, Organic Blobs, Grid Glow, Particles Field, Neural Network
 - Responsive design that works on all devices
 - Dark mode support for better user experience
 - Interactive components with hover effects
+- Glass-morphism and backdrop-blur effects
 
 ### 📱 **Navigation**
 - Fixed navigation bar with scroll effects

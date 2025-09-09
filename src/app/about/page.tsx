@@ -14,6 +14,7 @@ import {
   Sparkles,
   Zap
 } from 'lucide-react'
+import PageBackground from '@/components/PageBackground'
 
 export default function AboutPage() {
   const skills = [
@@ -52,19 +53,7 @@ export default function AboutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30 dark:opacity-20">
-        <div className="absolute inset-0 bg-blue-50 dark:bg-blue-900/10">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 bg-repeat" 
-               style={{ 
-                 backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
-                 backgroundSize: '20px 20px'
-               }} 
-          />
-        </div>
-      </div>
-
+    <PageBackground variant="dotgrid" className="min-h-screen">
       {/* Hero Section */}
       <motion.section 
         className="relative pt-32 pb-20"
@@ -348,12 +337,7 @@ export default function AboutPage() {
           >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0 bg-white/5 bg-repeat" 
-                   style={{ 
-                     backgroundImage: `radial-gradient(circle at 2px 2px, rgba(148, 163, 184, 0.3) 1px, transparent 0)`,
-                     backgroundSize: '30px 30px'
-                   }} 
-              />
+              <div className="absolute inset-0 bg-white/5 bg-repeat bg-[radial-gradient(circle_at_2px_2px,rgba(148,163,184,0.3)_1px,transparent_0)] bg-[length:30px_30px]" />
             </div>
             
             <div className="relative z-10">
@@ -393,6 +377,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </motion.section>
-    </div>
+    </PageBackground>
   )
 }

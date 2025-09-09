@@ -13,7 +13,9 @@ This is a Next.js TypeScript project for a personal blog and portfolio website. 
 
 ## Project Structure
 - Interactive navigation with mobile-friendly menu
-- Hero section with personal introduction
+- Hero section with personal introduction and dynamic animated backgrounds
+- Consistent background system across all pages (except individual blog posts)
+- Background variants: DotGrid, Geometric Mesh, Organic Blobs, Grid Glow, Particles Field, Neural Network
 - Blog system ready for content integration
 - Achievements/portfolio showcase
 - Contact form with validation
@@ -21,8 +23,10 @@ This is a Next.js TypeScript project for a personal blog and portfolio website. 
 
 ## Key Features
 - Fully responsive design
-- Dark mode support
+- Dark mode support with automatic background adaptation
 - Interactive components with hover effects
+- Consistent Once UI-inspired background system
+- Glass-morphism and backdrop-blur effects
 - SEO-friendly structure
 - Ready for Vercel deployment
 - Accessibility-conscious development
@@ -34,3 +38,6 @@ This is a Next.js TypeScript project for a personal blog and portfolio website. 
 - Maintain component modularity
 - Ensure accessibility standards
 - Keep performance optimized for web vitals
+- Use consistent background system across pages (DotGridBackground by default)
+- Individual blog posts can have custom backgrounds
+- Maintain glass-morphism and backdrop-blur consistency

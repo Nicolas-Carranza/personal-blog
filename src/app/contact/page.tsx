@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Mail, MapPin, Phone, Send } from 'lucide-react'
+import PageBackground from '@/components/PageBackground'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -25,9 +26,10 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+    <PageBackground variant="dotgrid" className="min-h-screen">
+      <div className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Get In Touch
           </h1>
@@ -139,9 +141,10 @@ export default function ContactPage() {
                 </button>
               </form>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </PageBackground>
   )
 }

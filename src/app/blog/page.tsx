@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
+import PageBackground from '@/components/PageBackground'
 
 export default function BlogPage() {
   const blogPosts = [
@@ -44,9 +45,10 @@ export default function BlogPage() {
   const categories = ["All", "Career", "Entrepreneurship", "AI & Tech"]
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+    <PageBackground variant="dotgrid" className="min-h-screen">
+      <div className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div 
             className="text-center mb-16"
@@ -197,8 +199,9 @@ export default function BlogPage() {
               </motion.button>
             </div>
           </motion.div>
+          </div>
         </div>
       </div>
-    </div>
+    </PageBackground>
   )
 }
