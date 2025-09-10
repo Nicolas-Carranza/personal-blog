@@ -264,7 +264,7 @@ export default function AchievementsPage() {
                 <div className="w-16 h-16 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-2xl">🎖️</span>
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white">Dean's List</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white">Dean&apos;s List</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">3 consecutive years</p>
               </div>
               <div className="text-center">

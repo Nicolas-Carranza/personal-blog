@@ -34,7 +34,7 @@ const Hero = () => {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">
-            Hi, I'm <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Nicolas Carranza</span>
+            Hi, I&apos;m <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Nicolas Carranza</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
             Computer Science & Management student at St Andrews, passionate about AI, 

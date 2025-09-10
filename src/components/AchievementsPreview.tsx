@@ -45,7 +45,7 @@ const AchievementsPreview = () => {
             Recent Achievements
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Milestones and accomplishments that I'm proud to share
+            Milestones and accomplishments that I&apos;m proud to share
           </p>
         </div>
 

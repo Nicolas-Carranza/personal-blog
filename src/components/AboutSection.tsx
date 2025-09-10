@@ -7,7 +7,7 @@ const AboutSection = () => {
             About Me
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-            Welcome to my corner of the internet! I'm a passionate developer who loves creating
+            Welcome to my corner of the internet! I&apos;m a passionate developer who loves creating
             meaningful digital experiences and sharing my journey through code, writing, and continuous learning.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
