@@ -108,7 +108,7 @@ export default function BlogPost1() {
               transition={{ duration: 0.3 }}
             >
               <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                Madrid wasn't just my birthplace—it was my launchpad. Growing up in Spain's vibrant capital, 
+                Madrid wasn&apos;t just my birthplace—it was my launchpad. Growing up in Spain&apos;s vibrant capital, 
                 I was surrounded by a rich tapestry of culture, innovation, and ambition. The bustling streets 
                 of Madrid taught me resilience, while the warm Spanish community showed me the power of connection.
               </p>
@@ -138,8 +138,8 @@ export default function BlogPost1() {
                   👑 Leadership Early On
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Being selected as Head Student taught me that leadership isn't about titles—
-                  it's about inspiring others and making a difference.
+                  Being selected as Head Student taught me that leadership isn&apos;t about titles—
+                  it&apos;s about inspiring others and making a difference.
                 </p>
               </motion.div>
             </div>
@@ -165,10 +165,10 @@ export default function BlogPost1() {
             >
               <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl p-8 text-white mb-8">
                 <blockquote className="text-xl italic mb-4">
-                  "Sometimes the best opportunities come disguised as the scariest decisions."
+                  &quot;Sometimes the best opportunities come disguised as the scariest decisions.&quot;
                 </blockquote>
                 <p className="text-blue-100">
-                  Leaving the warmth of Madrid for the ancient stones of St Andrews wasn't just 
+                  Leaving the warmth of Madrid for the ancient stones of St Andrews wasn&apos;t just 
                   a geographical move—it was a leap into the unknown that would reshape my entire future.
                 </p>
               </div>
@@ -200,16 +200,16 @@ export default function BlogPost1() {
             
             <div className="bg-gradient-to-r from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-2xl p-8 mb-8">
               <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
-                St Andrews became my playground for innovation. Three consecutive years on the Dean's List 
-                wasn't just about grades—it was proof that when you combine Spanish passion with Scottish 
+                St Andrews became my playground for innovation. Three consecutive years on the Dean&apos;s List 
+                wasn&apos;t just about grades—it was proof that when you combine Spanish passion with Scottish 
                 determination, magic happens.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {[
-                  { year: "2022/23", achievement: "Dean's List", icon: "🏆" },
-                  { year: "2023/24", achievement: "Dean's List", icon: "⭐" },
-                  { year: "2024/25", achievement: "Dean's List", icon: "🎯" }
+                  { year: "2022/23", achievement: "Dean&apos;s List", icon: "🏆" },
+                  { year: "2023/24", achievement: "Dean&apos;s List", icon: "⭐" },
+                  { year: "2024/25", achievement: "Dean&apos;s List", icon: "🎯" }
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -288,9 +288,9 @@ export default function BlogPost1() {
               The Journey Continues
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-              From Madrid's sunny boulevards to Scotland's ancient halls, every step has been a building block 
+              From Madrid&apos;s sunny boulevards to Scotland&apos;s ancient halls, every step has been a building block 
               in my journey. The boy who left Spain has returned as a global citizen, armed with technical skills, 
-              cultural awareness, and an unshakeable belief that the best adventures always begin with saying "yes" 
+              cultural awareness, and an unshakeable belief that the best adventures always begin with saying &quot;yes&quot; 
               to the unknown.
             </p>
             <motion.div

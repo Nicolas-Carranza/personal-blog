@@ -180,7 +180,7 @@ export default function BlogPost2() {
                   whileHover={{ scale: 1.02 }}
                 >
                   <h3 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
-                    💡 The "Aha!" Moment
+                    💡 The &quot;Aha!&quot; Moment
                   </h3>
                   <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
                     It was 2 AM in St Andrews when the idea hit me. I was procrastinating on an assignment, 
@@ -188,7 +188,7 @@ export default function BlogPost2() {
                     could have an AI co-founder to validate, develop, and guide their ideas?</strong>
                   </p>
                   <blockquote className="border-l-4 border-orange-400 pl-4 italic text-gray-600 dark:text-gray-400">
-                    "The best ideas often come when you're not looking for them—they find you."
+                    &quot;The best ideas often come when you&apos;re not looking for them—they find you.&quot;
                   </blockquote>
                 </motion.div>
               </div>
@@ -268,14 +268,14 @@ export default function BlogPost2() {
               </h3>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p>
-                  The research phase revealed something fascinating: entrepreneurs weren't just looking for 
+                  The research phase revealed something fascinating: entrepreneurs weren&apos;t just looking for 
                   tools—they were looking for <strong>partnership</strong>. They wanted someone (or something) 
                   that could challenge their assumptions, ask the right questions, and help them navigate 
                   the uncertain waters of startup building.
                 </p>
                 <p>
-                  This insight shaped Unhatched's core philosophy: we're not just building a validation tool, 
-                  we're creating an AI partner that thinks like a seasoned entrepreneur.
+                  This insight shaped Unhatched&apos;s core philosophy: we&apos;re not just building a validation tool, 
+                  we&apos;re creating an AI partner that thinks like a seasoned entrepreneur.
                 </p>
               </div>
             </motion.div>
@@ -377,7 +377,7 @@ export default function BlogPost2() {
               </motion.div>
               <h2 className="text-4xl font-bold mb-6">AI Integration Challenges</h2>
               <p className="text-xl opacity-90 max-w-3xl mx-auto">
-                Building an AI that thinks like an entrepreneur wasn't just a technical challenge—
+                Building an AI that thinks like an entrepreneur wasn&apos;t just a technical challenge—
                 it was a philosophical one.
               </p>
             </div>
@@ -443,7 +443,7 @@ export default function BlogPost2() {
               transition={{ duration: 0.8 }}
             >
               <h3 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-                The Numbers Don't Lie
+                The Numbers Don&apos;t Lie
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -473,8 +473,8 @@ export default function BlogPost2() {
               </div>
 
               <blockquote className="text-xl italic text-gray-700 dark:text-gray-300 mb-6">
-                "Unhatched didn't just validate my idea—it helped me see possibilities I never considered. 
-                It's like having a wise mentor who's available 24/7."
+                &quot;Unhatched didn&apos;t just validate my idea—it helped me see possibilities I never considered. 
+                It&apos;s like having a wise mentor who&apos;s available 24/7.&quot;
               </blockquote>
               <cite className="text-gray-500 dark:text-gray-400">— Sarah M., Beta User</cite>
             </motion.div>

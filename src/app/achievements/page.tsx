@@ -31,7 +31,7 @@ export default function AchievementsPage() {
                     Computer Science & Management Science (On track 1:1)
                   </p>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    Dean's List 2022/23, 2023/24, 2024/25 for outstanding academic performance
+                    Dean&apos;s List 2022/23, 2023/24, 2024/25 for outstanding academic performance
                   </p>
                   <span className="text-primary-600 text-sm">2022 - 2026</span>
                 </div>

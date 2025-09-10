@@ -197,7 +197,7 @@ export default function BlogPost3() {
                 <h2 className="text-5xl font-bold">The CERN Experience</h2>
               </div>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Diving into the mysteries of antimatter at the world's most famous physics laboratory
+                Diving into the mysteries of antimatter at the world&apos;s most famous physics laboratory
               </p>
             </motion.div>
 
@@ -217,7 +217,7 @@ export default function BlogPost3() {
                     </h3>
                     <p className="text-lg mb-6 text-gray-300">
                       Being selected for the CERN BL4s Contest was like winning a golden ticket to the 
-                      future of physics. Our antimatter research project wasn't just an academic exercise—
+                      future of physics. Our antimatter research project wasn&apos;t just an academic exercise—
                       it was a glimpse into the fundamental building blocks of reality.
                     </p>
                     
@@ -475,7 +475,7 @@ export default function BlogPost3() {
               </div>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Where AI meets Wall Street—building algorithmic trading strategies 
-                that compete against the world's best universities
+                that compete against the world&apos;s best universities
               </p>
             </motion.div>
 
