@@ -1,11 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
 import PageBackground from '@/components/PageBackground'
 
 export default function BlogPage() {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const blogPosts = [
     {
       id: 1,
@@ -13,10 +19,7 @@ export default function BlogPage() {
       excerpt: "How moving to Scotland for Computer Science opened doors to incredible opportunities at BlackRock, DCycle, and beyond. A personal story of growth, challenges, and discoveries.",
       date: "2024-12-15",
       category: "Career",
-      readTime: "6 min read",
-      featured: true,
-      color: "from-orange-500 to-red-500",
-      bgColor: "from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20"
+      readTime: "6 min read"
     },
     {
       id: 2, 
@@ -24,10 +27,7 @@ export default function BlogPage() {
       excerpt: "The story behind founding Unhatched.ai and lessons learned while building an AI platform that helps entrepreneurs validate ideas. From 2 AM inspiration to working product.",
       date: "2024-11-28",
       category: "Entrepreneurship", 
-      readTime: "8 min read",
-      featured: true,
-      color: "from-purple-500 to-pink-500",
-      bgColor: "from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20"
+      readTime: "8 min read"
     },
     {
       id: 3,
@@ -35,14 +35,80 @@ export default function BlogPage() {
       excerpt: "Exploring artificial intelligence through research projects, trading algorithms, and real-world applications in fintech. A journey through physics, algorithms, and competition.",
       date: "2024-10-10", 
       category: "AI & Tech",
-      readTime: "5 min read",
-      featured: true,
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20"
+      readTime: "5 min read"
     }
   ]
 
-  const categories = ["All", "Career", "Entrepreneurship", "AI & Tech"]
+  const categories = ["Career", "Entrepreneurship", "AI & Tech"]
+
+  // Category handling functions
+  const handleCategoryClick = (category: string) => {
+    if (category === "All") {
+      setSelectedCategories([])
+    } else {
+      setSelectedCategories(prev => {
+        if (prev.includes(category)) {
+          // Remove category if already selected
+          return prev.filter(cat => cat !== category)
+        } else {
+          // Add category if not selected
+          return [...prev, category]
+        }
+      })
+    }
+  }
+
+  // Smart filtering logic
+  const filteredPosts = selectedCategories.length === 0 || selectedCategories.length === categories.length
+    ? blogPosts // Show all posts if no categories selected or all categories selected
+    : blogPosts.filter(post => selectedCategories.includes(post.category))
+
+  const isCategorySelected = (category: string) => {
+    if (category === "All") {
+      return selectedCategories.length === 0 || selectedCategories.length === categories.length
+    }
+    return selectedCategories.includes(category)
+  }
+
+  // Newsletter signup handler
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || isSubmitting) return
+
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // TODO: Replace with your actual Google Apps Script URL
+      // Follow setup instructions in GOOGLE_SHEETS_SETUP.md
+      const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'; // Replace this!
+      
+      const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Important for Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          timestamp: new Date().toISOString(),
+          source: 'blog-newsletter'
+        }),
+      })
+
+      // Since mode is 'no-cors', we assume success if no error is thrown
+      setSubmitStatus('success')
+      setEmail('') // Clear form
+      
+    } catch (error) {
+      console.error('Newsletter signup error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000)
+    }
+  }
 
   return (
     <PageBackground variant="dotgrid" className="min-h-screen">
@@ -72,13 +138,30 @@ export default function BlogPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            {categories.map((category, index) => (
+            {/* All button */}
+            <motion.button
+              onClick={() => handleCategoryClick("All")}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
+                isCategorySelected("All")
+                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
+                  : 'bg-gray-700/70 text-gray-300 hover:bg-gray-600/70 hover:text-white'
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Tag className="w-4 h-4 inline mr-2" />
+              All
+            </motion.button>
+
+            {/* Category buttons */}
+            {categories.map((category) => (
               <motion.button
                 key={category}
-                className={`px-6 py-3 rounded-full font-semibold transition-colors duration-200 ${
-                  index === 0 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700'
+                onClick={() => handleCategoryClick(category)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
+                  isCategorySelected(category)
+                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
+                    : 'bg-gray-700/70 text-gray-300 hover:bg-gray-600/70 hover:text-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -90,113 +173,188 @@ export default function BlogPage() {
           </motion.div>
 
           {/* Blog Posts Grid */}
+          <div className="mb-4">
+            <motion.p 
+              className="text-gray-400 text-center text-sm"
+              key={filteredPosts.length} // Re-animate when count changes
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {filteredPosts.length === blogPosts.length 
+                ? `Showing all ${filteredPosts.length} posts` 
+                : `Showing ${filteredPosts.length} of ${blogPosts.length} posts`}
+            </motion.p>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            {blogPosts.map((post, index) => (
-              <motion.article
-                key={post.id}
-                className={`bg-gradient-to-br ${post.bgColor} rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-white/50 dark:border-gray-700/50`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
-                whileHover={{ y: -8, scale: 1.02 }}
+            {filteredPosts.length === 0 ? (
+              <motion.div 
+                className="col-span-full text-center py-16"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
               >
-                {/* Featured Badge */}
-                {post.featured && (
-                  <div className="absolute top-6 left-6 z-10">
-                    <motion.div
-                      className={`bg-gradient-to-r ${post.color} text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg`}
-                      animate={{ 
-                        boxShadow: [
-                          "0 0 10px rgba(0,0,0,0.2)",
-                          "0 0 20px rgba(0,0,0,0.4)",
-                          "0 0 10px rgba(0,0,0,0.2)"
-                        ]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      ✨ Featured
-                    </motion.div>
+                <div className="text-gray-400 text-lg">
+                  No posts found for the selected categories.
+                </div>
+              </motion.div>
+            ) : (
+              filteredPosts.map((post, index) => (
+                <motion.article
+                  key={`${post.id}-${selectedCategories.join('-')}`} // Re-animate when filter changes
+                  className="group relative bg-gray-900/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-gray-700/50 dark:border-gray-600/50 overflow-hidden transition-all duration-500 hover:border-transparent"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                  whileHover={{ 
+                    y: -8, 
+                    scale: 1.02,
+                    boxShadow: [
+                      "0 0 0 1px rgba(147, 51, 234, 0)",
+                      "0 0 0 1px rgba(147, 51, 234, 0.3), 0 0 25px rgba(147, 51, 234, 0.2), 0 0 50px rgba(147, 51, 234, 0.1)"
+                    ]
+                  }}
+                  style={{
+                    background: "linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.8) 100%)"
+                  }}
+                >
+                {/* Neon glow border effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/30 via-orange-400/30 to-purple-500/30 blur-md animate-pulse" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400/20 via-orange-300/20 to-purple-400/20 blur-lg" />
+                </div>
+
+                <div className="p-8 relative z-10">
+                  {/* Category & Date */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="bg-gray-700/70 text-gray-300 px-3 py-1 rounded-full text-sm font-medium">
+                      {post.category}
+                    </span>
+                    <div className="flex items-center text-gray-400 text-sm">
+                      <Calendar className="w-4 h-4 mr-1" />
+                      {new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long', 
+                        day: 'numeric'
+                      })}
+                    </div>
                   </div>
-                )}
 
-                <div className="p-8 relative">
-                  {/* Decorative Elements */}
-                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${post.color} opacity-10 rounded-full transform translate-x-16 -translate-y-16`} />
-                  
-                  <div className="relative z-10">
-                    {/* Category & Date */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`bg-gradient-to-r ${post.color} text-white px-3 py-1 rounded-full text-sm font-semibold`}>
-                        {post.category}
-                      </span>
-                      <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(post.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long', 
-                          day: 'numeric'
-                        })}
-                      </div>
+                  {/* Title */}
+                  <h2 className="text-2xl font-bold text-white mb-4 line-clamp-2">
+                    {post.title}
+                  </h2>
+
+                  {/* Excerpt */}
+                  <p className="text-gray-300 mb-6 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+
+                  {/* Read Time & Read More Button */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center text-gray-400 text-sm">
+                      <Clock className="w-4 h-4 mr-1" />
+                      {post.readTime}
                     </div>
-
-                    {/* Title */}
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 line-clamp-2">
-                      {post.title}
-                    </h2>
-
-                    {/* Excerpt */}
-                    <p className="text-gray-700 dark:text-gray-300 mb-6 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-
-                    {/* Footer */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {post.readTime}
-                      </div>
                       
-                      <Link href={`/blog/${post.id}`}>
-                        <motion.button
-                          className={`bg-gradient-to-r ${post.color} text-white px-6 py-3 rounded-full font-semibold flex items-center hover:shadow-lg transition-all duration-200`}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Read More
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </motion.button>
-                      </Link>
-                    </div>
+                    <Link href={`/blog/${post.id}`}>
+                      <motion.button
+                        className="bg-gray-700/70 hover:bg-purple-600/80 text-white px-6 py-3 rounded-full font-medium flex items-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Read More
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </motion.button>
+                    </Link>
                   </div>
                 </div>
               </motion.article>
-            ))}
+              ))
+            )}
           </div>
 
           {/* Newsletter Signup */}
           <motion.div 
-            className="bg-gradient-to-r from-blue-900 via-purple-900 to-pink-900 rounded-3xl p-12 text-white text-center"
+            className="relative group bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-700/50 p-12 text-white text-center overflow-hidden transition-all duration-700 hover:border-transparent"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            whileHover={{
+              boxShadow: [
+                "0 0 0 1px rgba(147, 51, 234, 0)",
+                "0 0 0 1px rgba(147, 51, 234, 0.3), 0 0 30px rgba(147, 51, 234, 0.2), 0 0 60px rgba(251, 146, 60, 0.1)"
+              ]
+            }}
+            style={{
+              background: "linear-gradient(135deg, rgba(31, 41, 55, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%)"
+            }}
           >
-            <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
-            <p className="text-xl opacity-90 mb-8">
-              Get notified when I publish new posts about tech, entrepreneurship, and my journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
-              />
-              <motion.button
-                className="bg-white text-purple-900 px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-colors duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Subscribe
-              </motion.button>
+            {/* Neon glow effect */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/20 via-orange-400/30 to-purple-500/20 blur-xl animate-pulse" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400/10 via-orange-300/20 to-purple-400/10 blur-2xl" />
+            </div>
+
+            <div className="relative z-10">
+              <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
+              <p className="text-xl text-gray-300 mb-8">
+                Get notified when I publish new posts about tech, entrepreneurship, and my journey.
+              </p>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div 
+                  className="mb-6 p-4 bg-green-900/30 border border-green-700/50 rounded-xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                >
+                  <p className="text-green-400 font-medium">
+                    🎉 Successfully subscribed! You&apos;ll hear from me soon.
+                  </p>
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div 
+                  className="mb-6 p-4 bg-red-900/30 border border-red-700/50 rounded-xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                >
+                  <p className="text-red-400 font-medium">
+                    ❌ Something went wrong. Please try again or email me directly.
+                  </p>
+                </motion.div>
+              )}
+
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={isSubmitting}
+                  className="flex-1 px-6 py-4 rounded-full bg-gray-800/70 text-white placeholder-gray-400 border border-gray-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 disabled:opacity-50"
+                />
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting || !email}
+                  className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[140px]"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Subscribing...
+                    </>
+                  ) : (
+                    'Subscribe'
+                  )}
+                </motion.button>
+              </form>
             </div>
           </motion.div>
           </div>
