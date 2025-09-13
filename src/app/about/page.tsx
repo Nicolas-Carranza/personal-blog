@@ -111,8 +111,8 @@ export default function AboutPage() {
             >
               {[
                 { icon: Mail, href: "mailto:nicolas.carranza.work@gmail.com", label: "Email" },
-                { icon: Github, href: "https://github.com/", label: "GitHub" },
-                { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" }
+                { icon: Github, href: "https://github.com/Nicolas-Carranza", label: "GitHub" },
+                { icon: Linkedin, href: "https://linkedin.com/in/nicolas-carranza-arauna-4029a7252", label: "LinkedIn" }
               ].map((social, index) => (
                 <motion.a
                   key={index}
