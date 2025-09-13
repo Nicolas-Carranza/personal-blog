@@ -55,7 +55,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-300">nicolasperonalworkspace@gmail.com</p>
+                    <p className="text-gray-600 dark:text-gray-300">nicolas.carranza.work@gmail.com</p>
                   </div>
                 </div>
                 
@@ -112,7 +112,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                    placeholder="nicolasperonalworkspace@gmail.com"
+                    placeholder="nicolas.carranza.work@gmail.com"
                   />
                 </div>
                 

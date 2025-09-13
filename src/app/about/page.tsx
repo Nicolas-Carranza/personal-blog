@@ -110,7 +110,7 @@ export default function AboutPage() {
               variants={itemVariants}
             >
               {[
-                { icon: Mail, href: "mailto:nicolasperonalworkspace@gmail.com", label: "Email" },
+                { icon: Mail, href: "mailto:nicolas.carranza.work@gmail.com", label: "Email" },
                 { icon: Github, href: "https://github.com/", label: "GitHub" },
                 { icon: Linkedin, href: "https://linkedin.com/in/", label: "LinkedIn" }
               ].map((social, index) => (
