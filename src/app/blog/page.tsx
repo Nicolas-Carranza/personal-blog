@@ -15,31 +15,31 @@ export default function BlogPage() {
   const blogPosts = [
     {
       id: 1,
-      title: "My Journey from Madrid to St Andrews: A Tech Adventure",
-      excerpt: "How moving to Scotland for Computer Science opened doors to incredible opportunities at BlackRock, DCycle, and beyond. A personal story of growth, challenges, and discoveries.",
+      title: "Journey from Madrid to St Andrews",
+      excerpt: "The story of leaving my hometown in Madrid to pursue Computer Science at the University of St Andrews. A journey of adaptation, growth, and discovering opportunities in Scotland.",
       date: "2024-12-15",
-      category: "Career",
+      category: "Personal",
       readTime: "6 min read"
     },
     {
       id: 2, 
-      title: "Building Unhatched: AI-Powered Startup Co-founder",
-      excerpt: "The story behind founding Unhatched.ai and lessons learned while building an AI platform that helps entrepreneurs validate ideas. From 2 AM inspiration to working product.",
-      date: "2024-11-28",
-      category: "Entrepreneurship", 
+      title: "My Experience at BlackRock: Breaking into the Market",
+      excerpt: "Landing a summer internship at BlackRock and what I learned about the financial industry. From application process to real-world experience in one of the world's largest asset managers.",
+      date: "2024-08-20",
+      category: "Career", 
       readTime: "8 min read"
     },
     {
       id: 3,
-      title: "From CERN to QuantConnect: My AI & ML Adventures",
-      excerpt: "Exploring artificial intelligence through research projects, trading algorithms, and real-world applications in fintech. A journey through physics, algorithms, and competition.",
-      date: "2024-10-10", 
-      category: "AI & Tech",
+      title: "Exploring the Highlands with Friends",
+      excerpt: "Adventures through the Scottish Highlands with university friends. Discovering the breathtaking landscapes, culture, and memories that make Scotland truly special.",
+      date: "2024-07-10", 
+      category: "Travel",
       readTime: "5 min read"
     }
   ]
 
-  const categories = ["Career", "Entrepreneurship", "AI & Tech"]
+  const categories = ["Personal", "Career", "Travel"]
 
   // Category handling functions
   const handleCategoryClick = (category: string) => {
