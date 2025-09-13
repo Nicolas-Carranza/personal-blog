@@ -174,7 +174,7 @@ export default function AboutPage() {
               className="text-4xl md:text-6xl font-bold mb-4"
               variants={itemVariants}
             >
-              <span className="text-gray-900 dark:text-white">Hi there! I'm </span>
+              <span className="text-gray-900 dark:text-white">Hi there! I&apos;m </span>
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Nicolas
               </span>
@@ -532,15 +532,15 @@ export default function AboutPage() {
                 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6"
                 variants={itemVariants}
               >
-                Let's Work Together
+                Let&apos;s Work Together
               </motion.h2>
               
               <motion.p 
                 className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed"
                 variants={itemVariants}
               >
-                I'm always interested in new opportunities and exciting projects. 
-                Let's connect and create something amazing!
+                I&apos;m always interested in new opportunities and exciting projects. 
+                Let&apos;s connect and create something amazing!
               </motion.p>
               
               <motion.div

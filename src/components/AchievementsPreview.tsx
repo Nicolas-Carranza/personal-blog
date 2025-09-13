@@ -53,8 +53,8 @@ const AchievementsPreview = () => {
           <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-4">
             Recent Achievements
           </h2>
-          <p className="text-xl text-gray-400">
-            Milestones and accomplishments that I'm proud to share
+          <p className="text-xl text-gray-600 dark:text-gray-400">
+            Milestones and accomplishments that I&apos;m proud to share
           </p>
         </motion.div>
 
@@ -74,7 +74,7 @@ const AchievementsPreview = () => {
                 }}
                 className="group relative"
               >
-                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 transition-all duration-500 group-hover:bg-gray-800/50 group-hover:border-blue-500/50 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+                <div className="bg-white/90 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-all duration-500 group-hover:bg-gray-50 dark:group-hover:bg-gray-800/50 group-hover:border-blue-500/50 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
                   {/* Neon glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 transition-all duration-500 rounded-xl" />
                   
@@ -94,10 +94,10 @@ const AchievementsPreview = () => {
                             {achievement.date}
                           </span>
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
                           {achievement.title}
                         </h3>
-                        <p className="text-gray-400 leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                           {achievement.description}
                         </p>
                       </div>

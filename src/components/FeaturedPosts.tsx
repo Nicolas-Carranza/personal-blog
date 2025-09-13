@@ -63,7 +63,7 @@ const FeaturedPosts = () => {
             <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-6">
               Featured Posts
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Recent thoughts, experiences, and insights from my journey
             </p>
           </motion.div>
@@ -99,7 +99,7 @@ const FeaturedPosts = () => {
                   >
                     <div className="w-80">
                       <Link href={`/blog/${post.id}`}>
-                        <article className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden transition-all duration-500 hover:bg-gray-800/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 group">
+                        <article className="bg-white/90 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all duration-500 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 group">
                           {/* Neon glow effect */}
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 transition-all duration-500 rounded-xl" />
                           
@@ -116,15 +116,15 @@ const FeaturedPosts = () => {
                                 </span>
                               </div>
                               
-                              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
+                              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
                                 {post.title}
                               </h3>
                               
-                              <p className="text-gray-400 mb-4 line-clamp-2 text-sm">
+                              <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-sm">
                                 {post.excerpt}
                               </p>
                               
-                              <div className="flex items-center justify-between text-sm text-gray-500">
+                              <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-500">
                                 <div className="flex items-center gap-4">
                                   <span className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
@@ -155,7 +155,7 @@ const FeaturedPosts = () => {
             {/* Navigation Arrows */}
             <motion.button
               onClick={prevPost}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-full p-3 text-white hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-full p-3 text-gray-700 dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -164,7 +164,7 @@ const FeaturedPosts = () => {
 
             <motion.button
               onClick={nextPost}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-full p-3 text-white hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-full p-3 text-gray-700 dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >

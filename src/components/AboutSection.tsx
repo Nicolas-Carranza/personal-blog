@@ -79,7 +79,7 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-6">
               About Me
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Welcome to my corner of the internet! Discover who I am through these three core aspects of my journey.
             </p>
           </motion.div>
@@ -173,7 +173,7 @@ const AboutSection = () => {
                         </div>
                         
                         <div className="flex-1 flex flex-col justify-center items-center text-center">
-                          <p className="text-gray-300 leading-relaxed">
+                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                             {card.fullDescription}
                           </p>
                         </div>
