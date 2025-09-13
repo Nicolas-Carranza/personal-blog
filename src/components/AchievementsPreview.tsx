@@ -1,5 +1,8 @@
+'use client'
+
+import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Trophy, Award, Star, Target } from 'lucide-react'
+import { Trophy, Award, Star, Target, ArrowRight } from 'lucide-react'
 
 const AchievementsPreview = () => {
   const achievements = [
@@ -38,61 +41,89 @@ const AchievementsPreview = () => {
   ]
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-4">
             Recent Achievements
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Milestones and accomplishments that I&apos;m proud to share
+          <p className="text-xl text-gray-400">
+            Milestones and accomplishments that I'm proud to share
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {achievements.map((achievement) => {
+          {achievements.map((achievement, index) => {
             const Icon = achievement.icon
             return (
-              <div 
+              <motion.div
                 key={achievement.id}
-                className="card p-6 hover:shadow-xl transition-shadow duration-200"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  y: -10,
+                  transition: { duration: 0.2 }
+                }}
+                className="group relative"
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-primary-600" />
+                <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-8 transition-all duration-500 group-hover:bg-gray-800/50 group-hover:border-blue-500/50 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+                  {/* Neon glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 transition-all duration-500 rounded-xl" />
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start space-x-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-16 h-16 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/30 transition-all duration-300">
+                          <Icon className="w-8 h-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
+                        </div>
+                      </div>
+                      <div className="flex-grow">
+                        <div className="flex items-center justify-between mb-3">
+                          <span className="inline-flex items-center px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs text-blue-400 group-hover:bg-blue-500/20 group-hover:border-blue-500/30 group-hover:text-blue-300 transition-all duration-300">
+                            {achievement.category}
+                          </span>
+                          <span className="text-blue-400 font-medium text-sm group-hover:text-blue-300 transition-colors duration-300">
+                            {achievement.date}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+                          {achievement.title}
+                        </h3>
+                        <p className="text-gray-400 leading-relaxed">
+                          {achievement.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex-grow">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-2 py-1 rounded text-xs font-medium">
-                        {achievement.category}
-                      </span>
-                      <span className="text-primary-600 font-medium text-sm">
-                        {achievement.date}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                      {achievement.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm">
-                      {achievement.description}
-                    </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>
 
-        <div className="text-center mt-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
           <Link 
             href="/achievements"
-            className="btn-primary"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 font-medium hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 transition-all duration-300"
           >
             View All Achievements
+            <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

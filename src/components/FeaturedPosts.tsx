@@ -1,96 +1,209 @@
+'use client'
+
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import { Calendar, Clock, ArrowRight, Tag, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
 
 const FeaturedPosts = () => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
   // This would typically come from your CMS or markdown files
   const featuredPosts = [
     {
       id: 1,
-      title: "My Journey from Madrid to St Andrews: A Tech Adventure",
-      excerpt: "How moving to Scotland for Computer Science opened doors to incredible opportunities at BlackRock, DCycle, and beyond.",
+      title: "Journey from Madrid to St Andrews",
+      excerpt: "The story of leaving my hometown in Madrid to pursue Computer Science at the University of St Andrews. A journey of adaptation, growth, and discovering opportunities in Scotland.",
       date: "2024-12-15",
-      category: "Career",
+      category: "Personal",
       readTime: "6 min read"
     },
     {
       id: 2,
-      title: "Building Unhatched: AI-Powered Startup Co-founder",
-      excerpt: "The story behind founding Unhatched.ai and lessons learned while building an AI platform that helps entrepreneurs validate ideas.",
-      date: "2024-11-28",
-      category: "Entrepreneurship",
+      title: "My Experience at BlackRock: Breaking into the Market",
+      excerpt: "Landing a summer internship at BlackRock and what I learned about the financial industry. From application process to real-world experience in one of the world's largest asset managers.",
+      date: "2024-08-20",
+      category: "Career",
       readTime: "8 min read"
     },
     {
       id: 3,
-      title: "From CERN to QuantConnect: My AI & ML Adventures",
-      excerpt: "Exploring artificial intelligence through research projects, trading algorithms, and real-world applications in fintech.",
-      date: "2024-10-10",
-      category: "AI & Tech",
+      title: "Exploring the Highlands with Friends",
+      excerpt: "Adventures through the Scottish Highlands with university friends. Discovering the breathtaking landscapes, culture, and memories that make Scotland truly special.",
+      date: "2024-07-10",
+      category: "Travel",
       readTime: "5 min read"
     }
   ]
 
+  const nextPost = () => {
+    setCurrentIndex((prev) => (prev + 1) % featuredPosts.length)
+  }
+
+  const prevPost = () => {
+    setCurrentIndex((prev) => (prev - 1 + featuredPosts.length) % featuredPosts.length)
+  }
+
+  const getPostPosition = (index: number) => {
+    const diff = (index - currentIndex + featuredPosts.length) % featuredPosts.length
+    return diff
+  }
+
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Posts
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Recent thoughts, experiences, and insights from my journey
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredPosts.map((post) => (
-            <article 
-              key={post.id} 
-              className="card p-6 hover:scale-105 transition-transform duration-200"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="bg-primary-100 text-primary-600 px-3 py-1 rounded-full text-sm font-medium">
-                  {post.category}
-                </span>
-                <span className="text-gray-500 text-sm">
-                  {post.readTime}
-                </span>
-              </div>
-              
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {post.title}
-              </h3>
-              
-              <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                {post.excerpt}
-              </p>
-              
-              <div className="flex items-center justify-between">
-                <time className="text-gray-500 text-sm">
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-                
-                <Link 
-                  href={`/blog/${post.id}`}
-                  className="text-primary-600 hover:text-primary-700 font-medium text-sm transition-colors duration-200"
-                >
-                  Read More →
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link 
-            href="/blog"
-            className="btn-primary"
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            View All Posts
-          </Link>
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-6">
+              Featured Posts
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Recent thoughts, experiences, and insights from my journey
+            </p>
+          </motion.div>
+
+          {/* Carousel Container */}
+          <div className="relative h-[500px] mb-16 overflow-visible">
+            <div className="absolute inset-0 flex items-center justify-center">
+              {featuredPosts.map((post, index) => {
+                const position = getPostPosition(index)
+                const isActive = position === 0
+                const isLeft = position === featuredPosts.length - 1
+                const isRight = position === 1
+
+                return (
+                  <motion.div
+                    key={post.id}
+                    className="absolute"
+                    animate={{
+                      x: position === 0 ? 0 : position === 1 ? 300 : -300,
+                      scale: position === 0 ? 1 : 0.8,
+                      zIndex: position === 0 ? 10 : 1,
+                      opacity: position === 0 ? 1 : 0.3,
+                    }}
+                    transition={{ 
+                      duration: 0.5, 
+                      ease: "easeInOut",
+                      type: "spring",
+                      damping: 20
+                    }}
+                    style={{
+                      filter: position === 0 ? 'blur(0px)' : 'blur(4px)',
+                    }}
+                  >
+                    <div className="w-80">
+                      <Link href={`/blog/${post.id}`}>
+                        <article className="bg-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden transition-all duration-500 hover:bg-gray-800/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 group">
+                          {/* Neon glow effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 transition-all duration-500 rounded-xl" />
+                          
+                          <div className="relative z-10">
+                            <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-500" />
+                            </div>
+                            
+                            <div className="p-6">
+                              <div className="flex items-center gap-2 mb-3">
+                                <span className="inline-flex items-center gap-1 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs text-blue-400">
+                                  <Tag className="w-3 h-3" />
+                                  {post.category}
+                                </span>
+                              </div>
+                              
+                              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300 line-clamp-2">
+                                {post.title}
+                              </h3>
+                              
+                              <p className="text-gray-400 mb-4 line-clamp-2 text-sm">
+                                {post.excerpt}
+                              </p>
+                              
+                              <div className="flex items-center justify-between text-sm text-gray-500">
+                                <div className="flex items-center gap-4">
+                                  <span className="flex items-center gap-1">
+                                    <Calendar className="w-4 h-4" />
+                                    {new Date(post.date).toLocaleDateString('en-US', { 
+                                      year: 'numeric', 
+                                      month: 'short', 
+                                      day: 'numeric' 
+                                    })}
+                                  </span>
+                                  <span className="flex items-center gap-1">
+                                    <Clock className="w-4 h-4" />
+                                    {post.readTime}
+                                  </span>
+                                </div>
+                                
+                                <ArrowRight className="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-300" />
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </Link>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* Navigation Arrows */}
+            <motion.button
+              onClick={prevPost}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-full p-3 text-white hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </motion.button>
+
+            <motion.button
+              onClick={nextPost}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-full p-3 text-white hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </motion.button>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mb-8">
+            {featuredPosts.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-blue-500 w-8' 
+                    : 'bg-gray-600 hover:bg-gray-500'
+                }`}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.8 }}
+              />
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Link 
+              href="/blog" 
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-400 font-medium hover:bg-purple-500/10 hover:border-purple-500/20 hover:text-purple-400 transition-all duration-300"
+            >
+              View All Posts
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

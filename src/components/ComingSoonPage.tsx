@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Clock, Calendar, PenTool } from 'lucide-react'
+import { ArrowLeft, Clock, Calendar, PenTool, FileText, Target, Mail } from 'lucide-react'
 import PageBackground from '@/components/PageBackground'
 
 interface ComingSoonPageProps {
@@ -101,10 +101,19 @@ export default function ComingSoonPage({
                     This story is currently being written. Check back soon for the full article about this experience!
                   </p>
                   
-                  <div className="space-y-2 text-sm text-gray-400">
-                    <p>📝 Article in progress</p>
-                    <p>🎯 Will be available soon</p>
-                    <p>📧 Subscribe to the newsletter to get notified</p>
+                  <div className="space-y-3 text-sm text-gray-400">
+                    <div className="flex items-center justify-center gap-2">
+                      <FileText className="w-4 h-4" />
+                      <span>Article in progress</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Target className="w-4 h-4" />
+                      <span>Will be available soon</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Mail className="w-4 h-4" />
+                      <span>Subscribe to the newsletter to get notified</span>
+                    </div>
                   </div>
                 </motion.div>
 
