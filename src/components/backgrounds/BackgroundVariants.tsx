@@ -17,22 +17,22 @@ export const DotGridBackground = () => {
   }, [])
 
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-200 via-purple-100/30 to-pink-100/35 dark:from-gray-950 dark:via-blue-950/20 dark:to-indigo-950/30">
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-300 via-indigo-200/30 to-purple-200/35 dark:from-gray-950 dark:via-blue-950/20 dark:to-indigo-950/30">
       {/* Light theme: Subtle pastel pattern with white dominance */}
-      <div className="absolute inset-0 opacity-15 dark:opacity-20 bg-[radial-gradient(circle_at_1px_1px,rgba(147,51,234,0.2)_1px,transparent_0)] bg-[length:60px_60px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.3)_1px,transparent_0)]" />
-      <div className="absolute inset-0 opacity-8 dark:opacity-10 bg-[linear-gradient(90deg,rgba(147,51,234,0.03)_1px,transparent_1px),linear-gradient(rgba(147,51,234,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[length:60px_60px]" />
+      <div className="absolute inset-0 opacity-15 dark:opacity-20 bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.2)_1px,transparent_0)] bg-[length:60px_60px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.3)_1px,transparent_0)]" />
+      <div className="absolute inset-0 opacity-8 dark:opacity-10 bg-[linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[length:60px_60px]" />
       
       {/* Light theme: Soft pastel orbs */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-purple-200/30 to-pink-200/30 dark:from-blue-400/20 dark:to-purple-400/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-200/25 to-rose-200/25 dark:from-purple-400/15 dark:to-pink-400/15 rounded-full blur-3xl animate-pulse [animation-delay:1000ms]" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-lavender-200/20 to-purple-200/20 dark:from-indigo-400/10 dark:to-blue-400/10 rounded-full blur-3xl animate-pulse [animation-delay:500ms]" />
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-blue-300/30 to-indigo-300/30 dark:from-blue-400/20 dark:to-cyan-400/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-indigo-300/25 to-purple-300/25 dark:from-cyan-400/15 dark:to-blue-400/15 rounded-full blur-3xl animate-pulse [animation-delay:1000ms]" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-300/20 to-blue-300/20 dark:from-indigo-400/10 dark:to-blue-400/10 rounded-full blur-3xl animate-pulse [animation-delay:500ms]" />
       
       {/* Floating particles with theme-aware colors */}
       <div className="absolute inset-0">
         {particles.map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-purple-300/50 dark:bg-blue-400/60 rounded-full"
+            className="absolute w-1 h-1 bg-indigo-400/50 dark:bg-blue-400/60 rounded-full"
             style={{
               left: particle.left,
               top: particle.top,

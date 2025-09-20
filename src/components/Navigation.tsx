@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Home, User, Trophy, BookOpen, Mail } from 'lucide-react'
-import ThemeToggle from './ThemeToggleSimple'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -70,7 +69,6 @@ const Navigation = () => {
                   )
                 })}
               </div>
-              <ThemeToggle />
             </div>
           </div>
 
@@ -108,9 +106,6 @@ const Navigation = () => {
                   </Link>
                 )
               })}
-              <div className="px-3 py-2">
-                <ThemeToggle />
-              </div>
             </div>
           </div>
         )}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { 
@@ -14,6 +14,8 @@ import {
   ArrowRight,
   Sparkles,
   Zap,
+  ChevronLeft,
+  ChevronRight,
   ChefHat,
   Mountain,
   Users,
@@ -26,7 +28,7 @@ import PageBackground from '@/components/PageBackground'
 
 export default function AboutPage() {
   const [flippedCards, setFlippedCards] = useState<{[key: number]: boolean}>({})
-  
+  const [currentJourneyIndex, setCurrentJourneyIndex] = useState(0)
   const skills = [
     { name: "Python", level: 95, color: "bg-blue-500" },
     { name: "Java", level: 95, color: "bg-red-500" },
@@ -80,6 +82,52 @@ export default function AboutPage() {
       gradient: "from-slate-600 via-indigo-600 to-violet-700" 
     }
   ]
+
+  const journeySteps = [
+    {
+      title: "Childhood in Madrid",
+      content: "Born and raised in Madrid, surrounded by family and friends. From a young age, I was drawn to science — dreaming of becoming a veterinarian, then an astrophysicist, aerospace engineer, and eventually finding my passion in software engineering.",
+      period: "2004 - 2019"
+    },
+    {
+      title: "University of St Andrews",
+      content: "Currently in my final year pursuing Computer Science and Management. My studies have explored operating systems, networks, logic, complexity, and coding practices. I've gained hands-on experience with core programming languages, building a strong technical foundation.",
+      period: "2019 - Present"
+    },
+    {
+      title: "Professional Experience", 
+      content: "This foundation enabled me to complete three internships, each offering unique challenges and opportunities to apply my skills in real-world settings — experiences I have truly enjoyed and learned from.",
+      period: "2021 - 2024"
+    },
+    {
+      title: "Looking Forward",
+      content: "Eager to start my career as a graduate software engineer, while remaining open to emerging opportunities in technology and innovation. Passionate about using my skills to solve meaningful problems and contribute to impactful projects.",
+      period: "2025 & Beyond"
+    }
+  ]
+
+  // Carousel functions
+  const nextJourney = () => {
+    setCurrentJourneyIndex((prev) => (prev + 1) % journeySteps.length)
+  }
+
+  const prevJourney = () => {
+    setCurrentJourneyIndex((prev) => (prev - 1 + journeySteps.length) % journeySteps.length)
+  }
+
+  const getJourneyPosition = (index: number) => {
+    const diff = (index - currentJourneyIndex + journeySteps.length) % journeySteps.length
+    return diff
+  }
+
+  // Auto-rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextJourney()
+    }, 7000) // 7 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const handleCardFlip = (index: number) => {
     setFlippedCards(prev => ({
@@ -227,129 +275,155 @@ export default function AboutPage() {
       >
         <div className="container mx-auto px-4 max-w-6xl">
           <motion.div 
-            className="flex items-center gap-3 mb-12 justify-center"
+            className="flex items-center gap-3 mb-20 justify-center"
             variants={itemVariants}
           >
-            <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <Sparkles className="w-7 h-7 text-blue-600 dark:text-blue-400" />
-            </div>
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">My Journey</h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Journey Cards */}
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "Childhood in Madrid",
-                  content: "I was born and raised in Madrid, surrounded by family and friends who made the city feel like home. From a young age, I was drawn to the scientific side of life — first dreaming of becoming a veterinarian, then an astrophysicist, an aerospace engineer, and eventually finding my passion in software engineering. This curiosity about how things work has shaped my journey ever since.",
-                  hoverColor: "group-hover:bg-red-50 dark:group-hover:bg-red-950/20"
-                },
-                {
-                  title: "University of St Andrews",
-                  content: "I am currently in my final year at the University of St Andrews, pursuing a degree in Computer Science and Management. My studies have allowed me to explore a wide range of subjects, from operating systems and networks to the fundamentals of logic, complexity, and best coding practices. Along the way, I have gained hands-on experience with all the core programming languages, building a strong and versatile technical foundation.",
-                  hoverColor: "group-hover:bg-blue-50 dark:group-hover:bg-blue-950/20"
-                },
-                {
-                  title: "Professional Experience",
-                  content: "This foundation has enabled me to complete three internships, each offering unique challenges and opportunities to apply my skills in real-world settings — experiences I have truly enjoyed and learned from.",
-                  hoverColor: "group-hover:bg-green-50 dark:group-hover:bg-green-950/20"
-                },
-                {
-                  title: "Looking Forward",
-                  content: "Looking ahead, I am eager to start my career as a graduate software engineer, while remaining open to emerging opportunities in technology and innovation. I am passionate about using my skills to solve meaningful problems and contribute to projects that make a positive impact.",
-                  hoverColor: "group-hover:bg-yellow-50 dark:group-hover:bg-yellow-950/20"
-                }
-              ].map((card, index) => (
-                <motion.div
-                  key={index}
-                  className={`group relative bg-gray-900/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-gray-700/50 dark:border-gray-600/50 overflow-hidden transition-all duration-500 hover:border-transparent`}
-                  variants={slideInLeft}
-                  whileHover={{ 
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: [
-                      "0 0 0 1px rgba(59, 130, 246, 0)",
-                      "0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 25px rgba(59, 130, 246, 0.2), 0 0 50px rgba(16, 185, 129, 0.1)"
-                    ]
-                  }}
-                  style={{
-                    background: "linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.8) 100%)"
-                  }}
-                >
-                {/* Neon glow border effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/25 via-emerald-400/25 to-blue-500/25 blur-md animate-pulse" />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/15 via-emerald-300/15 to-blue-400/15 blur-lg" />
-                </div>
-
-                <div className="p-6 relative z-10">
-                  <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors mb-4">
-                    {card.title}
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    {card.content}
-                  </p>
-                </div>
-              </motion.div>
-              ))}
-            </div>
-
-            {/* Quick Info Sidebar */}
-            <motion.div 
-              className="lg:col-span-1"
-              variants={slideInRight}
-            >
-              <motion.div 
-                className="group relative bg-gray-900/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-gray-700/50 dark:border-gray-600/50 overflow-hidden transition-all duration-500 hover:border-transparent sticky top-8"
-                whileHover={{ 
-                  y: -8,
-                  scale: 1.02,
-                  boxShadow: [
-                    "0 0 0 1px rgba(59, 130, 246, 0)",
-                    "0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 25px rgba(59, 130, 246, 0.2), 0 0 50px rgba(16, 185, 129, 0.1)"
-                  ]
-                }}
-                style={{
-                  background: "linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.8) 100%)"
-                }}
-              >
-                {/* Neon glow border effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/25 via-emerald-400/25 to-blue-500/25 blur-md animate-pulse" />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/15 via-emerald-300/15 to-blue-400/15 blur-lg" />
-                </div>
-
-                <div className="p-6 relative z-10">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors mb-6 text-center">Quick Info</h3>
-                
-                <div className="space-y-4">
-                  {[
-                    { icon: MapPin, label: "Based in", value: "United Kingdom" },
-                    { icon: GraduationCap, label: "University", value: "University of St Andrews" },
-                    { icon: Code, label: "Degree", value: "Computer Science and Management" },
-                    { icon: Zap, label: "Experience", value: "4 years coding" },
-                    { icon: Heart, label: "Passion", value: "Technology and Innovation" }
-                  ].map((item, index) => (
-                    <motion.div 
+          {/* Journey Carousel */}
+          <div className="relative max-w-6xl mx-auto mb-20">
+            <div className="relative h-[480px] mb-12 overflow-visible">
+              <div className="absolute inset-0 flex items-center justify-center">
+                {journeySteps.map((step, index) => {
+                  const position = getJourneyPosition(index)
+                  
+                  // Position logic for 4 cards:
+                  // 0: center (active)
+                  // 1: right side (blurred)
+                  // 2: behind center (hidden)
+                  // 3: left side (blurred)
+                  let xPosition = 0
+                  let scale = 0.85
+                  let opacity = 0.4
+                  let zIndex = 1
+                  let blur = 3
+                  
+                  if (position === 0) {
+                    // Center active card
+                    xPosition = 0
+                    scale = 1
+                    opacity = 1
+                    zIndex = 10
+                    blur = 0
+                  } else if (position === 1) {
+                    // Right side card
+                    xPosition = 320
+                    scale = 0.85
+                    opacity = 0.4
+                    zIndex = 5
+                    blur = 3
+                  } else if (position === 2) {
+                    // Behind center (hidden, will emerge from left)
+                    xPosition = 0
+                    scale = 0.7
+                    opacity = 0
+                    zIndex = 0
+                    blur = 5
+                  } else if (position === 3) {
+                    // Left side card
+                    xPosition = -320
+                    scale = 0.85
+                    opacity = 0.4
+                    zIndex = 5
+                    blur = 3
+                  }
+                  
+                  return (
+                    <motion.div
                       key={index}
-                      className="flex items-start gap-3"
-                      whileHover={{ x: 5 }}
-                      transition={{ duration: 0.2 }}
+                      className="absolute"
+                      animate={{
+                        x: xPosition,
+                        scale: scale,
+                        zIndex: zIndex,
+                        opacity: opacity,
+                      }}
+                      transition={{ 
+                        duration: 0.8, 
+                        ease: "easeInOut",
+                        type: "spring",
+                        damping: 25
+                      }}
+                      style={{
+                        filter: `blur(${blur}px)`,
+                      }}
                     >
-                      <div className="p-2 bg-white/20 rounded-lg">
-                        <item.icon className="w-4 h-4 text-blue-200" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-white">{item.label}</p>
-                        <p className="text-sm text-gray-300">{item.value}</p>
+                      <div className="w-80">
+                        <article className="bg-gray-50/90 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-300/50 dark:border-gray-700/50 rounded-2xl shadow-xl relative overflow-hidden group hover:border-blue-500/50 transition-all duration-500 h-96 flex flex-col">
+                          {/* Background pattern */}
+                          <div className="absolute inset-0 opacity-5 dark:opacity-10">
+                            <div className="absolute inset-0 bg-blue-500/20 bg-repeat bg-[radial-gradient(circle_at_2px_2px,rgba(59,130,246,0.5)_1px,transparent_0)] bg-[length:30px_30px]" />
+                          </div>
+                          
+                          {/* Fixed Header */}
+                          <div className="relative z-10 p-6 pb-4 flex-shrink-0">
+                            <div className="flex items-center justify-between mb-4">
+                              <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">
+                                {step.period}
+                              </span>
+                            </div>
+                            
+                            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">
+                              {step.title}
+                            </h3>
+                          </div>
+
+                          {/* Scrollable Content */}
+                          <div className="relative z-10 px-6 pb-6 flex-1 overflow-hidden">
+                            <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500/20 scrollbar-track-transparent hover:scrollbar-thumb-blue-500/40">
+                              <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm pr-2">
+                                {step.content}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Hover glow effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:via-blue-500/5 group-hover:to-blue-500/10 transition-all duration-500 rounded-2xl pointer-events-none" />
+                        </article>
                       </div>
                     </motion.div>
-                  ))}
-                </div>
-                </div>
-              </motion.div>
-            </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center justify-center gap-4">
+              <motion.button
+                onClick={prevJourney}
+                className="p-3 bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-full text-gray-700 dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </motion.button>
+              
+              {/* Dots */}
+              <div className="flex gap-2">
+                {journeySteps.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentJourneyIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentJourneyIndex
+                        ? 'bg-blue-500 scale-125' 
+                        : 'bg-gray-400 dark:bg-gray-600 hover:bg-blue-400'
+                    }`}
+                    aria-label={`Go to step ${index + 1}: ${journeySteps[index].title}`}
+                  />
+                ))}
+              </div>
+              
+              <motion.button
+                onClick={nextJourney}
+                className="p-3 bg-gray-200/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-full text-gray-700 dark:text-white hover:bg-gray-300/80 dark:hover:bg-gray-700/80 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </motion.button>
+            </div>
           </div>
         </div>
       </motion.section>

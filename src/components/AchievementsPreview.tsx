@@ -50,7 +50,7 @@ const AchievementsPreview = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 dark:from-white dark:via-gray-300 dark:to-gray-500 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl font-bold text-gray-700 dark:text-gray-400 mb-4">
             Recent Achievements
           </h2>
           <p className="text-xl text-gray-700 dark:text-gray-400">

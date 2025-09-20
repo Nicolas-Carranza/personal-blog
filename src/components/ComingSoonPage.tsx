@@ -35,7 +35,7 @@ export default function ComingSoonPage({
             >
               <Link 
                 href="/blog"
-                className="inline-flex items-center text-gray-400 hover:text-white transition-colors duration-200 group"
+                className="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 group"
               >
                 <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
                 Back to Blog
@@ -44,18 +44,15 @@ export default function ComingSoonPage({
 
             {/* Main Content Card */}
             <motion.article
-              className="bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden"
+              className="bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-gray-300/60 dark:border-gray-700/50 overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              style={{
-                background: "linear-gradient(135deg, rgba(31, 41, 55, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%)"
-              }}
             >
               {/* Header */}
-              <div className="p-8 border-b border-gray-700/50">
-                <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                  <span className="bg-gray-700/70 text-gray-300 px-3 py-1 rounded-full font-medium">
+              <div className="p-8 border-b border-gray-300/60 dark:border-gray-700/50">
+                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                  <span className="bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full font-medium">
                     {category}
                   </span>
                   <div className="flex items-center">
@@ -72,11 +69,11 @@ export default function ComingSoonPage({
                   </div>
                 </div>
                 
-                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
                   {title}
                 </h1>
                 
-                <p className="text-xl text-gray-300 leading-relaxed">
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                   {excerpt}
                 </p>
               </div>
@@ -93,15 +90,15 @@ export default function ComingSoonPage({
                     <PenTool className="w-10 h-10 text-purple-400" />
                   </div>
                   
-                  <h2 className="text-2xl font-bold text-white mb-4">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
                     Coming Soon
                   </h2>
                   
-                  <p className="text-lg text-gray-300 mb-6 max-w-md mx-auto">
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-md mx-auto">
                     This story is currently being written. Check back soon for the full article about this experience!
                   </p>
                   
-                  <div className="space-y-3 text-sm text-gray-400">
+                  <div className="space-y-3 text-sm text-gray-500 dark:text-gray-400">
                     <div className="flex items-center justify-center gap-2">
                       <FileText className="w-4 h-4" />
                       <span>Article in progress</span>
@@ -133,7 +130,7 @@ export default function ComingSoonPage({
                   
                   <Link 
                     href="/contact"
-                    className="inline-flex items-center justify-center bg-gray-700/70 hover:bg-gray-600/70 text-white px-6 py-3 rounded-full font-medium transition-all duration-300"
+                    className="inline-flex items-center justify-center bg-gray-200/70 dark:bg-gray-700/70 hover:bg-gray-300/70 dark:hover:bg-gray-600/70 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium transition-all duration-300"
                   >
                     Get in Touch
                   </Link>

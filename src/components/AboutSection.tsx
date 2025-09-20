@@ -76,7 +76,7 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 dark:from-white dark:via-gray-300 dark:to-gray-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-700 dark:text-gray-400 mb-6">
               About Me
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
@@ -115,10 +115,10 @@ const AboutSection = () => {
                           whileHover={getHoverAnimations(card.hoverAnimation)}
                           className="mb-6"
                         >
-                          <card.icon className="w-16 h-16 text-gray-900 dark:text-white drop-shadow-lg" />
+                          <card.icon className="w-16 h-16 text-gray-700 dark:text-gray-400 drop-shadow-lg" />
                         </motion.div>
                         
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-md">
+                        <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-400 mb-2 drop-shadow-md">
                           {card.title}
                         </h3>
                         

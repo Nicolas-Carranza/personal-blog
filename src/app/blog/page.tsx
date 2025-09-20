@@ -144,7 +144,7 @@ export default function BlogPage() {
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
                 isCategorySelected("All")
                   ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
-                  : 'bg-gray-700/70 text-gray-300 hover:bg-gray-600/70 hover:text-white'
+                  : 'bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 hover:bg-gray-300/70 dark:hover:bg-gray-600/70 hover:text-gray-900 dark:hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -161,7 +161,7 @@ export default function BlogPage() {
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
                   isCategorySelected(category)
                     ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
-                    : 'bg-gray-700/70 text-gray-300 hover:bg-gray-600/70 hover:text-white'
+                    : 'bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 hover:bg-gray-300/70 dark:hover:bg-gray-600/70 hover:text-gray-900 dark:hover:text-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -175,7 +175,7 @@ export default function BlogPage() {
           {/* Blog Posts Grid */}
           <div className="mb-4">
             <motion.p 
-              className="text-gray-400 text-center text-sm"
+              className="text-gray-500 dark:text-gray-400 text-center text-sm"
               key={filteredPosts.length} // Re-animate when count changes
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -195,7 +195,7 @@ export default function BlogPage() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="text-gray-400 text-lg">
+                <div className="text-gray-500 dark:text-gray-400 text-lg">
                   No posts found for the selected categories.
                 </div>
               </motion.div>
@@ -203,7 +203,7 @@ export default function BlogPage() {
               filteredPosts.map((post, index) => (
                 <motion.article
                   key={`${post.id}-${selectedCategories.join('-')}`} // Re-animate when filter changes
-                  className="group relative bg-gray-900/40 dark:bg-gray-800/40 backdrop-blur-sm rounded-2xl border border-gray-700/50 dark:border-gray-600/50 overflow-hidden transition-all duration-500 hover:border-transparent"
+                  className="group relative bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-300/60 dark:border-gray-700/50 overflow-hidden transition-all duration-500 hover:border-transparent"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
@@ -215,9 +215,6 @@ export default function BlogPage() {
                       "0 0 0 1px rgba(147, 51, 234, 0.3), 0 0 25px rgba(147, 51, 234, 0.2), 0 0 50px rgba(147, 51, 234, 0.1)"
                     ]
                   }}
-                  style={{
-                    background: "linear-gradient(135deg, rgba(31, 41, 55, 0.6) 0%, rgba(17, 24, 39, 0.8) 100%)"
-                  }}
                 >
                 {/* Neon glow border effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
@@ -228,10 +225,10 @@ export default function BlogPage() {
                 <div className="p-8 relative z-10">
                   {/* Category & Date */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="bg-gray-700/70 text-gray-300 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full text-sm font-medium">
                       {post.category}
                     </span>
-                    <div className="flex items-center text-gray-400 text-sm">
+                    <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                       <Calendar className="w-4 h-4 mr-1" />
                       {new Date(post.date).toLocaleDateString('en-US', {
                         year: 'numeric',
@@ -242,25 +239,25 @@ export default function BlogPage() {
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-2xl font-bold text-white mb-4 line-clamp-2">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 line-clamp-2">
                     {post.title}
                   </h2>
 
                   {/* Excerpt */}
-                  <p className="text-gray-300 mb-6 line-clamp-3">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 line-clamp-3">
                     {post.excerpt}
                   </p>
 
                   {/* Read Time & Read More Button */}
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-400 text-sm">
+                    <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                       <Clock className="w-4 h-4 mr-1" />
                       {post.readTime}
                     </div>
                       
                     <Link href={`/blog/${post.id}`}>
                       <motion.button
-                        className="bg-gray-700/70 hover:bg-purple-600/80 text-white px-6 py-3 rounded-full font-medium flex items-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                        className="bg-gray-200/70 dark:bg-gray-700/70 hover:bg-purple-600/80 dark:hover:bg-purple-600/80 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium flex items-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/25"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -277,7 +274,7 @@ export default function BlogPage() {
 
           {/* Newsletter Signup */}
           <motion.div 
-            className="relative group bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-700/50 p-12 text-white text-center overflow-hidden transition-all duration-700 hover:border-transparent"
+            className="relative group bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-300/60 dark:border-gray-700/50 p-12 text-gray-900 dark:text-white text-center overflow-hidden transition-all duration-700 hover:border-transparent"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -286,9 +283,6 @@ export default function BlogPage() {
                 "0 0 0 1px rgba(147, 51, 234, 0)",
                 "0 0 0 1px rgba(147, 51, 234, 0.3), 0 0 30px rgba(147, 51, 234, 0.2), 0 0 60px rgba(251, 146, 60, 0.1)"
               ]
-            }}
-            style={{
-              background: "linear-gradient(135deg, rgba(31, 41, 55, 0.7) 0%, rgba(17, 24, 39, 0.9) 100%)"
             }}
           >
             {/* Neon glow effect */}
@@ -299,7 +293,7 @@ export default function BlogPage() {
 
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-4">Stay Updated</h3>
-              <p className="text-xl text-gray-300 mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Get notified when I publish new posts about tech, entrepreneurship, and my journey.
               </p>
 
@@ -336,7 +330,7 @@ export default function BlogPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isSubmitting}
-                  className="flex-1 px-6 py-4 rounded-full bg-gray-800/70 text-white placeholder-gray-400 border border-gray-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 disabled:opacity-50"
+                  className="flex-1 px-6 py-4 rounded-full bg-gray-200/70 dark:bg-gray-800/70 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border border-gray-300/60 dark:border-gray-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 disabled:opacity-50"
                 />
                 <motion.button
                   type="submit"

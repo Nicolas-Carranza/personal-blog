@@ -26,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider>
-          <div className="min-h-screen">
+          <div className="min-h-screen bg-gradient-to-br from-blue-300/80 via-indigo-200/40 to-purple-200/50 dark:from-gray-950/80 dark:via-blue-950/30 dark:to-indigo-950/40">
             <Navigation />
             <main className="pt-16">
               {children}
