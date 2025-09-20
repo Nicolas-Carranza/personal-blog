@@ -50,7 +50,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <span className="block text-gray-900 dark:text-white mb-2">Nicolas</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 dark:from-white dark:via-gray-300 dark:to-gray-500 bg-clip-text text-transparent">
               Carranza
             </span>
           </motion.h1>

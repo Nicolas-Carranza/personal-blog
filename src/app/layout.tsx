@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import { ThemeProvider, ThemeScript } from '@/components/ThemeProvider'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/next'
 
@@ -19,17 +20,22 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
-        <div className="min-h-screen">
-          <Navigation />
-          <main className="pt-16">
-            {children}
-          </main>
-          <Footer />
-          <SpeedInsights />
-          <Analytics />
-        </div>
+        <ThemeProvider>
+          <div className="min-h-screen">
+            <Navigation />
+            <main className="pt-16">
+              {children}
+            </main>
+            <Footer />
+            <SpeedInsights />
+            <Analytics />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )

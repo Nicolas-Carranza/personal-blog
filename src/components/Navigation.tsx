@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Home, User, Trophy, BookOpen, Mail } from 'lucide-react'
+import ThemeToggle from './ThemeToggleSimple'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -46,27 +47,30 @@ const Navigation = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navItems.map((item) => {
-                const Icon = item.icon
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                      isActive
-                        ? 'bg-white/20 dark:bg-gray-800/30 text-gray-900 dark:text-white backdrop-blur-sm border border-white/30 dark:border-gray-700/30'
-                        : scrolled
-                        ? 'text-gray-600 dark:text-gray-400 hover:bg-white/10 dark:hover:bg-gray-800/20 hover:text-gray-800 dark:hover:text-gray-200'
-                        : 'text-gray-900 dark:text-white hover:bg-white/10 dark:hover:bg-gray-800/20 drop-shadow-lg'
-                    }`}
-                  >
-                    <Icon className="w-4 h-4" />
-                    <span>{item.label}</span>
-                  </Link>
-                )
-              })}
+            <div className="ml-10 flex items-center space-x-4">
+              <div className="flex items-baseline space-x-4">
+                {navItems.map((item) => {
+                  const Icon = item.icon
+                  const isActive = pathname === item.href
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                        isActive
+                          ? 'bg-white/20 dark:bg-gray-800/30 text-gray-900 dark:text-white backdrop-blur-sm border border-white/30 dark:border-gray-700/30'
+                          : scrolled
+                          ? 'text-gray-600 dark:text-gray-400 hover:bg-white/10 dark:hover:bg-gray-800/20 hover:text-gray-800 dark:hover:text-gray-200'
+                          : 'text-gray-900 dark:text-white hover:bg-white/10 dark:hover:bg-gray-800/20 drop-shadow-lg'
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      <span>{item.label}</span>
+                    </Link>
+                  )
+                })}
+              </div>
+              <ThemeToggle />
             </div>
           </div>
 
@@ -104,6 +108,9 @@ const Navigation = () => {
                   </Link>
                 )
               })}
+              <div className="px-3 py-2">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         )}

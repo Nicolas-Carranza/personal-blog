@@ -60,10 +60,10 @@ const FeaturedPosts = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 dark:from-white dark:via-gray-300 dark:to-gray-500 bg-clip-text text-transparent mb-6">
               Featured Posts
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
               Recent thoughts, experiences, and insights from my journey
             </p>
           </motion.div>
@@ -104,8 +104,8 @@ const FeaturedPosts = () => {
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 transition-all duration-500 rounded-xl" />
                           
                           <div className="relative z-10">
-                            <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
-                              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-500" />
+                            <div className="aspect-video bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 relative overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 dark:from-blue-500/20 dark:to-purple-500/20 group-hover:from-white/20 group-hover:to-white/10 dark:group-hover:from-blue-500/30 dark:group-hover:to-purple-500/30 transition-all duration-500" />
                             </div>
                             
                             <div className="p-6">

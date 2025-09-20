@@ -15,7 +15,7 @@ const AboutSection = () => {
       shortDesc: "Crafting digital experiences",
       fullDescription: "I'm passionate about building modern web applications with cutting-edge technologies. From React and Next.js to TypeScript and Tailwind, I love creating seamless user experiences with clean, efficient code. Currently studying Computer Science at St Andrews and interning at BlackRock.",
       hoverAnimation: "code",
-      bgColor: "from-slate-600 via-indigo-600 to-slate-600"
+      bgColor: "from-blue-500 via-blue-400 to-blue-300 dark:from-blue-900 dark:via-blue-800 dark:to-blue-700"
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ const AboutSection = () => {
       shortDesc: "Sharing stories & insights",
       fullDescription: "Through my blog, I share my journey from Madrid to Scotland, experiences in the tech industry, and lessons learned along the way. I believe in the power of storytelling to connect, inspire, and help others navigate their own paths in technology and life.",
       hoverAnimation: "writing",
-      bgColor: "from-slate-600 via-indigo-600 to-slate-600"
+      bgColor: "from-blue-300 via-blue-200 to-sky-100 dark:from-blue-700 dark:via-blue-600 dark:to-blue-500"
     },
     {
       id: 3,
@@ -33,7 +33,7 @@ const AboutSection = () => {
       shortDesc: "Pushing boundaries daily",
       fullDescription: "From founding Unhatched.ai to leading the Spanish Society at university, I'm always pursuing new challenges. Whether it's securing internships at top firms, academic excellence, or entrepreneurial ventures, I believe in setting ambitious goals and working relentlessly to achieve them.",
       hoverAnimation: "target",
-      bgColor: "from-slate-600 via-indigo-600 to-slate-600"
+      bgColor: "from-sky-100 via-blue-100 to-blue-200 dark:from-blue-500 dark:via-blue-400 dark:to-blue-300"
     }
   ]
 
@@ -76,10 +76,10 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 dark:from-white dark:via-gray-300 dark:to-gray-500 bg-clip-text text-transparent mb-6">
               About Me
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
               Welcome to my corner of the internet! Discover who I am through these three core aspects of my journey.
             </p>
           </motion.div>
@@ -115,14 +115,14 @@ const AboutSection = () => {
                           whileHover={getHoverAnimations(card.hoverAnimation)}
                           className="mb-6"
                         >
-                          <card.icon className="w-16 h-16 text-white drop-shadow-lg" />
+                          <card.icon className="w-16 h-16 text-gray-900 dark:text-white drop-shadow-lg" />
                         </motion.div>
                         
-                        <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-md">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-md">
                           {card.title}
                         </h3>
                         
-                        <p className="text-white/90 text-sm drop-shadow-sm">
+                        <p className="text-gray-800 dark:text-gray-100 text-sm drop-shadow-sm">
                           {card.shortDesc}
                         </p>
                       </div>
@@ -136,9 +136,9 @@ const AboutSection = () => {
 
                   {/* Back Side */}
                   <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180">
-                    <div className="relative w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden border border-gray-700">
+                    <div className="relative w-full h-full bg-gradient-to-br from-white via-gray-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
                       {/* Animated background pattern */}
-                      <div className="absolute inset-0 opacity-20">
+                      <div className="absolute inset-0 opacity-10 dark:opacity-20">
                         <motion.div 
                           className="w-full h-full"
                           animate={{
@@ -164,7 +164,7 @@ const AboutSection = () => {
                               e.stopPropagation()
                               handleCardClick(card.id)
                             }}
-                            className="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                            className="flex items-center text-purple-600 dark:text-blue-400 hover:text-purple-500 dark:hover:text-blue-300 transition-colors"
                             whileHover={{ x: -2 }}
                           >
                             <ChevronLeft className="w-4 h-4 mr-1" />
@@ -173,14 +173,14 @@ const AboutSection = () => {
                         </div>
                         
                         <div className="flex-1 flex flex-col justify-center items-center text-center">
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                          <p className="text-gray-800 dark:text-gray-300 leading-relaxed">
                             {card.fullDescription}
                           </p>
                         </div>
                       </div>
 
                       {/* Subtle glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-purple-500/5 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-purple-500/5 to-pink-500/5 dark:from-blue-500/5 dark:to-purple-500/5 pointer-events-none" />
                     </div>
                   </div>
                 </motion.div>
