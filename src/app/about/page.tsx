@@ -5,6 +5,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   MapPin, 
   GraduationCap, 
@@ -19,12 +20,15 @@ import {
   ChevronLeft,
   ChevronRight,
   ChefHat,
-  Mountain,
+  Flower,
   Users,
   Coffee,
   Camera,
   Music,
-  Wine
+  Wine,
+  Plane,
+  UtensilsCrossed,
+  Tv
 } from 'lucide-react'
 import PageBackground from '@/components/PageBackground'
 
@@ -48,43 +52,64 @@ export default function AboutPage() {
       icon: Code, 
       name: "Coding", 
       desc: "Building innovative solutions and learning new technologies", 
-      detail: "From algorithms to full-stack applications, I love crafting elegant code that solves real-world problems.",
-      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      detail: "I enjoy turning ideas into real products. From algorithms to full stack applications, I like building clean and scalable solutions that solve real problems. Beyond this, I also love to automate tasks and create fun games!",
+      gradient: "from-sky-150 via-sky-200 to-sky-250 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: ChefHat, 
       name: "Cooking", 
       desc: "Experimenting with flavors and creating delicious meals", 
-      detail: "The kitchen is my creative lab where I experiment with international cuisines and molecular gastronomy.",
-      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      detail: "Cooking for me is where I get to enjoy my friends and family smiles. I enjoy experimenting with international cuisines and complex dishes, and taking my time to prepare simple but delicious meals.",
+      gradient: "from-sky-200 via-sky-250 to-sky-300 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
-      icon: Mountain, 
-      name: "Hiking", 
-      desc: "Exploring nature and challenging myself on new trails", 
-      detail: "From Scottish Highlands to Spanish Pyrenees, every trail teaches resilience and offers perspective.",
-      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      icon: Flower, 
+      name: "Nature", 
+      desc: "Learning about flowers, trees and discovering new species", 
+      detail: "I am fascinated by the natural world and how nature expands through life. I like learning about flowers, trees and ecosystems, see their varieties and of course their fruits! Every walk is a chance to discover new species.",
+      gradient: "from-sky-300 via-sky-350 to-sky-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Wine, 
       name: "Wine Appreciation", 
       desc: "Passionate about red wines, especially Spanish varieties", 
-      detail: "Exploring Spanish regions like Rioja and Ribera del Duero, learning about terroir, grape varieties, and the art of winemaking. Each bottle tells a story of its origin.",
-      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      detail: "I have a passion for red wines, especially Spanish wine. Regions like Ribera del Duero and Toro are my favourite to explore. Each bottle is a story of its origin, and I love sharing them with friends and family.",
+      gradient: "from-sky-150 via-sky-200 to-sky-250 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Camera, 
       name: "Photography", 
       desc: "Capturing moments and telling stories through images", 
-      detail: "Street photography and landscapes help me see the world through different lenses, literally and figuratively.",
-      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      detail: "Photography allows me to capture moments and tell stories. I enjoy both street photography and landscapes as they let me see the world from different perspectives. Something new I've been trying is film photography!",
+      gradient: "from-sky-200 via-sky-250 to-sky-300 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Music, 
       name: "Music", 
       desc: "Discovering new artists and enjoying live performances", 
-      detail: "From jazz clubs to electronic festivals, music fuels my creativity and connects me with diverse cultures.",
-      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      detail: "I am constantly listening to music. I enjoy discovering new artists and going to live shows, from jazz clubs to electronic festivals. I have a playlist for every mood, but my favourite right now is my Brazilian bossa nova!",
+      gradient: "from-sky-300 via-sky-350 to-sky-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+    },
+    { 
+      icon: Plane, 
+      name: "Travel", 
+      desc: "Exploring new places and experiencing different cultures", 
+      detail: "I have travelled across most of Europe, especially its capitals and cultural centres which I love. Travel gives me new perspectives and lasting memories, and I look forward to exploring Japan, Tanzania or Mexico!",
+      gradient: "from-sky-150 via-sky-200 to-sky-250 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+    },
+    { 
+      icon: UtensilsCrossed, 
+      name: "Food", 
+      desc: "Discovering authentic cuisines and local flavors", 
+      detail: "Food is one of the best ways to understand culture. I love discovering authentic flavours, from street food to fine dining. Some favourites include chuletón gallego, jamón ibérico de bellota, and homemade pizzas.",
+      gradient: "from-sky-200 via-sky-250 to-sky-300 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+    },
+    { 
+      icon: Tv, 
+      name: "Sports Watching", 
+      desc: "Following football, tennis, and Formula 1 with passion", 
+      detail: "I follow sports with passion since I was a child, especially football. Real Madrid is my team and will always be. But apart from it I also enjoy Formula 1, the NBA, boxing and UFC.",
+      gradient: "from-sky-300 via-sky-350 to-sky-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     }
   ]
 
@@ -461,23 +486,28 @@ export default function AboutPage() {
               className="relative inline-block mb-8"
               variants={itemVariants}
             >
-              {/* Professional Greeting */}
+              {/* Portrait Photo */}
               <div className="relative">
                 <motion.div
-                  className="w-24 h-24 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto shadow-xl mb-6"
-                  animate={{ 
-                    rotateY: [0, 180, 360],
-                    scale: [1, 1.05, 1]
+                  className="w-80 h-80 mx-auto mb-6 relative overflow-hidden rounded-2xl shadow-xl"
+                  whileHover={{ 
+                    scale: 1.02
                   }}
                   transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
+                    duration: 0.3,
                     ease: "easeInOut"
                   }}
                 >
-                  <span className="text-3xl font-bold text-white">NC</span>
+                  <Image
+                    src="/images/portraint.jpg"
+                    alt="Nicolás Carranza Portrait"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                    quality={95}
+                  />
                 </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl blur-xl opacity-20 animate-pulse" />
+                <div className="absolute inset-0 bg-blue-500/10 rounded-2xl blur-xl opacity-30 animate-pulse" />
               </div>
             </motion.div>
             
@@ -487,7 +517,7 @@ export default function AboutPage() {
             >
               <span className="text-gray-900 dark:text-white">Hi there! I&apos;m </span>
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Nicolas
+                Nicolás
               </span>
             </motion.h1>
             
@@ -504,9 +534,9 @@ export default function AboutPage() {
               variants={itemVariants}
             >
               {[
-                { icon: Mail, href: "mailto:nicolas.carranza.work@gmail.com", label: "Email", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" },
-                { icon: Github, href: "https://github.com/Nicolas-Carranza", label: "GitHub", color: "hover:bg-gray-50 dark:hover:bg-gray-700/20 hover:border-gray-400 dark:hover:border-gray-500" },
-                { icon: Linkedin, href: "https://linkedin.com/in/nicolas-carranza-arauna-4029a7252", label: "LinkedIn", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" }
+                { icon: Mail, href: "mailto:Nicolás.carranza.work@gmail.com", label: "Email", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" },
+                { icon: Github, href: "https://github.com/Nicolás-Carranza", label: "GitHub", color: "hover:bg-gray-50 dark:hover:bg-gray-700/20 hover:border-gray-400 dark:hover:border-gray-500" },
+                { icon: Linkedin, href: "https://linkedin.com/in/Nicolás-carranza-arauna-4029a7252", label: "LinkedIn", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" }
               ].map((social, index) => (
                 <motion.a
                   key={index}
@@ -811,7 +841,7 @@ export default function AboutPage() {
 
                   {/* Back Side */}
                   <div 
-                    className="absolute inset-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 backface-hidden rotate-y-180"
+                    className="absolute inset-0 bg-stone-50/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 backface-hidden rotate-y-180"
                   >
                     <div className="h-full flex flex-col justify-center">
                       <div className={`w-12 h-12 bg-gradient-to-br ${interest.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg mx-auto`}>
@@ -848,12 +878,18 @@ export default function AboutPage() {
       >
         <div className="container mx-auto px-4 max-w-4xl text-center">
           <motion.div
-            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-gray-200 dark:border-gray-700 relative overflow-hidden"
+            className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl p-12 shadow-xl border border-gray-200/50 dark:border-gray-600/30 relative overflow-hidden"
             variants={itemVariants}
           >
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5 dark:opacity-10">
-              <div className="absolute inset-0 bg-blue-500/20 bg-repeat bg-[radial-gradient(circle_at_2px_2px,rgba(59,130,246,0.5)_1px,transparent_0)] bg-[length:30px_30px]" />
+            {/* Highland Cow Background */}
+            <div className="absolute inset-0 opacity-15 dark:opacity-10">
+              <Image
+                src="/images/highland_cow.png"
+                alt="Highland Cows Background"
+                fill
+                className="object-cover object-center"
+                quality={85}
+              />
             </div>
             
             <div className="relative z-10">

@@ -40,7 +40,7 @@ const Navigation = () => {
                 ? 'text-gray-800 dark:text-gray-200 drop-shadow-sm'
                 : 'text-gray-900 dark:text-white drop-shadow-lg'
             }`}>
-              Nicolas Carranza
+              Nicolás Carranza
             </Link>
           </div>
           

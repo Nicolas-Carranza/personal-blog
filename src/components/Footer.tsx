@@ -10,14 +10,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Nicolas Carranza</h3>
+            <h3 className="text-2xl font-bold mb-4">Nicolás Carranza</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md">
               Computer Science & Management student passionate about AI, fintech, 
               and building innovative solutions through technology.
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com/Nicolas-Carranza" 
+                href="https://github.com/Nicolás-Carranza" 
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -26,7 +26,7 @@ const Footer = () => {
                 <Github className="w-6 h-6" />
               </a>
               <a 
-                href="https://linkedin.com/in/nicolas-carranza-arauna-4029a7252" 
+                href="https://linkedin.com/in/Nicolás-carranza-arauna-4029a7252" 
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
                 <Linkedin className="w-6 h-6" />
               </a>
               <a 
-                href="mailto:nicolas.carranza.work@gmail.com" 
+                href="mailto:Nicolás.carranza.work@gmail.com" 
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
                 title="Email Contact"
               >
@@ -101,7 +101,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-300 dark:border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-600 dark:text-gray-400 flex items-center justify-center">
-            Made with <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" /> by Nicolas Carranza © {currentYear}
+            Made with <Heart className="w-4 h-4 mx-1 text-red-500" fill="currentColor" /> by Nicolás Carranza © {currentYear}
           </p>
         </div>
       </div>

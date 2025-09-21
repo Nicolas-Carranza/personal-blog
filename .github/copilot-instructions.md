@@ -162,7 +162,7 @@ src/
 - **Social media** links (GitHub, LinkedIn, Email)
 
 ### Personal Information
-- **Nicolas Carranza** - Computer Science & Management student
+- **Nicolás Carranza** - Computer Science & Management student
 - **University of St Andrews** - Final year student
 - **Madrid, Spain** origins with **Scotland** current location
 - **BlackRock internship** and **Unhatched.ai founder**

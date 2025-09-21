@@ -89,7 +89,7 @@ function sendNotification(email) {
   const body = `New subscriber: ${email}`;
   
   // Send to your email
-  GmailApp.sendEmail('nicolas.carranza.work@gmail.com', subject, body);
+  GmailApp.sendEmail('Nicolás.carranza.work@gmail.com', subject, body);
 }
 ```
 

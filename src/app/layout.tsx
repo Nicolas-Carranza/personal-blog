@@ -10,8 +10,8 @@ import { Analytics } from '@vercel/analytics/next'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nicolas Carranza - Computer Science Student & Full-Stack Developer',
-  description: 'Personal blog and portfolio of Nicolas Carranza Arauna, Computer Science & Management student at St Andrews, showcasing projects, achievements, and insights in AI, fintech, and full-stack development.',
+  title: 'Nicolás Carranza - Computer Science Student & Full-Stack Developer',
+  description: 'Personal blog and portfolio of Nicolás Carranza Arauna, Computer Science & Management student at St Andrews, showcasing projects, achievements, and insights in AI, fintech, and full-stack development.',
 }
 
 export default function RootLayout({
