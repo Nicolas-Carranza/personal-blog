@@ -12,29 +12,30 @@ const FeaturedPosts = () => {
   const featuredPosts = [
     {
       id: 1,
-      title: "Journey from Madrid to St Andrews",
-      excerpt: "The story of leaving my hometown in Madrid to pursue Computer Science at the University of St Andrews. A journey of adaptation, growth, and discovering opportunities in Scotland.",
+      title: "From Madrid to St Andrews",
+      excerpt: "The story of leaving my hometown in Madrid to study Computer Science at the University of St Andrews. A journey of adapting to a new place, growing through challenges, and discovering fresh opportunities in Scotland.",
       date: "2024-12-15",
       category: "Personal",
       readTime: "6 min read"
     },
     {
       id: 2,
-      title: "My Experience at BlackRock: Breaking into the Market",
-      excerpt: "Landing a summer internship at BlackRock and what I learned about the financial industry. From application process to real-world experience in one of the world's largest asset managers.",
+      title: "Breaking into Finance: My Internship at BlackRock",
+      excerpt: "How I landed a summer internship at BlackRock and what I learned about the financial industry. From the application process to hands-on experience inside one of the world's largest asset managers.",
       date: "2024-08-20",
       category: "Career",
       readTime: "8 min read"
     },
     {
       id: 3,
-      title: "Exploring the Highlands with Friends",
-      excerpt: "Adventures through the Scottish Highlands with university friends. Discovering the breathtaking landscapes, culture, and memories that make Scotland truly special.",
+      title: "Adventures in the Scottish Highlands",
+      excerpt: "Exploring the Scottish Highlands with my friends! From driving 6 hours straight to unforgettable memories in the mountains.",
       date: "2024-07-10",
       category: "Travel",
       readTime: "5 min read"
     }
   ]
+
 
   const nextPost = () => {
     setCurrentIndex((prev) => (prev + 1) % featuredPosts.length)
@@ -60,10 +61,10 @@ const FeaturedPosts = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-700 dark:text-gray-400 mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Featured Posts
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Recent thoughts, experiences, and insights from my journey
             </p>
           </motion.div>

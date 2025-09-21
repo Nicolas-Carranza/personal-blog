@@ -9,7 +9,7 @@ const AchievementsPreview = () => {
     {
       id: 1,
       title: "BlackRock Summer Internship",
-      description: "Aladdin Client Business team, leading AI implementation project with global engineering teams",
+      description: "Worked with the Aladdin Client Business team, leading an AI implementation project in collaboration with global engineering teams",
       date: "2025",
       icon: Trophy,
       category: "Professional"
@@ -17,7 +17,7 @@ const AchievementsPreview = () => {
     {
       id: 2,
       title: "Founded Unhatched.ai",
-      description: "Built AI-powered virtual co-founder platform, leading product development and design",
+      description: "Created an AI-powered virtual co-founder platform, leading both product development and design",
       date: "2024",
       icon: Star,
       category: "Entrepreneurship"
@@ -25,21 +25,20 @@ const AchievementsPreview = () => {
     {
       id: 3,
       title: "Dean's List Recognition",
-      description: "Three consecutive years of academic excellence at University of St Andrews",
-      date: "2022-2025",
+      description: "Honored for three consecutive years of academic excellence at the University of St Andrews",
+      date: "2022–2025",
       icon: Award,
       category: "Academic"
     },
     {
       id: 4,
-      title: "Spanish Society President",
-      description: "Elected president, raised €2,500 for Valencia DANA disaster relief in partnership with World Central Kitchen",
+      title: "President of the Spanish Society",
+      description: "Elected president and organized fundraising efforts, raising €2,500 for Valencia DANA disaster relief in partnership with World Central Kitchen",
       date: "2024",
       icon: Target,
       category: "Leadership"
     }
   ]
-
   return (
     <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,10 +49,10 @@ const AchievementsPreview = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-gray-700 dark:text-gray-400 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Recent Achievements
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-400">
+          <p className="text-xl text-gray-600 dark:text-gray-300">
             Milestones and accomplishments that I&apos;m proud to share
           </p>
         </motion.div>

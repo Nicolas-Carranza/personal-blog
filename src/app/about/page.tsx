@@ -1,6 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+/* eslint-disable react/forbid-dom-props */
+
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { 
@@ -29,6 +31,9 @@ import PageBackground from '@/components/PageBackground'
 export default function AboutPage() {
   const [flippedCards, setFlippedCards] = useState<{[key: number]: boolean}>({})
   const [currentJourneyIndex, setCurrentJourneyIndex] = useState(0)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const hobbySectionRef = useRef<HTMLDivElement | null>(null)
+  
   const skills = [
     { name: "Python", level: 95, color: "bg-blue-500" },
     { name: "Java", level: 95, color: "bg-red-500" },
@@ -44,75 +49,123 @@ export default function AboutPage() {
       name: "Coding", 
       desc: "Building innovative solutions and learning new technologies", 
       detail: "From algorithms to full-stack applications, I love crafting elegant code that solves real-world problems.",
-      gradient: "from-slate-600 via-blue-600 to-indigo-700" 
+      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: ChefHat, 
       name: "Cooking", 
       desc: "Experimenting with flavors and creating delicious meals", 
       detail: "The kitchen is my creative lab where I experiment with international cuisines and molecular gastronomy.",
-      gradient: "from-slate-600 via-orange-600 to-red-700" 
+      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Mountain, 
       name: "Hiking", 
       desc: "Exploring nature and challenging myself on new trails", 
       detail: "From Scottish Highlands to Spanish Pyrenees, every trail teaches resilience and offers perspective.",
-      gradient: "from-slate-600 via-green-600 to-emerald-700" 
+      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Wine, 
       name: "Wine Appreciation", 
       desc: "Passionate about red wines, especially Spanish varieties", 
       detail: "Exploring Spanish regions like Rioja and Ribera del Duero, learning about terroir, grape varieties, and the art of winemaking. Each bottle tells a story of its origin.",
-      gradient: "from-slate-600 via-red-600 to-purple-700" 
+      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Camera, 
       name: "Photography", 
       desc: "Capturing moments and telling stories through images", 
       detail: "Street photography and landscapes help me see the world through different lenses, literally and figuratively.",
-      gradient: "from-slate-600 via-gray-600 to-slate-800" 
+      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Music, 
       name: "Music", 
       desc: "Discovering new artists and enjoying live performances", 
       detail: "From jazz clubs to electronic festivals, music fuels my creativity and connects me with diverse cultures.",
-      gradient: "from-slate-600 via-indigo-600 to-violet-700" 
+      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     }
   ]
 
   const journeySteps = [
     {
-      title: "Childhood in Madrid",
-      content: "Born and raised in Madrid, surrounded by family and friends. From a young age, I was drawn to science — dreaming of becoming a veterinarian, then an astrophysicist, aerospace engineer, and eventually finding my passion in software engineering.",
-      period: "2004 - 2019"
+      title: "Early Curiosity",
+      content: "Growing up in Madrid, I was always fascinated by science. One year I wanted to be a vet, the next an astrophysicist, then an aerospace engineer. Curiosity shaped everything I did. I grew up surrounded by family and friends who have formed me into who I am today.",
+      period: "2004 - 2012"
     },
     {
-      title: "University of St Andrews",
-      content: "Currently in my final year pursuing Computer Science and Management. My studies have explored operating systems, networks, logic, complexity, and coding practices. I've gained hands-on experience with core programming languages, building a strong technical foundation.",
-      period: "2019 - Present"
+      title: "First Lines of Code",
+      content: "As a teenager I discovered coding. It started as a hobby, a way to escape and create, but quickly became the thing I loved most. A fun fact is that I appeared in national TV in Spain for a school project I built in a university at the age of 12!",
+      period: "2012 - 2020"
     },
     {
-      title: "Professional Experience", 
-      content: "This foundation enabled me to complete three internships, each offering unique challenges and opportunities to apply my skills in real-world settings — experiences I have truly enjoyed and learned from.",
-      period: "2021 - 2024"
+      title: "High School Years",
+      content: "Throughout my BiBac studies, I took on leadership roles and deepened my passion for technology. I decided to go through the Science branch and then took the EVAU exams which was one of the most challenging experiences of my life. Ended getting a 12.8/14, which allowed me to apply to top universities worldwide.",
+      period: "2020 - 2022"
     },
     {
-      title: "Looking Forward",
-      content: "Eager to start my career as a graduate software engineer, while remaining open to emerging opportunities in technology and innovation. Passionate about using my skills to solve meaningful problems and contribute to impactful projects.",
+      title: "Moving to Scotland",
+      content: "Leaving Madrid for St Andrews was a big step. From the start it was my first choice, not only because it ranked number one in the UK, but also for the flexibility of its programs and the career opportunities it opens. I also love the countryside, so what better place to study than a beautiful town by the sea surrounded by nature?",
+      period: "2022"
+    },
+    {
+      title: "University Life",
+      content: "Getting to study what you love is a privilege. At St Andrews, I found a community that shares my passion, and I have met incredible people who inspire me every day. The environment I found here was a competitive one, but also collaborative and supportive, which has helped me grow both academically and personally.",
+      period: "2022 - 2025"
+    },
+    {
+      title: "Professional Growth",
+      content: "A big part of my university journey has been professional growth. Early on, I learned about spring weeks, internships, and graduate schemes, which opened doors for me. Since then, I have been a spring intern at two firms and completed three more internships, from a tech startup to a leading fintech company.",
+      period: "2023 - 2025"
+    },
+    {
+      title: "What's Next",
+      content: "Now I am excited to start my career as a software engineer, explore new ideas, and keep chasing challenges that make me grow. My eyes lie now on graduate schemes and full-time roles in tech, where I can continue learning and contributing to impactful projects.",
       period: "2025 & Beyond"
     }
   ]
 
-  // Carousel functions
+  // Function to start/restart the auto-rotation timer
+  const startAutoRotation = () => {
+    // Clear existing interval if any
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    
+    // Start new interval
+    intervalRef.current = setInterval(() => {
+      setCurrentJourneyIndex((prev) => (prev + 1) % journeySteps.length)
+    }, 7000) // 7 seconds
+  }
+
+  // Function to reset timer without changing state
+  const resetTimer = () => {
+    // Clear existing interval if any
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    
+    // Start fresh interval from current position
+    intervalRef.current = setInterval(() => {
+      setCurrentJourneyIndex((prev) => (prev + 1) % journeySteps.length)
+    }, 7000) // 7 seconds
+  }
+
+  // Carousel functions with timer reset
   const nextJourney = () => {
     setCurrentJourneyIndex((prev) => (prev + 1) % journeySteps.length)
+    resetTimer() // Reset timer without state change
   }
 
   const prevJourney = () => {
     setCurrentJourneyIndex((prev) => (prev - 1 + journeySteps.length) % journeySteps.length)
+    resetTimer() // Reset timer without state change
+  }
+
+  const goToJourneyIndex = (index: number) => {
+    setCurrentJourneyIndex(index)
+    resetTimer() // Reset timer without state change
   }
 
   const getJourneyPosition = (index: number) => {
@@ -122,11 +175,221 @@ export default function AboutPage() {
 
   // Auto-rotation effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextJourney()
-    }, 7000) // 7 seconds
+    startAutoRotation()
 
-    return () => clearInterval(interval)
+    // Cleanup function
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, []) // Empty dependency array - only run on mount
+
+  // Global particle system for entire hobby section
+  useEffect(() => {
+    const container = hobbySectionRef.current
+    if (!container) return
+
+    const particles: HTMLElement[] = []
+    const particleTargets = new Map<HTMLElement, { x: number; y: number }>()
+    let animationFrameId: number
+    let mousePosition = { x: -1000, y: -1000 } // Start off-screen
+
+    // Particle settings
+    const density = 75 // Doubled from 100 to 200
+    const speed = 0.5
+    const movementSpeed = speed * 0.06
+    const repulsionRadius = 25 // Increased radius (was 15)
+    const repulsionStrength = 0.9 // 3x stronger (was 0.3)
+
+    // Mouse tracking
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect()
+      if (!rect) return
+      mousePosition = {
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+      }
+    }
+
+    // Function to check if mouse is within any card
+    const isMouseInCard = () => {
+      const cards = container.querySelectorAll('.hobby-card')
+      const containerRect = container.getBoundingClientRect()
+      
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i]
+        const cardRect = card.getBoundingClientRect()
+        const relativeX = ((cardRect.left - containerRect.left) / containerRect.width) * 100
+        const relativeY = ((cardRect.top - containerRect.top) / containerRect.height) * 100
+        const cardWidth = (cardRect.width / containerRect.width) * 100
+        const cardHeight = (cardRect.height / containerRect.height) * 100
+        
+        if (mousePosition.x >= relativeX && mousePosition.x <= relativeX + cardWidth &&
+            mousePosition.y >= relativeY && mousePosition.y <= relativeY + cardHeight) {
+          return true
+        }
+      }
+      return false
+    }
+
+    // Function to check if a particle is over a card AND the card is not flipped
+    const isParticleOverCard = (particleX: number, particleY: number) => {
+      const containerRect = container.getBoundingClientRect()
+      const cards = container.querySelectorAll('.hobby-card')
+      
+      for (let i = 0; i < cards.length; i++) {
+        const card = cards[i]
+        const cardRect = card.getBoundingClientRect()
+        const relativeX = ((cardRect.left - containerRect.left) / containerRect.width) * 100
+        const relativeY = ((cardRect.top - containerRect.top) / containerRect.height) * 100
+        const cardWidth = (cardRect.width / containerRect.width) * 100
+        const cardHeight = (cardRect.height / containerRect.height) * 100
+        
+        if (particleX >= relativeX && particleX <= relativeX + cardWidth &&
+            particleY >= relativeY && particleY <= relativeY + cardHeight) {
+          // Check if this card is flipped - if so, don't show particles
+          return !flippedCards[i] // Only return true if card is NOT flipped
+        }
+      }
+      return false
+    }
+
+    const createParticle = (index: number) => {
+      const particleEl = document.createElement("div")
+      particleEl.style.position = "absolute"
+      particleEl.style.width = "4px"
+      particleEl.style.height = "4px"
+      particleEl.style.borderRadius = "50%"
+      particleEl.style.pointerEvents = "none"
+      particleEl.style.opacity = "0"
+      particleEl.style.zIndex = "1"
+      particleEl.style.transition = "opacity 0.3s ease"
+      
+      // Use a CSS class instead of inline styles
+      particleEl.className = "hobby-particle"
+
+      // Start particles at random positions across entire hobby section
+      const initialX = Math.random() * 100
+      const initialY = Math.random() * 100
+
+      particleEl.style.left = `${initialX}%`
+      particleEl.style.top = `${initialY}%`
+
+      particleTargets.set(particleEl, { x: initialX, y: initialY })
+
+      container.appendChild(particleEl)
+      particles.push(particleEl)
+      return particleEl
+    }
+
+    const updateParticles = () => {
+      particles.forEach((particleEl, index) => {
+        const currentTarget = particleTargets.get(particleEl)
+        if (!currentTarget) return
+
+        const currentX = parseFloat(particleEl.style.left)
+        const currentY = parseFloat(particleEl.style.top)
+
+        const time = Date.now() * 0.001 * speed
+        
+        // Create unique movement pattern for each particle
+        const noiseX = Math.sin(time * 0.5 + index * 0.5) * 30 + Math.cos(time * 0.3 + index * 0.7) * 20
+        const noiseY = Math.cos(time * 0.4 + index * 0.6) * 30 + Math.sin(time * 0.2 + index * 0.8) * 20
+
+        // Move across entire hobby section area
+        let targetX = 50 + noiseX
+        let targetY = 50 + noiseY
+
+        // Apply mouse repulsion if cursor is within a card
+        if (isMouseInCard()) {
+          const dx = mousePosition.x - currentX
+          const dy = mousePosition.y - currentY
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          if (distance < repulsionRadius && distance > 0) {
+            const repulsionForce = (repulsionRadius - distance) / repulsionRadius * repulsionStrength
+            const angle = Math.atan2(dy, dx)
+            
+            // Push particle away from cursor with increased force multiplier
+            targetX -= Math.cos(angle) * repulsionForce * 150 // Increased from 50 to 150
+            targetY -= Math.sin(angle) * repulsionForce * 150
+          }
+        }
+
+        // Keep particles within the hobby section bounds
+        targetX = Math.max(2, Math.min(98, targetX))
+        targetY = Math.max(2, Math.min(98, targetY))
+
+        particleTargets.set(particleEl, {
+          x: targetX,
+          y: targetY,
+        })
+
+        const newX = currentX + (targetX - currentX) * movementSpeed
+        const newY = currentY + (targetY - currentY) * movementSpeed
+
+        particleEl.style.left = `${newX}%`
+        particleEl.style.top = `${newY}%`
+
+        // Check if particle is over a card and adjust opacity
+        if (isParticleOverCard(newX, newY)) {
+          particleEl.style.opacity = "0.3"
+        } else {
+          particleEl.style.opacity = "0"
+        }
+      })
+
+      animationFrameId = requestAnimationFrame(updateParticles)
+    }
+
+    // Add mouse event listeners
+    container.addEventListener('mousemove', handleMouseMove)
+    container.addEventListener('mouseleave', () => {
+      mousePosition = { x: -1000, y: -1000 } // Reset when mouse leaves
+    })
+
+    for (let i = 0; i < density; i++) {
+      createParticle(i)
+    }
+
+    updateParticles()
+
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove)
+      container.removeEventListener('mouseleave', () => {
+        mousePosition = { x: -1000, y: -1000 }
+      })
+      cancelAnimationFrame(animationFrameId)
+      particles.forEach((particleEl) => {
+        particleEl.remove()
+        particleTargets.delete(particleEl)
+      })
+    }
+  }, [flippedCards]) // Add flippedCards dependency so particles update when cards flip
+
+  // Add theme change detection to recreate particles with correct colors
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      // Force particle recreation by toggling a state
+      const container = hobbySectionRef.current
+      if (container) {
+        // Clear existing particles
+        const existingParticles = container.querySelectorAll('div[style*="border-radius: 50%"]')
+        existingParticles.forEach(p => p.remove())
+        
+        // The main particle system useEffect will recreate them with correct colors
+        // due to the flippedCards dependency
+        setFlippedCards(prev => ({ ...prev }))
+      }
+    })
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+    
+    return () => observer.disconnect()
   }, [])
 
   const handleCardFlip = (index: number) => {
@@ -288,46 +551,39 @@ export default function AboutPage() {
                 {journeySteps.map((step, index) => {
                   const position = getJourneyPosition(index)
                   
-                  // Position logic for 4 cards:
-                  // 0: center (active)
-                  // 1: right side (blurred)
-                  // 2: behind center (hidden)
-                  // 3: left side (blurred)
+                  // Calculate logical positions
+                  const nextIndex = (currentJourneyIndex + 1) % journeySteps.length
+                  const prevIndex = (currentJourneyIndex - 1 + journeySteps.length) % journeySteps.length
+                  
                   let xPosition = 0
                   let scale = 0.85
-                  let opacity = 0.4
-                  let zIndex = 1
-                  let blur = 3
+                  let opacity = 0 // Default to hidden
+                  let zIndex = 0 // Default behind everything
+                  let blur = 5
                   
-                  if (position === 0) {
+                  if (index === currentJourneyIndex) {
                     // Center active card
                     xPosition = 0
                     scale = 1
                     opacity = 1
                     zIndex = 10
                     blur = 0
-                  } else if (position === 1) {
-                    // Right side card
+                  } else if (index === nextIndex) {
+                    // Right side card (NEXT item)
                     xPosition = 320
                     scale = 0.85
                     opacity = 0.4
                     zIndex = 5
                     blur = 3
-                  } else if (position === 2) {
-                    // Behind center (hidden, will emerge from left)
-                    xPosition = 0
-                    scale = 0.7
-                    opacity = 0
-                    zIndex = 0
-                    blur = 5
-                  } else if (position === 3) {
-                    // Left side card
+                  } else if (index === prevIndex) {
+                    // Left side card (PREVIOUS item)
                     xPosition = -320
                     scale = 0.85
                     opacity = 0.4
                     zIndex = 5
                     blur = 3
                   }
+                  // All other positions remain completely hidden with default values
                   
                   return (
                     <motion.div
@@ -404,7 +660,7 @@ export default function AboutPage() {
                 {journeySteps.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentJourneyIndex(index)}
+                    onClick={() => goToJourneyIndex(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === currentJourneyIndex
                         ? 'bg-blue-500 scale-125' 
@@ -502,11 +758,14 @@ export default function AboutPage() {
             What I Love Doing
           </motion.h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div 
+            ref={hobbySectionRef}
+            className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {interests.map((interest, index) => (
               <motion.div
                 key={index}
-                className="group h-64"
+                className="group h-64 hobby-card"
                 variants={itemVariants}
                 style={{ perspective: '1000px' }}
               >
@@ -524,39 +783,35 @@ export default function AboutPage() {
                 >
                   {/* Front Side */}
                   <div 
-                    className={`absolute inset-0 bg-gradient-to-br ${interest.gradient} rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center text-white`}
-                    style={{ backfaceVisibility: 'hidden' }}
+                    className={`absolute inset-0 bg-gradient-to-br ${interest.gradient} rounded-2xl p-6 shadow-xl flex flex-col items-center justify-center text-black dark:text-white overflow-hidden backface-hidden`}
                   >
+
                     <motion.div 
-                      className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 shadow-lg backdrop-blur-sm"
+                      className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-4 shadow-lg backdrop-blur-sm relative z-10"
                       whileHover={{ 
                         rotate: 360,
                       }}
                       transition={{ duration: 0.6 }}
                     >
-                      <interest.icon className="w-8 h-8 text-white" />
+                      <interest.icon className="w-8 h-8 text-black dark:text-white" />
                     </motion.div>
                     
-                    <h3 className="text-2xl font-bold mb-3 text-center">
+                    <h3 className="text-2xl font-bold mb-3 text-center relative z-10">
                       {interest.name}
                     </h3>
                     
-                    <p className="text-white/80 text-center text-sm leading-relaxed">
+                    <p className="text-black/80 dark:text-white/80 text-center text-sm leading-relaxed relative z-10">
                       {interest.desc}
                     </p>
 
-                    <div className="mt-4 text-white/60 text-xs">
+                    <div className="mt-4 text-black/60 dark:text-white/60 text-xs relative z-10">
                       Click to flip
                     </div>
                   </div>
 
                   {/* Back Side */}
                   <div 
-                    className="absolute inset-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700"
-                    style={{ 
-                      backfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)'
-                    }}
+                    className="absolute inset-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 backface-hidden rotate-y-180"
                   >
                     <div className="h-full flex flex-col justify-center">
                       <div className={`w-12 h-12 bg-gradient-to-br ${interest.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg mx-auto`}>

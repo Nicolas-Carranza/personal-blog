@@ -13,16 +13,16 @@ const AboutSection = () => {
       title: "Developer",
       icon: Code2,
       shortDesc: "Crafting digital experiences",
-      fullDescription: "I'm passionate about building modern web applications with cutting-edge technologies. From React and Next.js to TypeScript and Tailwind, I love creating seamless user experiences with clean, efficient code. Currently studying Computer Science at St Andrews and interning at BlackRock.",
+      fullDescription: "Ever since I was a kid, I have loved coding. It has always been more than just a skill for me, coding is both an escape and a way to express myself. Whether through building innovative websites, designing databases, building APIs or exploring modern AI and machine learning, I enjoy creating things that can make a real difference.",
       hoverAnimation: "code",
       bgColor: "from-blue-500 via-blue-400 to-blue-300 dark:from-blue-900 dark:via-blue-800 dark:to-blue-700"
     },
     {
       id: 2,
-      title: "Writer", 
+      title: "Thinker", 
       icon: PenTool,
       shortDesc: "Sharing stories & insights",
-      fullDescription: "Through my blog, I share my journey from Madrid to Scotland, experiences in the tech industry, and lessons learned along the way. I believe in the power of storytelling to connect, inspire, and help others navigate their own paths in technology and life.",
+      fullDescription: "My friends often describe me as someone who spends a lot of time lost in thought. My blog is a small snapshot of that, but what I enjoy most is sharing stories in person, listening to the backgrounds and anecdotes of new people I meet, and exploring ideas and themes that are completely new to me.",
       hoverAnimation: "writing",
       bgColor: "from-blue-300 via-blue-200 to-sky-100 dark:from-blue-700 dark:via-blue-600 dark:to-blue-500"
     },
@@ -31,7 +31,7 @@ const AboutSection = () => {
       title: "Achiever",
       icon: Target,
       shortDesc: "Pushing boundaries daily",
-      fullDescription: "From founding Unhatched.ai to leading the Spanish Society at university, I'm always pursuing new challenges. Whether it's securing internships at top firms, academic excellence, or entrepreneurial ventures, I believe in setting ambitious goals and working relentlessly to achieve them.",
+      fullDescription: "I am deeply motivated and driven. My mother often calls me a perfectionist, not only in my studies and work but also in the small details of life. When I set my mind on something, I do everything I can to achieve it. For me, this isn't a burden but a strength, because I truly enjoy what I do. I have clear objectives in life and I pursue them by giving my best in everything.",
       hoverAnimation: "target",
       bgColor: "from-sky-100 via-blue-100 to-blue-200 dark:from-blue-500 dark:via-blue-400 dark:to-blue-300"
     }
@@ -76,10 +76,10 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-700 dark:text-gray-400 mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               About Me
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Welcome to my corner of the internet! Discover who I am through these three core aspects of my journey.
             </p>
           </motion.div>
@@ -115,10 +115,10 @@ const AboutSection = () => {
                           whileHover={getHoverAnimations(card.hoverAnimation)}
                           className="mb-6"
                         >
-                          <card.icon className="w-16 h-16 text-gray-700 dark:text-gray-400 drop-shadow-lg" />
+                          <card.icon className="w-16 h-16 text-gray-900 dark:text-white drop-shadow-lg" />
                         </motion.div>
                         
-                        <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-400 mb-2 drop-shadow-md">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-md">
                           {card.title}
                         </h3>
                         
@@ -172,10 +172,15 @@ const AboutSection = () => {
                           </motion.button>
                         </div>
                         
-                        <div className="flex-1 flex flex-col justify-center items-center text-center">
-                          <p className="text-gray-800 dark:text-gray-300 leading-relaxed">
-                            {card.fullDescription}
-                          </p>
+                        <div className="flex-1">
+                          <div className="text-left space-y-4">
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                              {card.title}
+                            </h3>
+                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                              {card.fullDescription}
+                            </p>
+                          </div>
                         </div>
                       </div>
 

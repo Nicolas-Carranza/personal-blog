@@ -62,4 +62,24 @@ body {
   .rotate-y-180 {
     transform: rotateY(180deg);
   }
+  
+  /* Particle positioning utilities */
+  .particle-base {
+    position: absolute;
+    width: 0.25rem;
+    height: 0.25rem;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  
+  /* Hobby particle styling with theme awareness */
+  .hobby-particle {
+    background-color: #000000 !important; /* Black in light mode */
+  }
+  
+  .dark .hobby-particle {
+    background-color: #ffffff !important; /* White in dark mode */
+  }
 }
