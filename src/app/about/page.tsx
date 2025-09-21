@@ -49,42 +49,42 @@ export default function AboutPage() {
       name: "Coding", 
       desc: "Building innovative solutions and learning new technologies", 
       detail: "From algorithms to full-stack applications, I love crafting elegant code that solves real-world problems.",
-      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: ChefHat, 
       name: "Cooking", 
       desc: "Experimenting with flavors and creating delicious meals", 
       detail: "The kitchen is my creative lab where I experiment with international cuisines and molecular gastronomy.",
-      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Mountain, 
       name: "Hiking", 
       desc: "Exploring nature and challenging myself on new trails", 
       detail: "From Scottish Highlands to Spanish Pyrenees, every trail teaches resilience and offers perspective.",
-      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Wine, 
       name: "Wine Appreciation", 
       desc: "Passionate about red wines, especially Spanish varieties", 
       detail: "Exploring Spanish regions like Rioja and Ribera del Duero, learning about terroir, grape varieties, and the art of winemaking. Each bottle tells a story of its origin.",
-      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Camera, 
       name: "Photography", 
       desc: "Capturing moments and telling stories through images", 
       detail: "Street photography and landscapes help me see the world through different lenses, literally and figuratively.",
-      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     },
     { 
       icon: Music, 
       name: "Music", 
       desc: "Discovering new artists and enjoying live performances", 
       detail: "From jazz clubs to electronic festivals, music fuels my creativity and connects me with diverse cultures.",
-      gradient: "from-sky-200 via-cyan-300 to-teal-400 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
+      gradient: "from-sky-300 via-sky-350 to-sky-450 dark:from-blue-800 dark:via-blue-900 dark:to-slate-900" 
     }
   ]
 
