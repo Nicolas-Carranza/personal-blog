@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com/Nicolás-Carranza" 
+                href="https://github.com/Nicolas-Carranza" 
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -26,7 +26,7 @@ const Footer = () => {
                 <Github className="w-6 h-6" />
               </a>
               <a 
-                href="https://linkedin.com/in/Nicolás-carranza-arauna-4029a7252" 
+                href="https://linkedin.com/in/nicolas-carranza-arauna-4029a7252" 
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
                 <Linkedin className="w-6 h-6" />
               </a>
               <a 
-                href="mailto:Nicolás.carranza.work@gmail.com" 
+                href="mailto:nicolas.carranza.work@gmail.com" 
                 className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
                 title="Email Contact"
               >

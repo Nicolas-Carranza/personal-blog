@@ -1,17 +1,68 @@
 'use client'
 
+
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Calendar, Clock, Tag, Share2, BookOpen } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import PageBackground from '@/components/PageBackground'
 
 export default function BlackRockExperience() {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [shareMessage, setShareMessage] = useState('')
+
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains('dark'))
+    }
+    
+    checkTheme()
+    
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+    
+    return () => observer.disconnect()
+  }, [])
+
+  const handleShare = async () => {
+      try {
+        if (navigator.share) {
+          // Use native share if available (mobile)
+          await navigator.share({
+            title: postData.title,
+            text: postData.excerpt,
+            url: window.location.href,
+          })
+        } else {
+          // Fallback to copying URL to clipboard
+          await navigator.clipboard.writeText(window.location.href)
+          setShareMessage('Link copied to clipboard!')
+          setTimeout(() => setShareMessage(''), 3000)
+        }
+      } catch (error) {
+        console.error('Share failed:', error)
+        // Final fallback - try to copy URL
+        try {
+          await navigator.clipboard.writeText(window.location.href)
+          setShareMessage('Link copied to clipboard!')
+          setTimeout(() => setShareMessage(''), 3000)
+        } catch (clipboardError) {
+          setShareMessage('Unable to share - please copy URL manually')
+          setTimeout(() => setShareMessage(''), 3000)
+        }
+      }
+    }
+
+
   const postData = {
     title: "My Experience at BlackRock: Breaking into the Market",
     category: "Career",
-    date: "Coming Soon",
-    readTime: "8 min read",
+    date: "22nd September 2025",
+    readTime: "12 min read",
     excerpt: "Landing a summer internship at BlackRock and what I learned about the financial industry. From application process to real-world experience in one of the world's largest asset managers.",
     publishDate: new Date().toLocaleDateString('en-US', { 
       year: 'numeric', 
@@ -73,15 +124,28 @@ export default function BlackRockExperience() {
             </p>
 
             {/* Share Button */}
-            <div className="flex justify-end mb-12">
+            <div className="flex justify-end mb-12 relative">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={handleShare}
                 className="flex items-center px-4 py-2 rounded-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg border border-white/20 dark:border-gray-700/20 hover:bg-purple-100/30 dark:hover:bg-purple-900/30 text-gray-700 dark:text-gray-300 transition-colors duration-300"
               >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share
               </motion.button>
+              
+              {/* Share confirmation message */}
+              {shareMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-12 right-0 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-3 py-2 rounded-lg text-sm font-medium shadow-lg backdrop-blur-lg border border-green-200 dark:border-green-700/30"
+                >
+                  {shareMessage}
+                </motion.div>
+              )}
             </div>
 
             {/* Content Placeholder */}
@@ -103,16 +167,16 @@ export default function BlackRockExperience() {
               {/* First Image - Right Aligned */}
               <div className="float-right ml-8 mb-6 w-80 max-w-sm">
                 <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
-                  <div className="text-center text-gray-500 dark:text-gray-400">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-purple-200/50 dark:bg-purple-800/50 backdrop-blur-sm flex items-center justify-center">
-                      <BookOpen className="w-6 h-6" />
-                    </div>
-                    <p className="font-medium text-sm">Image 1</p>
-                    <p className="text-xs">Right aligned</p>
-                  </div>
+                  <Image
+                    src="/images/blackrock_food.jpg"
+                    alt="BlackRock team lunch or food event"
+                    fill
+                    className="object-cover object-center"
+                    quality={85}
+                  />
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center italic">
-                  Caption for your first image
+                  Team lunch at BlackRock Edinburgh
                 </p>
               </div>
 
@@ -140,17 +204,18 @@ export default function BlackRockExperience() {
 
               {/* Second Image - Full Width Center */}
               <div className="mb-12">
-                <div className="relative w-full h-80 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
-                  <div className="text-center text-gray-500 dark:text-gray-400">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-200/50 dark:bg-blue-800/50 backdrop-blur-sm flex items-center justify-center">
-                      <BookOpen className="w-8 h-8" />
-                    </div>
-                    <p className="font-medium">Image 2</p>
-                    <p className="text-sm">Full width center</p>
-                  </div>
+                <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg shadow-lg">
+                  <Image
+                    src="/images/logo_blackrock.png"
+                    alt="BlackRock Logo"
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover object-bottom rounded-xl"
+                    quality={85}
+                  />
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-3 text-center italic">
-                  Caption for your center image
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center italic">
+                  BlackRock - The world's largest asset manager
                 </p>
               </div>
 
@@ -165,16 +230,16 @@ export default function BlackRockExperience() {
               {/* Third Image - Left Aligned */}
               <div className="float-left mr-8 mb-6 w-80 max-w-sm">
                 <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/20 dark:to-purple-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
-                  <div className="text-center text-gray-500 dark:text-gray-400">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-indigo-200/50 dark:bg-indigo-800/50 backdrop-blur-sm flex items-center justify-center">
-                      <BookOpen className="w-6 h-6" />
-                    </div>
-                    <p className="font-medium text-sm">Image 3</p>
-                    <p className="text-xs">Left aligned</p>
-                  </div>
+                  <Image
+                    src="/images/lib_blackrock.jpg"
+                    alt="BlackRock library or office interior"
+                    fill
+                    className="object-cover object-center"
+                    quality={85}
+                  />
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center italic">
-                  Caption for your third image
+                  BlackRock Edinburgh office library
                 </p>
               </div>
 

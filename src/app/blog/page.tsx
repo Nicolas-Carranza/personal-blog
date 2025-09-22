@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
 import PageBackground from '@/components/PageBackground'
+import { time } from 'console'
 
 export default function BlogPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -15,20 +16,22 @@ export default function BlogPage() {
 
   const blogPosts = [
     {
+      id: 2, 
+      title: "My Experience at BlackRock: Breaking into the Market",
+      excerpt: "Landing a summer internship at BlackRock and what I learned about the financial industry. From application process to real-world experience in one of the world's largest asset managers.",
+      date: "2025-09-22",
+      category: "Career", 
+      status: "published",
+      time: "12 min read"
+    },
+    {
       id: 1,
       title: "Journey from Madrid to St Andrews",
       excerpt: "The story of leaving my hometown in Madrid to pursue Computer Science at the University of St Andrews. A journey of adaptation, growth, and discovering opportunities in Scotland.",
       date: "Coming Soon",
       category: "Personal",
-      status: "coming-soon"
-    },
-    {
-      id: 2, 
-      title: "My Experience at BlackRock: Breaking into the Market",
-      excerpt: "Landing a summer internship at BlackRock and what I learned about the financial industry. From application process to real-world experience in one of the world's largest asset managers.",
-      date: "Coming Soon",
-      category: "Career", 
-      status: "coming-soon"
+      status: "coming-soon",
+      time: "Coming Soon"
     },
     {
       id: 3,
@@ -36,7 +39,8 @@ export default function BlogPage() {
       excerpt: "Adventures through the Scottish Highlands with university friends. Discovering the breathtaking landscapes, culture, and memories that make Scotland truly special.",
       date: "Coming Soon", 
       category: "Travel",
-      status: "coming-soon"
+      status: "coming-soon",
+      time: "Coming Soon"
     }
   ]
 
@@ -247,11 +251,14 @@ export default function BlogPage() {
                     </span>
                     <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                       <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long', 
-                        day: 'numeric'
-                      })}
+                        {isNaN(Date.parse(post.date)) 
+                        ? 'Coming Soon' 
+                        : new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                          })
+                        }
                     </div>
                   </div>
 
@@ -269,7 +276,7 @@ export default function BlogPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                       <Clock className="w-4 h-4 mr-1" />
-                      {post.date}
+                      {post.time || 'Coming Soon'}
                     </div>
                       
                     <Link href={`/blog/${post.id}`}>

@@ -534,9 +534,9 @@ export default function AboutPage() {
               variants={itemVariants}
             >
               {[
-                { icon: Mail, href: "mailto:Nicolás.carranza.work@gmail.com", label: "Email", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" },
-                { icon: Github, href: "https://github.com/Nicolás-Carranza", label: "GitHub", color: "hover:bg-gray-50 dark:hover:bg-gray-700/20 hover:border-gray-400 dark:hover:border-gray-500" },
-                { icon: Linkedin, href: "https://linkedin.com/in/Nicolás-carranza-arauna-4029a7252", label: "LinkedIn", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" }
+                { icon: Mail, href: "mailto:nicolas.carranza.work@gmail.com", label: "Email", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" },
+                { icon: Github, href: "https://github.com/Nicolas-Carranza", label: "GitHub", color: "hover:bg-gray-50 dark:hover:bg-gray-700/20 hover:border-gray-400 dark:hover:border-gray-500" },
+                { icon: Linkedin, href: "https://linkedin.com/in/nicolas-carranza-arauna-4029a7252", label: "LinkedIn", color: "hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600" }
               ].map((social, index) => (
                 <motion.a
                   key={index}
