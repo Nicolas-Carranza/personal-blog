@@ -161,7 +161,7 @@ export default function BlackRockExperience() {
               </p>
 
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-                Getting the chance to work with a company of this scale gave me valuable insights, skills, and connections within the industry. But before diving into what I learned, let's go back to how it all began.
+                Getting the chance to work with a company of this scale gave me valuable insights, skills, and connections within the industry. But before diving into what I learned, let&apos;s go back to how it all began.
               </p>
 
               {/* First Image - Right Aligned */}
@@ -215,7 +215,7 @@ export default function BlackRockExperience() {
                   />
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center italic">
-                  BlackRock - The world's largest asset manager
+                  BlackRock - The world&apos;s largest asset manager
                 </p>
               </div>
 
