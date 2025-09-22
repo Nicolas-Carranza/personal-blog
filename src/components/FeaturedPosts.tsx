@@ -14,25 +14,25 @@ const FeaturedPosts = () => {
       id: 1,
       title: "From Madrid to St Andrews",
       excerpt: "The story of leaving my hometown in Madrid to study Computer Science at the University of St Andrews. A journey of adapting to a new place, growing through challenges, and discovering fresh opportunities in Scotland.",
-      date: "2024-12-15",
+      date: "Coming Soon",
       category: "Personal",
-      readTime: "6 min read"
+      status: "coming-soon"
     },
     {
       id: 2,
       title: "Breaking into Finance: My Internship at BlackRock",
       excerpt: "How I landed a summer internship at BlackRock and what I learned about the financial industry. From the application process to hands-on experience inside one of the world's largest asset managers.",
-      date: "2024-08-20",
+      date: "Coming Soon",
       category: "Career",
-      readTime: "8 min read"
+      status: "coming-soon"
     },
     {
       id: 3,
       title: "Adventures in the Scottish Highlands",
       excerpt: "Exploring the Scottish Highlands with my friends! From driving 6 hours straight to unforgettable memories in the mountains.",
-      date: "2024-07-10",
+      date: "Coming Soon",
       category: "Travel",
-      readTime: "5 min read"
+      status: "coming-soon"
     }
   ]
 
@@ -129,15 +129,11 @@ const FeaturedPosts = () => {
                                 <div className="flex items-center gap-4">
                                   <span className="flex items-center gap-1">
                                     <Calendar className="w-4 h-4" />
-                                    {new Date(post.date).toLocaleDateString('en-US', { 
-                                      year: 'numeric', 
-                                      month: 'short', 
-                                      day: 'numeric' 
-                                    })}
+                                    {post.date}
                                   </span>
                                   <span className="flex items-center gap-1">
                                     <Clock className="w-4 h-4" />
-                                    {post.readTime}
+                                    {post.status === 'coming-soon' ? post.date : 'Available Now'}
                                   </span>
                                 </div>
                                 
