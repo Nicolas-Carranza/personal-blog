@@ -2,10 +2,12 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, PenTool, Target, ChevronLeft } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const AboutSection = () => {
   const [flippedCard, setFlippedCard] = useState<number | null>(null)
+  const router = useRouter();
 
   const aboutCards = [
     {
@@ -38,8 +40,22 @@ const AboutSection = () => {
   ]
 
   const handleCardClick = (cardId: number) => {
+    if (isIOSorSafari) {
+      router.push('/about');
+      return;
+    }
     setFlippedCard(flippedCard === cardId ? null : cardId)
   }
+  // Detect iOS or Safari for fallback
+  const [isIOSorSafari, setIsIOSorSafari] = useState(false);
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const ua = window.navigator.userAgent;
+      const isIOS = /iPad|iPhone|iPod/.test(ua);
+      const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+      setIsIOSorSafari(isIOS || isSafari);
+    }
+  }, []);
 
   const getHoverAnimations = (animationType: string) => {
     switch (animationType) {
