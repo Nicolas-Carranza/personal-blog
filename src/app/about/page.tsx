@@ -502,7 +502,7 @@ export default function AboutPage() {
                     src="/images/portraint.jpg"
                     alt="Nicolás Carranza Portrait"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-[center_20%]"
                     priority
                     quality={95}
                   />
