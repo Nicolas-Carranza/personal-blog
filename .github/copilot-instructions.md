@@ -1,181 +1,268 @@
 <!-- Use this file to provide workspace-specific custom instructions to Copilot. For more details, visit https://code.visualstudio.com/docs/copilot/copilot-customization#_use-a-githubcopilotinstructionsmd-file -->
 
-# Personal Blog & Portfolio Project
+# Personal Blog & Portfolio - AI Agent Guide
 
-This is a Next.js TypeScript project for a personal blog and portfolio website. The project uses:
+**Tech Stack:** Next.js 15.5.2 (App Router) · TypeScript 5.6+ · Tailwind CSS 3.4+ · Framer Motion · Vercel
 
-- **Next.js 15.5.2** with App Router
-- **TypeScript 5.6+** for type safety
-- **Tailwind CSS 3.4+** for styling
-- **Framer Motion** for animations
-- **Lucide React** for icons
-- **Formspree** for contact form handling
-- **Google Sheets integration** for newsletter subscriptions
-- **Vercel Speed Insights & Analytics**
-- **Responsive design** with dark mode support
+## Development Workflow
 
-## Project Structure
-The project follows Next.js 13+ App Router structure:
+**Start dev server:** `npm run dev` (runs on `localhost:3000`)  
+**Build:** `npm run build` → `npm start` (production mode)  
+**Lint:** `npm run lint` (ESLint with Next.js config)
 
-```
-src/
-├── app/                          # Next.js App Router pages
-│   ├── about/page.tsx           # About page with flip cards & skills
-│   ├── achievements/page.tsx    # Achievements showcase with animations
-│   ├── blog/                   # Blog section
-│   │   ├── page.tsx            # Blog listing with category filters
-│   │   ├── 1/page.tsx          # Individual blog post (coming soon)
-│   │   ├── 2/page.tsx          # Individual blog post (coming soon)
-│   │   └── 3/page.tsx          # Individual blog post (coming soon)
-│   ├── contact/page.tsx        # Contact form with Formspree integration
-│   ├── globals.css             # Global styles and Tailwind directives
-│   ├── layout.tsx              # Root layout with navigation and footer
-│   └── page.tsx                # Homepage with hero and previews
-├── components/                  # Reusable components
-│   ├── backgrounds/            # Background animation components
-│   │   └── BackgroundVariants.tsx
-│   ├── AboutSection.tsx        # Interactive flip cards for homepage
-│   ├── AchievementsPreview.tsx # Preview component for achievements
-│   ├── ComingSoonPage.tsx      # Template for incomplete blog posts
-│   ├── FeaturedPosts.tsx       # Carousel component for blog posts
-│   ├── Footer.tsx              # Site footer with links and social media
-│   ├── Hero.tsx                # Main hero section with animations
-│   ├── Navigation.tsx          # Responsive navigation with mobile menu
-│   └── PageBackground.tsx      # Background system wrapper
+**Path aliases:** Use `@/components` and `@/app` (configured in `tsconfig.json`)  
+**Node requirement:** >=18.17.0 (see `package.json` engines field)
+
+## Architecture Patterns
+
+### Component Structure
+All components are **client-side** (`'use client'` directive) except API routes and page layouts. This is deliberate for Framer Motion animations and interactive state.
+
+**Example pattern from Hero.tsx:**
+```tsx
+'use client'
+import { motion } from 'framer-motion'
+// Component with animations and state
 ```
 
-## Key Features & Components
+### Background System (Critical)
+Every page **must** wrap content in `<PageBackground>` component with a variant prop:
 
-### Background System
-- **PageBackground** component with multiple variants: `dotgrid`, `geometric`, `organic`, `gridglow`, `particles`, `neural`
-- Consistent across all pages except individual blog posts
-- Dark mode adaptive with smooth transitions
-- Glass-morphism effects with backdrop-blur
+```tsx
+import PageBackground from '@/components/PageBackground'
 
-### Navigation & Layout
-- **Responsive navigation** with mobile hamburger menu
-- **Sticky header** with scroll-based transparency changes
-- **Footer** with social links and quick navigation
-- **Route-based active states** for navigation items
+export default function Page() {
+  return (
+    <PageBackground variant="dotgrid">
+      {/* page content */}
+    </PageBackground>
+  )
+}
+```
 
-### Homepage Sections
-- **Hero** with animated background elements and call-to-action buttons
-- **AboutSection** with interactive flip cards (Developer, Writer, Achiever)
-- **FeaturedPosts** with carousel functionality
-- **AchievementsPreview** showing recent accomplishments
+**Available variants:** `dotgrid` (default) | `geometric` | `organic` | `gridglow` | `particles` | `neural`  
+**Implementation:** See `src/components/PageBackground.tsx` and `src/components/backgrounds/BackgroundVariants.tsx`
 
-### About Page
-- **Personal introduction** with animated profile elements
-- **Journey timeline** with hover effects
-- **Technical skills** with animated progress bars
-- **Interests section** with flip cards
-- **Social media integration**
+### Glass-morphism Pattern
+Standard card styling uses Tailwind utility classes for glass effect:
 
-### Achievements Page
-- **Academic excellence** and professional experience sections
-- **Leadership & entrepreneurship** highlights
-- **Technical projects** showcase
-- **Quick achievements** grid layout
-- **Interactive hover animations** throughout
+```tsx
+className="bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm border border-gray-300/60 dark:border-gray-700/50"
+```
 
-### Blog System
-- **Category filtering** with smart logic
-- **Newsletter signup** with Google Sheets integration
-- **Coming soon pages** for blog posts in development
-- **Responsive card layouts** with excerpt previews
+**Predefined classes in globals.css:**
+- `.glass-card` → Primary glass effect with stronger backdrop blur
+- `.card` → Standard card with lighter backdrop blur
 
-### Contact Page
-- **Formspree integration** for form handling
-- **Contact information** with icons and details
-- **Form validation** and submission states
-- **Honeypot spam protection**
+### Theme System
+- **ThemeProvider** wraps entire app in `layout.tsx` with `suppressHydrationWarning`
+- Uses **ThemeScript** in `<head>` to prevent flash of unstyled content
+- Theme state managed by `ThemeProvider.tsx` (client component)
+- Always add `suppressHydrationWarning` to `<html>` and `<body>` tags
 
-## Technical Implementation
+### Navigation State
+Navigation uses **`usePathname()`** hook for active route highlighting:
 
-### Animations
-- **Framer Motion** for page transitions and hover effects
-- **Stagger animations** for list items and cards
-- **Custom hover animations** per component type
-- **Scroll-based reveal animations** with intersection observer
+```tsx
+const pathname = usePathname()
+const isActive = pathname === item.href
+```
 
-### Styling Approach
-- **Tailwind CSS** utility classes throughout
-- **Custom gradients** and backdrop-blur effects
-- **Consistent spacing** using Tailwind's spacing scale
-- **Dark mode support** with `dark:` variants
-- **Glass-morphism design** with transparency and blur
+See `src/components/Navigation.tsx` for full implementation with scroll-based styling changes.
 
-### Content Management
-- **Static content** defined in component files
-- **Ready for CMS integration** with clear data structures
-- **Placeholder blog posts** using ComingSoonPage template
-- **External integrations** (Formspree, Google Sheets)
+## Animation Standards (Framer Motion)
 
-### Performance & SEO
-- **Next.js App Router** for optimal performance
-- **Vercel Speed Insights** integration
-- **Metadata configuration** in layout and pages
-- **Optimized images** and lazy loading
-- **TypeScript** for type safety
+**Standard entrance animation:**
+```tsx
+initial={{ opacity: 0, y: 30 }}
+animate={{ opacity: 1, y: 0 }}
+transition={{ duration: 0.8 }}
+```
 
-## Development Guidelines
+**Stagger children pattern:**
+```tsx
+<motion.div variants={containerVariants}>
+  {items.map((item, i) => (
+    <motion.div key={i} variants={itemVariants}>
+      {/* content */}
+    </motion.div>
+  ))}
+</motion.div>
+```
 
-### Code Standards
-- Use **TypeScript** strictly with proper type definitions
-- Follow **component composition** patterns
-- Implement **responsive design** mobile-first
-- Maintain **consistent naming** conventions
-- Use **Tailwind CSS** utility classes over custom CSS
+**Timing conventions:**
+- Hover effects: `0.2-0.3s`
+- Page entrances: `0.6-0.8s`
+- Stagger delays: `0.1s` between items
 
-### Animation Standards
-- Use **Framer Motion** for all animations
-- Implement **stagger animations** for groups
-- Add **hover states** for interactive elements
-- Use **viewport-based animations** for scroll reveals
-- Keep **animation durations** consistent (0.3s for hovers, 0.6s for entrances)
+## Content Management
 
-### Component Architecture
-- Keep components **modular and reusable**
-- Use **TypeScript interfaces** for props
-- Implement **proper error handling**
-- Add **loading states** where appropriate
-- Follow **accessibility best practices**
+### Blog Posts
+Blog posts currently use **ComingSoonPage** template component. To add real content:
 
-### Background System Usage
-- Use **PageBackground** wrapper for all main pages
-- Default to **dotgrid** variant for consistency
-- Individual blog posts can use **custom backgrounds**
-- Maintain **glass-morphism effects** on content cards
+1. Create new route: `src/app/blog/[id]/page.tsx`
+2. Import `PageBackground` with appropriate variant
+3. Add metadata export for SEO
+4. Use glass-morphism card styling for content
 
-### Content Integration
-- Content is currently **hardcoded** in components
-- Blog posts use **ComingSoonPage** template
-- **External integrations** configured for forms and analytics
-- Ready for **CMS integration** (Sanity, Contentful, etc.)
+**ComingSoonPage props interface:**
+```tsx
+{ title: string, category: string, date: string, readTime: string, excerpt: string }
+```
 
-## Current Integrations
+### API Routes
+Newsletter API at `src/app/api/newsletter/route.ts` handles CSV storage and email validation. Does **not** use Google Sheets by default—writes to `data/newsletter-subscribers.csv`.
+
+**Email validation:** Custom function with regex, length checks, and domain format validation (no DNS lookup in Edge runtime).
+
+## Styling Conventions
+
+### Tailwind Patterns
+**Responsive breakpoints:** Use `sm:` (640px), `md:` (768px), `lg:` (1024px) prefixes  
+**Dark mode:** Always include `dark:` variants for colors and backgrounds  
+**Spacing:** Use consistent scale (4, 8, 12, 16, 20, 24, 32, etc.)
+
+**Custom Tailwind extensions in tailwind.config.js:**
+- `primary` color palette (50, 500, 600, 700)
+- Custom animations: `fade-in`, `slide-up`
+- Custom keyframes for CSS animations
+
+### Typography
+**Font:** Inter from `next/font/google` (configured in `layout.tsx`)  
+**Heading sizes:** `text-5xl md:text-7xl lg:text-8xl` for hero, scale down for subheadings
+
+## Integration Points
 
 ### External Services
-- **Formspree** for contact form handling
-- **Google Sheets** for newsletter subscriptions (setup required)
-- **Vercel Analytics** for performance monitoring
-- **Social media** links (GitHub, LinkedIn, Email)
+- **Formspree:** Contact form (requires form endpoint configuration)
+- **Vercel Analytics/Speed Insights:** Imported in `layout.tsx` (`<Analytics />`, `<SpeedInsights />`)
+- **Google Sheets:** Newsletter integration documented in `GOOGLE_SHEETS_SETUP.md` (optional, not default)
 
-### Personal Information
-- **Nicolás Carranza** - Computer Science & Management student
-- **University of St Andrews** - Final year student
-- **Madrid, Spain** origins with **Scotland** current location
-- **BlackRock internship** and **Unhatched.ai founder**
+### Image Configuration
+`next.config.js` allows images from `images.unsplash.com` domain. Add other domains here if needed.
 
-## Deployment
-- **Vercel** optimized configuration
-- **Environment variables** for API keys
-- **Static generation** where possible
-- **Edge functions** for form handling
+## Common Modifications
 
-## Future Enhancements Ready
-- **Blog CMS integration** with minimal code changes
-- **Comment system** integration points
-- **Search functionality** for blog posts
-- **Image optimization** for portfolio pieces
-- **Multi-language support** structure in place
+### Adding a New Page
+1. Create `src/app/[name]/page.tsx`
+2. Wrap in `<PageBackground variant="dotgrid">`
+3. Add route to `navItems` array in `Navigation.tsx`
+4. Export metadata for SEO
+
+### Updating Personal Info
+- **Hero text:** `src/components/Hero.tsx`
+- **About content:** `src/app/about/page.tsx`
+- **Footer links:** `src/components/Footer.tsx`
+- **Site metadata:** `src/app/layout.tsx` (title, description)
+
+### Changing Colors
+Edit `tailwind.config.js` `theme.extend.colors` object and `globals.css` CSS variables.
+
+## File Organization
+- **Routes:** `src/app/[route]/page.tsx` (App Router convention)
+- **Reusable components:** `src/components/` (Pascal case naming)
+- **Layout wrapper:** `src/app/layout.tsx` (includes Navigation, Footer, theme providers)
+- **Global styles:** `src/app/globals.css` (Tailwind directives + custom classes)
+- **Static assets:** `public/` directory (images, icons)
+
+## TypeScript Patterns
+Always define **interfaces for props** at component level:
+
+```tsx
+interface ComponentProps {
+  title: string
+  optional?: boolean
+}
+
+export default function Component({ title, optional = false }: ComponentProps) {
+  // implementation
+}
+```
+
+Use **strict mode** (enabled in `tsconfig.json`). No implicit `any` types allowed.
+
+## Known Issues & Browser Compatibility
+
+### Performance: Particle Animations
+**ParticlesFieldBackground** in `BackgroundVariants.tsx` generates 50 animated particles that can cause significant browser performance issues. When using this variant:
+- Consider reducing particle count from 50 to 20-30
+- Use `will-change: transform` CSS property sparingly
+- Test performance on lower-end devices
+
+### Safari/iOS Compatibility
+**AboutSection.tsx** contains a workaround for Safari/iOS where 3D flip card animations fail:
+
+```tsx
+const [isIOSorSafari, setIsIOSorSafari] = useState(false)
+// Detects Safari/iOS and redirects instead of flipping
+if (isIOSorSafari) {
+  router.push('/about')
+  return
+}
+```
+
+This is a **temporary fix**—proper solution would involve using Safari-compatible transform properties or disabling `transform-style: preserve-3d`.
+
+## Content Management & Security
+
+### Static Content vs CMS
+Currently uses **hardcoded content** in components. For a blog with frequent updates, consider:
+
+**Recommended CMS options:**
+- **Markdown + gray-matter**: Simple, version-controlled content in repo
+- **Contentful/Sanity**: Headless CMS with great DX, free tiers available
+- **MDX**: Markdown with JSX components (Next.js has built-in support)
+
+**Security note:** Source code being public is normal for static sites. Public repo ≠ security risk because:
+- All content is public-facing anyway (it's a blog/portfolio)
+- No secrets in code (env vars stored in Vercel dashboard)
+- Authentication/API keys live in `.env.local` (gitignored)
+
+**Environment variables pattern:**
+```bash
+# .env.local (never committed)
+FORMSPREE_ENDPOINT=your_endpoint
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+```
+
+### Newsletter Data
+Subscriber data stored in `data/newsletter-subscribers.csv` is **gitignored** but exists locally. For production:
+- Use environment-based storage (Vercel Blob, S3)
+- Or integrate with email service (Mailchimp, ConvertKit, Resend)
+- Current CSV approach only works for single-instance deployments
+
+## Vercel Deployment
+
+Recent security update (Dec 2025) fixed React Server Components CVE vulnerabilities via automated PR:
+- Updated Next.js to latest secure version
+- Branch: `vercel/react-server-components-cve-vu-dp0yr1`
+- Changes: `package.json` and `package-lock.json` version bumps
+
+**Standard deployment:** Push to `main` branch triggers automatic Vercel deployment.
+
+## Working with AI Agents
+
+### Providing Context
+When asking AI agents to work on specific parts of the codebase:
+
+**Method 1: Open relevant files in tabs**
+- Open files you want the agent to see in VS Code
+- Agent can access currently open editors automatically
+
+**Method 2: Mention specific paths**
+- Reference files by path: `src/components/Hero.tsx`
+- Agent will read files as needed
+
+**Method 3: Use @ mentions (if supported)**
+- `@workspace` for entire project context
+- `@file` to reference specific files
+- File paths in chat are automatically linked
+
+**Best practice:** Don't open too many files at once—focus on the area you're working on. Agent can search and read additional files when needed.
+
+### Project Quick Start
+To get an AI agent productive quickly:
+1. Show them this file first (`.github/copilot-instructions.md`)
+2. Have them read `package.json` and `tsconfig.json` for tech stack
+3. Point to key files: `src/app/layout.tsx`, `src/components/PageBackground.tsx`
+4. Let them explore from there using semantic search/grep
