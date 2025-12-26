@@ -83,7 +83,7 @@ export default function BlackRockExperience() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <Link href="/blog" className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-300">
+            <Link href="/blog" className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-300">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
             </Link>
@@ -99,7 +99,7 @@ export default function BlackRockExperience() {
             
             {/* Category & Meta Info */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-100 dark:bg-purple-900/30 text-cyan-800 dark:text-purple-300">
                 <Tag className="w-4 h-4 mr-1" />
                 {postData.category}
               </span>
@@ -114,7 +114,7 @@ export default function BlackRockExperience() {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 via-cyan-700 to-blue-700 dark:from-white dark:via-purple-300 dark:to-blue-300 bg-clip-text text-transparent mb-6 leading-tight">
               {postData.title}
             </h1>
 
@@ -129,7 +129,7 @@ export default function BlackRockExperience() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleShare}
-                className="flex items-center px-4 py-2 rounded-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg border border-white/20 dark:border-gray-700/20 hover:bg-purple-100/30 dark:hover:bg-purple-900/30 text-gray-700 dark:text-gray-300 transition-colors duration-300"
+                className="flex items-center px-4 py-2 rounded-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg border border-white/20 dark:border-gray-700/20 hover:bg-cyan-100/30 dark:hover:bg-purple-900/30 text-gray-700 dark:text-gray-300 transition-colors duration-300"
               >
                 <Share2 className="w-4 h-4 mr-2" />
                 Share
@@ -166,7 +166,7 @@ export default function BlackRockExperience() {
 
               {/* First Image - Right Aligned */}
               <div className="float-right ml-8 mb-6 w-80 max-w-sm">
-                <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
+                <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-cyan-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
                   <Image
                     src="/images/blackrock_food.jpg"
                     alt="BlackRock team lunch or food event"
@@ -229,7 +229,7 @@ export default function BlackRockExperience() {
 
               {/* Third Image - Left Aligned */}
               <div className="float-left mr-8 mb-6 w-80 max-w-sm">
-                <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-indigo-100 to-purple-100 dark:from-indigo-900/20 dark:to-purple-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
+                <div className="relative w-full h-64 rounded-xl overflow-hidden bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-indigo-900/20 dark:to-purple-900/20 border border-white/20 dark:border-gray-700/20 backdrop-blur-lg flex items-center justify-center shadow-lg">
                   <Image
                     src="/images/lib_blackrock.jpg"
                     alt="BlackRock library or office interior"

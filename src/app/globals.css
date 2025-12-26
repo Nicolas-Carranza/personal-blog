@@ -3,9 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 55, 65, 81;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 248, 250, 252;
+  /* Warm tan/cream aesthetic for light mode */
+  --foreground-rgb: 44, 37, 28; /* warm dark brown for text */
+  --background-start-rgb: 250, 248, 245; /* cream white */
+  --background-end-rgb: 245, 240, 233; /* warm beige */
+  --accent-rgb: 14, 165, 233; /* cyan accent */
+  --secondary-rgb: 120, 100, 80; /* warm brown */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,11 +40,11 @@ body {
   }
   
   .card {
-    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-lg shadow-md hover:shadow-lg transition-all duration-300;
+    @apply bg-white dark:bg-gray-800/80 backdrop-blur-sm border border-slate-200 dark:border-gray-700/50 rounded-lg shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-300/50 dark:shadow-none transition-all duration-300 cursor-pointer;
   }
   
   .glass-card {
-    @apply bg-white/60 dark:bg-gray-900/60 backdrop-blur-md border border-white/20 dark:border-gray-700/30 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply bg-white/95 dark:bg-gray-900/60 backdrop-blur-md border border-slate-200/80 dark:border-gray-700/30 rounded-lg shadow-xl shadow-slate-200/60 hover:shadow-2xl dark:shadow-none transition-all duration-300;
   }
 }
 

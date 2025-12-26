@@ -3,8 +3,19 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Trophy, Award, Star, Target, ArrowRight } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { AchievementsPreviewSkeleton } from './Skeleton'
 
 const AchievementsPreview = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return <AchievementsPreviewSkeleton />
+  }
   const achievements = [
     {
       id: 1,

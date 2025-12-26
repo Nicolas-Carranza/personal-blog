@@ -17,29 +17,29 @@ export const DotGridBackground = () => {
   }, [])
 
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-300 via-indigo-200/30 to-purple-200/35 dark:from-gray-950 dark:via-blue-950/20 dark:to-indigo-950/30">
-      {/* Light theme: Subtle pastel pattern with white dominance */}
-      <div className="absolute inset-0 opacity-15 dark:opacity-20 bg-[radial-gradient(circle_at_1px_1px,rgba(99,102,241,0.2)_1px,transparent_0)] bg-[length:60px_60px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.3)_1px,transparent_0)]" />
-      <div className="absolute inset-0 opacity-8 dark:opacity-10 bg-[linear-gradient(90deg,rgba(99,102,241,0.03)_1px,transparent_1px),linear-gradient(rgba(99,102,241,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[length:60px_60px]" />
+    <div className="absolute inset-0 bg-gradient-to-br from-[#faf8f5] via-[#f5f0e9] to-[#ede8df] dark:from-gray-950 dark:via-blue-950/20 dark:to-indigo-950/30">
+      {/* Light theme: Professional minimal grid */}
+      <div className="absolute inset-0 opacity-30 dark:opacity-20 bg-[radial-gradient(circle_at_1px_1px,rgba(100,116,139,0.15)_1px,transparent_0)] bg-[length:60px_60px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(59,130,246,0.3)_1px,transparent_0)]" />
+      <div className="absolute inset-0 opacity-10 dark:opacity-10 bg-[linear-gradient(90deg,rgba(100,116,139,0.08)_1px,transparent_1px),linear-gradient(rgba(100,116,139,0.08)_1px,transparent_1px)] dark:bg-[linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[length:60px_60px]" />
       
-      {/* Light theme: Soft pastel orbs */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-blue-300/30 to-indigo-300/30 dark:from-blue-400/20 dark:to-cyan-400/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-indigo-300/25 to-purple-300/25 dark:from-cyan-400/15 dark:to-blue-400/15 rounded-full blur-3xl animate-pulse [animation-delay:1000ms]" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-300/20 to-blue-300/20 dark:from-indigo-400/10 dark:to-blue-400/10 rounded-full blur-3xl animate-pulse [animation-delay:500ms]" />
+      {/* Light theme: Subtle professional accents */}
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-gradient-to-r from-cyan-100/40 to-blue-100/40 dark:from-blue-400/20 dark:to-cyan-400/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-slate-100/50 to-gray-100/50 dark:from-cyan-400/15 dark:to-blue-400/15 rounded-full blur-3xl animate-pulse [animation-delay:1000ms]" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-50/60 to-cyan-50/60 dark:from-indigo-400/10 dark:to-blue-400/10 rounded-full blur-3xl animate-pulse [animation-delay:500ms]" />
       
-      {/* Floating particles with theme-aware colors */}
+      {/* Floating particles with professional colors */}
       <div className="absolute inset-0">
         {particles.map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-indigo-400/50 dark:bg-blue-400/60 rounded-full"
+            className="absolute w-1 h-1 bg-slate-400/40 dark:bg-blue-400/60 rounded-full"
             style={{
               left: particle.left,
               top: particle.top,
             }}
             animate={{
               y: [0, -20, 0],
-              opacity: [0.3, 1, 0.3],
+              opacity: [0.2, 0.6, 0.2],
             }}
             transition={{
               duration: 3 + (i % 3),
@@ -50,8 +50,8 @@ export const DotGridBackground = () => {
         ))}
       </div>
 
-      {/* Subtle texture overlay for light theme */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1),transparent_70%)]" />
+      {/* Clean overlay for light theme */}
+      <div className="absolute inset-0 opacity-40 dark:opacity-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.5),transparent_70%)]" />
     </div>
   )
 }
@@ -176,19 +176,20 @@ export const GridGlowBackground = () => {
   )
 }
 
-// Option 5: Particles Field
+// Option 5: Particles Field (Optimized)
 export const ParticlesFieldBackground = () => {
-  const [particles, setParticles] = useState<Array<{width: number, height: number, left: string, top: string, duration: number, delay: number}>>([])
+  const [particles, setParticles] = useState<Array<{width: number, height: number, left: string, top: string, duration: number, delay: number, xOffset: number}>>([])
   
   useEffect(() => {
-    // Generate particle data only on client side
-    const particleData = [...Array(50)].map((_, i) => ({
+    // Generate particle data only on client side - reduced from 50 to 25 for better performance
+    const particleData = [...Array(25)].map((_, i) => ({
       width: Math.random() * 6 + 2,
       height: Math.random() * 6 + 2,
       left: `${Math.random() * 100}%`,
       top: `${Math.random() * 100}%`,
-      duration: Math.random() * 10 + 10,
-      delay: Math.random() * 5
+      duration: Math.random() * 10 + 15, // Slightly longer duration for smoother animation
+      delay: Math.random() * 5,
+      xOffset: Math.random() * 50 - 25 // Pre-calculate x offset for better performance
     }))
     setParticles(particleData)
   }, [])
@@ -198,7 +199,7 @@ export const ParticlesFieldBackground = () => {
       {/* Background Gradient Mesh */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.1),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(147,51,234,0.1),transparent_50%)]" />
       
-      {/* Floating Particles */}
+      {/* Floating Particles - Optimized with will-change */}
       <div className="absolute inset-0">
         {particles.map((particle, i) => (
           <motion.div
@@ -209,10 +210,11 @@ export const ParticlesFieldBackground = () => {
               height: particle.height,
               left: particle.left,
               top: particle.top,
+              willChange: 'transform, opacity', // Performance optimization
             }}
             animate={{
               y: [0, -100, 0],
-              x: [0, Math.random() * 50 - 25, 0],
+              x: [0, particle.xOffset, 0],
               opacity: [0, 1, 0],
             }}
             transition={{

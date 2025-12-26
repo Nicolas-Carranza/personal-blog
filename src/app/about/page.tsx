@@ -515,8 +515,8 @@ export default function AboutPage() {
               className="text-4xl md:text-6xl font-bold mb-4"
               variants={itemVariants}
             >
-              <span className="text-gray-900 dark:text-white">Hi there! I&apos;m </span>
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="text-[#2c251c] dark:text-white">Hi there! I&apos;m </span>
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                 Nicolás
               </span>
             </motion.h1>
@@ -844,19 +844,11 @@ export default function AboutPage() {
                     className="absolute inset-0 bg-stone-50/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 backface-hidden rotate-y-180"
                   >
                     <div className="h-full flex flex-col justify-center">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${interest.gradient} rounded-xl flex items-center justify-center mb-4 shadow-lg mx-auto`}>
-                        <interest.icon className="w-6 h-6 text-white" />
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-                        {interest.name}
-                      </h3>
-                      
-                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed text-center mb-4">
                         {interest.detail}
                       </p>
 
-                      <div className="mt-4 text-gray-400 text-xs text-center">
+                      <div className="text-gray-400 text-xs text-center">
                         Click to flip back
                       </div>
                     </div>

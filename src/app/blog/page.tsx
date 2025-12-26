@@ -1,18 +1,32 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react'
 import PageBackground from '@/components/PageBackground'
+import { BlogPageSkeleton } from '@/components/Skeleton'
 import { time } from 'console'
 
 export default function BlogPage() {
+  const [isLoading, setIsLoading] = useState(true)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'duplicate'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return (
+      <PageBackground variant="dotgrid">
+        <BlogPageSkeleton />
+      </PageBackground>
+    )
+  }
 
   const blogPosts = [
     {
@@ -164,7 +178,7 @@ export default function BlogPage() {
               onClick={() => handleCategoryClick("All")}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
                 isCategorySelected("All")
-                  ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
+                  ? 'bg-cyan-600 dark:bg-purple-600 text-white shadow-lg shadow-cyan-500/25 dark:shadow-purple-500/25' 
                   : 'bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 hover:bg-gray-300/70 dark:hover:bg-gray-600/70 hover:text-gray-900 dark:hover:text-white'
               }`}
               whileHover={{ scale: 1.05 }}
@@ -181,7 +195,7 @@ export default function BlogPage() {
                 onClick={() => handleCategoryClick(category)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center ${
                   isCategorySelected(category)
-                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25' 
+                    ? 'bg-cyan-600 dark:bg-purple-600 text-white shadow-lg shadow-cyan-500/25 dark:shadow-purple-500/25' 
                     : 'bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 hover:bg-gray-300/70 dark:hover:bg-gray-600/70 hover:text-gray-900 dark:hover:text-white'
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -224,23 +238,19 @@ export default function BlogPage() {
               filteredPosts.map((post, index) => (
                 <motion.article
                   key={`${post.id}-${selectedCategories.join('-')}`} // Re-animate when filter changes
-                  className="group relative bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-300/60 dark:border-gray-700/50 overflow-hidden transition-all duration-500 hover:border-transparent"
+                  className="group relative bg-white/70 dark:bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-300/60 dark:border-gray-700/50 overflow-hidden transition-all duration-500 hover:border-cyan-500/50 dark:hover:border-purple-500/50 hover:shadow-[0_0_0_1px_rgba(6,182,212,0.4),0_0_25px_rgba(6,182,212,0.3),0_0_50px_rgba(251,191,36,0.2)] dark:hover:shadow-[0_0_0_1px_rgba(147,51,234,0.3),0_0_25px_rgba(147,51,234,0.2),0_0_50px_rgba(147,51,234,0.1)]"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
                   whileHover={{ 
                     y: -8, 
-                    scale: 1.02,
-                    boxShadow: [
-                      "0 0 0 1px rgba(147, 51, 234, 0)",
-                      "0 0 0 1px rgba(147, 51, 234, 0.3), 0 0 25px rgba(147, 51, 234, 0.2), 0 0 50px rgba(147, 51, 234, 0.1)"
-                    ]
+                    scale: 1.02
                   }}
                 >
                 {/* Neon glow border effect */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/30 via-orange-400/30 to-purple-500/30 blur-md animate-pulse" />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-400/20 via-orange-300/20 to-purple-400/20 blur-lg" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-500/40 via-amber-300/40 to-cyan-500/40 dark:from-purple-500/30 dark:via-orange-400/30 dark:to-purple-500/30 blur-md animate-pulse" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/30 via-amber-200/30 to-blue-400/30 dark:from-purple-400/20 dark:via-orange-300/20 dark:to-purple-400/20 blur-lg" />
                 </div>
 
                 <div className="p-8 relative z-10">
@@ -281,7 +291,7 @@ export default function BlogPage() {
                       
                     <Link href={`/blog/${post.id}`}>
                       <motion.button
-                        className="bg-gray-200/70 dark:bg-gray-700/70 hover:bg-purple-600/80 dark:hover:bg-purple-600/80 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium flex items-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-purple-500/25"
+                        className="bg-gray-200/70 dark:bg-gray-700/70 hover:bg-cyan-600/80 dark:hover:bg-purple-600/80 text-gray-900 dark:text-white px-6 py-3 rounded-full font-medium flex items-center transition-all duration-300 group-hover:shadow-lg group-hover:shadow-cyan-500/30 dark:group-hover:shadow-purple-500/25"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -298,21 +308,15 @@ export default function BlogPage() {
 
           {/* Newsletter Signup */}
           <motion.div 
-            className="relative group bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-300/60 dark:border-gray-700/50 p-12 text-gray-900 dark:text-white text-center overflow-hidden transition-all duration-700 hover:border-transparent"
+            className="relative group bg-white/70 dark:bg-gray-900/60 backdrop-blur-sm rounded-3xl border border-gray-300/60 dark:border-gray-700/50 p-12 text-gray-900 dark:text-white text-center overflow-hidden transition-all duration-700 hover:border-cyan-500/50 dark:hover:border-purple-500/50"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            whileHover={{
-              boxShadow: [
-                "0 0 0 1px rgba(147, 51, 234, 0)",
-                "0 0 0 1px rgba(147, 51, 234, 0.3), 0 0 30px rgba(147, 51, 234, 0.2), 0 0 60px rgba(251, 146, 60, 0.1)"
-              ]
-            }}
           >
             {/* Neon glow effect */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/20 via-orange-400/30 to-purple-500/20 blur-xl animate-pulse" />
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-400/10 via-orange-300/20 to-purple-400/10 blur-2xl" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500/30 via-amber-300/40 to-cyan-500/30 dark:from-purple-500/20 dark:via-orange-400/30 dark:to-purple-500/20 blur-xl animate-pulse" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-amber-200/30 to-blue-400/20 dark:from-purple-400/10 dark:via-orange-300/20 dark:to-purple-400/10 blur-2xl" />
             </div>
 
             <div className="relative z-10">
@@ -432,7 +436,7 @@ export default function BlogPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   disabled={isSubmitting}
-                  className="flex-1 px-6 py-4 rounded-full bg-gray-200/70 dark:bg-gray-800/70 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border border-gray-300/60 dark:border-gray-600/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all duration-300 disabled:opacity-50"
+                  className="flex-1 px-6 py-4 rounded-full bg-gray-200/70 dark:bg-gray-800/70 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 border border-gray-300/60 dark:border-gray-600/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 dark:focus:ring-purple-500/50 focus:border-cyan-500/50 dark:focus:border-purple-500/50 transition-all duration-300 disabled:opacity-50"
                   whileFocus={{ scale: 1.02 }}
                   animate={{
                     borderColor: submitStatus === 'success' ? 'rgb(34 197 94)' : 
@@ -443,10 +447,10 @@ export default function BlogPage() {
                 <motion.button
                   type="submit"
                   disabled={isSubmitting || !email}
-                  className="bg-purple-600 hover:bg-purple-500 disabled:bg-purple-600/50 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center min-w-[140px] relative overflow-hidden"
+                  className="bg-cyan-600 hover:bg-cyan-500 dark:bg-purple-600 dark:hover:bg-purple-500 disabled:bg-cyan-600/50 dark:disabled:bg-purple-600/50 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 disabled:cursor-not-allowed flex items-center justify-center min-w-[140px] relative overflow-hidden"
                   whileHover={{ 
                     scale: isSubmitting ? 1 : 1.05,
-                    boxShadow: "0 0 20px rgba(147, 51, 234, 0.4)"
+                    boxShadow: isSubmitting ? undefined : "0 0 20px rgba(6, 182, 212, 0.4)"
                   }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                   animate={{
@@ -455,7 +459,7 @@ export default function BlogPage() {
                 >
                   {/* Button background effect */}
                   <motion.div 
-                    className="absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600"
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-cyan-600 dark:from-purple-400 dark:to-purple-600"
                     animate={{
                       x: isSubmitting ? ["0%", "100%", "0%"] : "0%"
                     }}

@@ -3,10 +3,20 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowRight, Tag, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { FeaturedPostsSkeleton } from './Skeleton'
 
 const FeaturedPosts = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return <FeaturedPostsSkeleton />
+  }
 
   // This would typically come from your CMS or markdown files
   const featuredPosts = [

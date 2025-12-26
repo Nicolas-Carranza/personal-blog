@@ -4,10 +4,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Code2, PenTool, Target, ChevronLeft } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { AboutSectionSkeleton } from './Skeleton'
 
 const AboutSection = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [flippedCard, setFlippedCard] = useState<number | null>(null)
   const router = useRouter();
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return <AboutSectionSkeleton />
+  }
 
   const aboutCards = [
     {
@@ -17,7 +27,7 @@ const AboutSection = () => {
       shortDesc: "Crafting digital experiences",
       fullDescription: "Ever since I was a kid, I have loved coding. It has always been more than just a skill for me, coding is both an escape and a way to express myself. Whether through building innovative websites, designing databases, building APIs or exploring modern AI and machine learning, I enjoy creating things that can make a real difference.",
       hoverAnimation: "code",
-      bgColor: "from-blue-500 via-blue-400 to-blue-300 dark:from-blue-900 dark:via-blue-800 dark:to-blue-700"
+      bgColor: "from-cyan-500 via-blue-500 to-cyan-400 dark:from-blue-900 dark:via-blue-800 dark:to-blue-700"
     },
     {
       id: 2,
@@ -26,7 +36,7 @@ const AboutSection = () => {
       shortDesc: "Sharing stories & insights",
       fullDescription: "My friends often describe me as someone who spends a lot of time lost in thought. My blog is a small snapshot of that, but what I enjoy most is sharing stories in person, listening to the backgrounds and anecdotes of new people I meet, and exploring ideas and themes that are completely new to me.",
       hoverAnimation: "writing",
-      bgColor: "from-blue-300 via-blue-200 to-sky-100 dark:from-blue-700 dark:via-blue-600 dark:to-blue-500"
+      bgColor: "from-blue-500 via-cyan-400 to-blue-400 dark:from-blue-700 dark:via-blue-600 dark:to-blue-500"
     },
     {
       id: 3,
@@ -35,27 +45,13 @@ const AboutSection = () => {
       shortDesc: "Pushing boundaries daily",
       fullDescription: "I am deeply motivated and driven. My mother often calls me a perfectionist, not only in my studies and work but also in the small details of life. When I set my mind on something, I do everything I can to achieve it. For me, this isn't a burden but a strength, because I truly enjoy what I do. I have clear objectives in life and I pursue them by giving my best in everything.",
       hoverAnimation: "target",
-      bgColor: "from-sky-100 via-blue-100 to-blue-200 dark:from-blue-500 dark:via-blue-400 dark:to-blue-300"
+      bgColor: "from-cyan-400 via-blue-400 to-cyan-500 dark:from-blue-500 dark:via-blue-400 dark:to-blue-300"
     }
   ]
 
   const handleCardClick = (cardId: number) => {
-    if (isIOSorSafari) {
-      router.push('/about');
-      return;
-    }
     setFlippedCard(flippedCard === cardId ? null : cardId)
   }
-  // Detect iOS or Safari for fallback
-  const [isIOSorSafari, setIsIOSorSafari] = useState(false);
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const ua = window.navigator.userAgent;
-      const isIOS = /iPad|iPhone|iPod/.test(ua);
-      const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
-      setIsIOSorSafari(isIOS || isSafari);
-    }
-  }, []);
 
   const getHoverAnimations = (animationType: string) => {
     switch (animationType) {
@@ -110,17 +106,24 @@ const AboutSection = () => {
                   duration: 0.5, 
                   delay: index * 0.1
                 }}
-                className="relative h-80 perspective-1000"
+                className="relative h-80"
               >
                 <motion.div
-                  className="relative w-full h-full cursor-pointer transform-style-preserve-3d"
-                  animate={{ rotateY: flippedCard === card.id ? 180 : 0 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="relative w-full h-full cursor-pointer"
                   onClick={() => handleCardClick(card.id)}
                   whileHover={{ scale: 1.02 }}
                 >
-                  {/* Front Side */}
-                  <div className="absolute inset-0 w-full h-full backface-hidden">
+                  {/* Front and Back Side with AnimatePresence */}
+                  <AnimatePresence mode="wait">
+                    {flippedCard !== card.id ? (
+                      <motion.div
+                        key="front"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 w-full h-full"
+                      >
                     <div className={`relative w-full h-full bg-gradient-to-r ${card.bgColor} rounded-xl overflow-hidden`}>
                       {/* Blur overlay */}
                       <div className="absolute inset-0 backdrop-blur-sm bg-white/10" />
@@ -131,30 +134,36 @@ const AboutSection = () => {
                           whileHover={getHoverAnimations(card.hoverAnimation)}
                           className="mb-6"
                         >
-                          <card.icon className="w-16 h-16 text-gray-900 dark:text-white drop-shadow-lg" />
+                          <card.icon className="w-16 h-16 text-white drop-shadow-2xl" />
                         </motion.div>
                         
-                        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 drop-shadow-md">
+                        <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
                           {card.title}
                         </h3>
                         
-                        <p className="text-gray-800 dark:text-gray-100 text-sm drop-shadow-sm">
+                        <p className="text-white/90 text-sm drop-shadow-md font-medium">
                           {card.shortDesc}
                         </p>
                       </div>
 
                       {/* Subtle pattern overlay */}
-                      <div className="absolute inset-0 opacity-10">
-                        <div className="w-full h-full bg-gradient-to-br from-transparent via-white/20 to-transparent transform rotate-12 scale-150" />
+                      <div className="absolute inset-0 opacity-20">
+                        <div className="w-full h-full bg-gradient-to-br from-transparent via-white/10 to-transparent transform rotate-12 scale-150" />
                       </div>
                     </div>
-                  </div>
-
-                  {/* Back Side */}
-                  <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180">
-                    <div className="relative w-full h-full bg-gradient-to-br from-white via-gray-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="back"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 w-full h-full"
+                      >
+                    <div className="relative w-full h-full bg-gradient-to-br from-white/90 via-[#faf8f5]/90 to-[#f5f0e9]/90 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 rounded-xl overflow-hidden border-2 border-[#e8dfd0]/80 dark:border-gray-700 shadow-xl">
                       {/* Animated background pattern */}
-                      <div className="absolute inset-0 opacity-10 dark:opacity-20">
+                      <div className="absolute inset-0 opacity-5 dark:opacity-20">
                         <motion.div 
                           className="w-full h-full"
                           animate={{
@@ -166,7 +175,7 @@ const AboutSection = () => {
                             repeatType: "reverse"
                           }}
                           style={{
-                            backgroundImage: "radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%)",
+                            backgroundImage: "radial-gradient(circle at 25% 25%, #06b6d4 0%, transparent 50%), radial-gradient(circle at 75% 75%, #0ea5e9 0%, transparent 50%)",
                             backgroundSize: "100% 100%"
                           }}
                         />
@@ -180,7 +189,7 @@ const AboutSection = () => {
                               e.stopPropagation()
                               handleCardClick(card.id)
                             }}
-                            className="flex items-center text-purple-600 dark:text-blue-400 hover:text-purple-500 dark:hover:text-blue-300 transition-colors"
+                            className="flex items-center text-cyan-600 dark:text-blue-400 hover:text-cyan-700 dark:hover:text-blue-300 transition-colors cursor-pointer font-medium"
                             whileHover={{ x: -2 }}
                           >
                             <ChevronLeft className="w-4 h-4 mr-1" />
@@ -188,22 +197,19 @@ const AboutSection = () => {
                           </motion.button>
                         </div>
                         
-                        <div className="flex-1">
-                          <div className="text-left space-y-4">
-                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                              {card.title}
-                            </h3>
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-                              {card.fullDescription}
-                            </p>
-                          </div>
+                        <div className="flex-1 flex items-center">
+                          <p className="text-[#2c251c] dark:text-gray-300 leading-relaxed text-base">
+                            {card.fullDescription}
+                          </p>
                         </div>
                       </div>
 
                       {/* Subtle glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-purple-500/5 to-pink-500/5 dark:from-blue-500/5 dark:to-purple-500/5 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-blue-500/5 dark:from-blue-500/5 dark:to-purple-500/5 pointer-events-none" />
                     </div>
-                  </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.div>
               </motion.div>
             ))}

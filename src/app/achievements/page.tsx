@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { 
   GraduationCap, 
   Award, 
@@ -19,8 +20,22 @@ import {
   Target
 } from 'lucide-react'
 import PageBackground from '@/components/PageBackground'
+import { AboutPageSkeleton } from '@/components/Skeleton'
 
 export default function AchievementsPage() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return (
+      <PageBackground variant="dotgrid">
+        <AboutPageSkeleton />
+      </PageBackground>
+    )
+  }
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -83,7 +98,7 @@ export default function AchievementsPage() {
                 >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                    <GraduationCap className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                    <GraduationCap className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Academic Excellence
@@ -98,7 +113,7 @@ export default function AchievementsPage() {
                         }}
                       >
                         <div className="flex items-center gap-2 mb-2">
-                          <Award className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          <Award className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                           <h3 className="font-semibold text-gray-900 dark:text-white">
                             University of St Andrews - BSc (Hons)
                           </h3>
@@ -109,7 +124,7 @@ export default function AchievementsPage() {
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                           Dean&apos;s List 2022/23, 2023/24, 2024/25 for outstanding academic performance
                         </p>
-                        <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm">
+                        <div className="flex items-center gap-1 text-cyan-600 dark:text-purple-400 text-sm">
                           <Calendar className="w-4 h-4" />
                           2022 - 2026
                         </div>
@@ -124,7 +139,7 @@ export default function AchievementsPage() {
                         }}
                       >
                         <div className="flex items-center gap-2 mb-2">
-                          <Trophy className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          <Trophy className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                           <h3 className="font-semibold text-gray-900 dark:text-white">
                             Harvard University - CS50Px
                           </h3>
@@ -132,7 +147,7 @@ export default function AchievementsPage() {
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                           Certificate in Computer Science and Python Programming
                         </p>
-                        <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm">
+                        <div className="flex items-center gap-1 text-cyan-600 dark:text-purple-400 text-sm">
                           <Calendar className="w-4 h-4" />
                           2023
                         </div>
@@ -147,7 +162,7 @@ export default function AchievementsPage() {
                         }}
                       >
                         <div className="flex items-center gap-2 mb-2">
-                          <GraduationCap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          <GraduationCap className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                           <h3 className="font-semibold text-gray-900 dark:text-white">
                             BiBac Bilingual Baccalaureate
                           </h3>
@@ -155,7 +170,7 @@ export default function AchievementsPage() {
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                           9.5/10 Grade, Head Student at British Council School Madrid
                         </p>
-                        <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm">
+                        <div className="flex items-center gap-1 text-cyan-600 dark:text-purple-400 text-sm">
                           <Calendar className="w-4 h-4" />
                           2020 - 2022
                         </div>
@@ -174,7 +189,7 @@ export default function AchievementsPage() {
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                      <Briefcase className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                      <Briefcase className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                       Professional Experience
@@ -192,7 +207,7 @@ export default function AchievementsPage() {
                       >
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
-                            <Building className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                            <Building className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                             <h3 className="font-semibold text-gray-900 dark:text-white">
                               BlackRock - Aladdin Client Business
                             </h3>
@@ -202,7 +217,7 @@ export default function AchievementsPage() {
                             target="_blank" 
                             rel="noopener noreferrer"
                             title="Visit BlackRock website"
-                            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                            className="text-cyan-600 dark:text-purple-400 hover:text-cyan-700 dark:hover:text-purple-300 transition-colors"
                           >
                             <ExternalLink className="w-4 h-4" />
                           </a>
@@ -210,7 +225,7 @@ export default function AchievementsPage() {
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                           Summer Intern in Edinburgh, leading AI implementation project
                         </p>
-                        <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm">
+                        <div className="flex items-center gap-1 text-cyan-600 dark:text-purple-400 text-sm">
                           <Calendar className="w-4 h-4" />
                           Jun 2025 - Aug 2025
                         </div>
@@ -222,7 +237,7 @@ export default function AchievementsPage() {
                       >
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
-                            <Code className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                            <Code className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                             <h3 className="font-semibold text-gray-900 dark:text-white">
                               DCycle - Backend Software Engineer
                             </h3>
@@ -232,7 +247,7 @@ export default function AchievementsPage() {
                             target="_blank" 
                             rel="noopener noreferrer"
                             title="Visit DCycle website"
-                            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                            className="text-cyan-600 dark:text-purple-400 hover:text-cyan-700 dark:hover:text-purple-300 transition-colors"
                           >
                             <ExternalLink className="w-4 h-4" />
                           </a>
@@ -240,7 +255,7 @@ export default function AchievementsPage() {
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                           Developed Python tools for financial data retrieval and API testing
                         </p>
-                        <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm">
+                        <div className="flex items-center gap-1 text-cyan-600 dark:text-purple-400 text-sm">
                           <Calendar className="w-4 h-4" />
                           May 2024 - Jul 2024
                         </div>
@@ -251,7 +266,7 @@ export default function AchievementsPage() {
                         whileHover={{ scale: 1.02, boxShadow: "0 8px 25px rgba(59, 130, 246, 0.2)", borderColor: "rgba(59, 130, 246, 0.4)" }}
                       >
                         <div className="flex items-center gap-2 mb-2">
-                          <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                          <Users className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                           <h3 className="font-semibold text-gray-900 dark:text-white">
                             University of St Andrews - STARIS Intern
                           </h3>
@@ -259,7 +274,7 @@ export default function AchievementsPage() {
                         <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">
                           Research internship with Oxford University on Ancient Egyptian database
                         </p>
-                        <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm">
+                        <div className="flex items-center gap-1 text-cyan-600 dark:text-purple-400 text-sm">
                           <Calendar className="w-4 h-4" />
                           Sep 2023 - Dec 2023
                         </div>
@@ -287,7 +302,7 @@ export default function AchievementsPage() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                    <Rocket className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                    <Rocket className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Entrepreneurship & Leadership
@@ -301,7 +316,7 @@ export default function AchievementsPage() {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <Rocket className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                        <Rocket className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                         <h3 className="font-semibold text-gray-900 dark:text-white">
                           Founder & CPO - Unhatched
                         </h3>
@@ -311,7 +326,7 @@ export default function AchievementsPage() {
                         target="_blank" 
                         rel="noopener noreferrer"
                         title="Visit Unhatched.ai website"
-                        className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                        className="text-cyan-600 dark:text-purple-400 hover:text-cyan-700 dark:hover:text-purple-300 transition-colors"
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
@@ -337,7 +352,7 @@ export default function AchievementsPage() {
                     whileHover={{ scale: 1.02, boxShadow: "0 8px 25px rgba(59, 130, 246, 0.2)", borderColor: "rgba(59, 130, 246, 0.4)" }}
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      <Users className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                       <h3 className="font-semibold text-gray-900 dark:text-white">
                         President - Spanish Society St Andrews
                       </h3>
@@ -352,7 +367,7 @@ export default function AchievementsPage() {
                     whileHover={{ scale: 1.02, boxShadow: "0 8px 25px rgba(59, 130, 246, 0.2)", borderColor: "rgba(59, 130, 246, 0.4)" }}
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <Building className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      <Building className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                       <h3 className="font-semibold text-gray-900 dark:text-white">
                         Sponsorship & Events Director - Fintech Society
                       </h3>
@@ -375,7 +390,7 @@ export default function AchievementsPage() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
-                    <Code className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                    <Code className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                     Featured Projects
@@ -392,7 +407,7 @@ export default function AchievementsPage() {
                     }}
                   >
                     <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      <Users className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                       <h3 className="font-semibold text-gray-900 dark:text-white">
                         Helping Hand - Social Good Platform
                       </h3>
@@ -425,7 +440,7 @@ export default function AchievementsPage() {
                   }}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <TrendingUp className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                     <h3 className="font-semibold text-gray-900 dark:text-white">
                       Quantitative Trading Algorithms
                     </h3>
@@ -455,7 +470,7 @@ export default function AchievementsPage() {
                   }}
                 >
                   <div className="flex items-center gap-2 mb-2">
-                    <Film className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                    <Film className="w-5 h-5 text-cyan-600 dark:text-purple-400" />
                     <h3 className="font-semibold text-gray-900 dark:text-white">
                       Movie Queue & Media API
                     </h3>
@@ -483,7 +498,7 @@ export default function AchievementsPage() {
           {/* Awards & Recognition */}
           <div className="card p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
-              <Trophy className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <Trophy className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Awards & Recognition
               </h2>
@@ -498,7 +513,7 @@ export default function AchievementsPage() {
                 }}
               >
                 <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Medal className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  <Medal className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white">Dean&apos;s List</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">3 consecutive years</p>
@@ -512,7 +527,7 @@ export default function AchievementsPage() {
                 }}
               >
                 <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <TestTube className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  <TestTube className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white">CERN BL4s Contest</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">Antimatter Research Project</p>
@@ -526,7 +541,7 @@ export default function AchievementsPage() {
                 }}
               >
                 <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <GraduationCap className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+                  <GraduationCap className="w-8 h-8 text-cyan-600 dark:text-purple-400" />
                 </div>
                 <h3 className="font-semibold text-gray-900 dark:text-white">Head Student</h3>
                 <p className="text-gray-600 dark:text-gray-300 text-sm">British Council School</p>
@@ -539,4 +554,5 @@ export default function AchievementsPage() {
     </PageBackground>
   )
 }
+
 

@@ -86,8 +86,8 @@ export default function ComingSoonPage({
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
                 >
-                  <div className="w-24 h-24 mx-auto mb-6 bg-purple-600/20 rounded-full flex items-center justify-center">
-                    <PenTool className="w-10 h-10 text-purple-400" />
+                  <div className="w-24 h-24 mx-auto mb-6 bg-cyan-600/20 dark:bg-purple-600/20 rounded-full flex items-center justify-center">
+                    <PenTool className="w-10 h-10 text-cyan-500 dark:text-purple-400" />
                   </div>
                   
                   <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
@@ -123,7 +123,7 @@ export default function ComingSoonPage({
                 >
                   <Link 
                     href="/blog"
-                    className="inline-flex items-center justify-center bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-full font-medium transition-all duration-300"
+                    className="inline-flex items-center justify-center bg-cyan-600 hover:bg-cyan-500 dark:bg-purple-600 dark:hover:bg-purple-500 text-white px-6 py-3 rounded-full font-medium transition-all duration-300"
                   >
                     Browse Other Stories
                   </Link>

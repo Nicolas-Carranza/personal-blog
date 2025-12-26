@@ -18,7 +18,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a 
                 href="https://github.com/Nicolas-Carranza" 
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
+                className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="GitHub Profile"
@@ -27,7 +27,7 @@ const Footer = () => {
               </a>
               <a 
                 href="https://linkedin.com/in/nicolas-carranza-arauna-4029a7252" 
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
+                className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="LinkedIn Profile"
@@ -36,7 +36,7 @@ const Footer = () => {
               </a>
               <a 
                 href="mailto:nicolas.carranza.work@gmail.com" 
-                className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200"
+                className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200"
                 title="Email Contact"
               >
                 <Mail className="w-6 h-6" />
@@ -49,22 +49,22 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/achievements" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/achievements" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   Achievements
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   Contact
                 </Link>
               </li>
@@ -76,22 +76,22 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Latest Posts</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/blog/1" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/blog/1" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   Madrid to St Andrews
                 </Link>
               </li>
               <li>
-                <Link href="/blog/2" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/blog/2" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   BlackRock Experience
                 </Link>
               </li>
               <li>
-                <Link href="/blog/3" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/blog/3" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   Highland Adventures
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-white transition-colors duration-200">
+                <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-purple-400 transition-colors duration-200">
                   View All Posts →
                 </Link>
               </li>

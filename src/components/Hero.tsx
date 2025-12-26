@@ -3,8 +3,21 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Sparkles, Code2, Brain, Rocket } from 'lucide-react'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { HeroSkeleton } from './Skeleton'
 
 const Hero = () => {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate component mounting/hydration
+    setIsLoading(false)
+  }, [])
+
+  if (isLoading) {
+    return <HeroSkeleton />
+  }
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -49,8 +62,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="block text-gray-900 dark:text-white mb-2">Nicolás</span>
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="block text-[#2c251c] dark:text-white mb-2">Nicolás</span>
+            <span className="block bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 dark:from-blue-400 dark:via-purple-400 dark:to-blue-500 bg-clip-text text-transparent">
               Carranza
             </span>
           </motion.h1>
@@ -62,10 +75,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Crafting digital experiences with <span className="text-blue-400 font-semibold">code</span>, 
-              exploring the frontiers of <span className="text-purple-400 font-semibold">AI</span>, 
-              and building the <span className="text-blue-400 font-semibold">future</span> of technology.
+            <p className="text-xl md:text-2xl text-[#5a4d3d] dark:text-gray-400 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Crafting digital experiences with <span className="text-cyan-600 dark:text-blue-400 font-semibold">code</span>, 
+              exploring the frontiers of <span className="text-blue-600 dark:text-purple-400 font-semibold">AI</span>, 
+              and building the <span className="text-cyan-600 dark:text-blue-400 font-semibold">future</span> of technology.
             </p>
             
             {/* Role Pills */}
@@ -82,13 +95,13 @@ const Hero = () => {
                   transition={{ duration: 0.5, delay: item.delay }}
                   whileHover={{ 
                     scale: 1.05,
-                    boxShadow: "0 0 25px rgba(59, 130, 246, 0.3)"
+                    boxShadow: "0 0 25px rgba(14, 165, 233, 0.3)"
                   }}
-                  className="group bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 hover:border-blue-500/50 rounded-full px-6 py-3 transition-all duration-300 cursor-default"
+                  className="group bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border border-[#e8dfd0] dark:border-gray-700 hover:border-cyan-500 dark:hover:border-blue-500/50 rounded-full px-6 py-3 transition-all duration-300 cursor-default shadow-sm hover:shadow-md"
                 >
                   <div className="flex items-center gap-2">
-                    <item.icon className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-blue-400 transition-colors" />
-                    <span className="text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white font-medium transition-colors">
+                    <item.icon className="w-4 h-4 text-[#5a4d3d] dark:text-gray-400 group-hover:text-cyan-600 dark:group-hover:text-blue-400 transition-colors" />
+                    <span className="text-[#2c251c] dark:text-gray-300 group-hover:text-[#2c251c] dark:group-hover:text-white font-medium transition-colors">
                       {item.text}
                     </span>
                   </div>
@@ -107,9 +120,9 @@ const Hero = () => {
               >
                 <Link 
                   href="/blog" 
-                  className="group relative bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center overflow-hidden"
+                  className="group relative bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-blue-500 dark:to-purple-500 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center overflow-hidden cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 dark:from-blue-400 dark:to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="relative z-10">Explore My Journey</span>
                 </Link>
               </motion.div>
@@ -123,9 +136,9 @@ const Hero = () => {
               >
                 <Link 
                   href="/achievements" 
-                  className="group bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 hover:border-blue-500/50 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center"
+                  className="group bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm border-2 border-[#d4c4ab] dark:border-gray-700 hover:border-cyan-600 dark:hover:border-blue-500/50 text-[#2c251c] dark:text-gray-300 hover:text-[#2c251c] dark:hover:text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center justify-center cursor-pointer"
                 >
-                  <span className="group-hover:text-blue-400 transition-colors">View Achievements</span>
+                  <span className="group-hover:text-cyan-600 dark:group-hover:text-blue-400 transition-colors">View Achievements</span>
                 </Link>
               </motion.div>
             </div>
@@ -144,8 +157,8 @@ const Hero = () => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-gray-600 dark:text-gray-500 text-sm font-medium">Scroll to explore</span>
-            <ArrowDown className="w-5 h-5 text-blue-400" />
+            <span className="text-slate-600 dark:text-gray-500 text-sm font-medium">Scroll to explore</span>
+            <ArrowDown className="w-5 h-5 text-cyan-600 dark:text-blue-400" />
           </motion.div>
         </motion.div>
       </div>

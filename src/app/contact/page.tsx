@@ -77,8 +77,8 @@ export default function ContactPage() {
               
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
@@ -87,8 +87,8 @@ export default function ContactPage() {
                 </div>
                 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Location</h3>
@@ -97,8 +97,8 @@ export default function ContactPage() {
                 </div>
                 
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white">Response Time</h3>
@@ -162,7 +162,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     disabled={isSubmitting}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 dark:focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50"
                     placeholder="Your name"
                   />
                 </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     disabled={isSubmitting}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 dark:focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -196,7 +196,7 @@ export default function ContactPage() {
                     required
                     disabled={isSubmitting}
                     rows={5}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 dark:focus:ring-purple-500 focus:border-transparent dark:bg-gray-700 dark:text-white disabled:opacity-50"
                     placeholder="Your message..."
                   />
                 </div>
